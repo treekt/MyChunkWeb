@@ -3,7 +3,9 @@
         "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-    <definition name="base.definition" template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">
+
+    <definition name="base-definition"
+                template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">
         <put-attribute name="title" value="" />
         <put-attribute name="header" value="/WEB-INF/views/tiles/layouts/defaultHeader.jsp" />
         <put-attribute name="menu" value="/WEB-INF/views/tiles/layouts/defaultMenu.jsp" />
@@ -11,9 +13,8 @@
         <put-attribute name="footer" value="/WEB-INF/views/tiles/layouts/defaultFooter.jsp" />
     </definition>
 
-    <definition name="home" extends="base.definition">
+    <definition name="home" extends="base-definition">
         <put-attribute name="title" value="Welcome" />
-        <put-attribute name="body"
-                       value="/WEB-INF/views/pages/home.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />
     </definition>
 </tiles-definitions>
