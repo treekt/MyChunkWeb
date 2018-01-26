@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="MyChunkWeb:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="MyChunkWeb-1.0-SNAPSHOT.war">
+    <root id="archive" name="Spring4MVCApacheTiles3Example.war">
       <element id="artifact" artifact-name="MyChunkWeb:war exploded" />
     </root>
   </artifact>
