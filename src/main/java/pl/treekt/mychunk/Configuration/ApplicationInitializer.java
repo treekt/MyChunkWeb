@@ -1,4 +1,4 @@
-package pl.treekt.mychunk;
+package pl.treekt.mychunk.Configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

@@ -1,0 +1,25 @@
+:root{
+    --height-footer: 65px;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+}
+
+header{
+
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    height: var(--height-footer);
+    background-color: #202326;
+}
+
+.footer-content{
+    margin: 20px 0px;
+    color: #b9bbbe;
+    font-size: 15px;
+}
