@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My website</title>
+</head>
+<body>
+<header th:replace="fragments/header :: header">
+    <h1>New dialect example</h1>
+</header>
+<section layout:fragment="content">
+    <p>Your page content goes here</p>
+</section>
+<footer>
+    <p>My custom footer</p>
+    <p th:replace="fragments/footer :: footer">Your custom footer here</p>
+</footer>
+</body>
+</html>
