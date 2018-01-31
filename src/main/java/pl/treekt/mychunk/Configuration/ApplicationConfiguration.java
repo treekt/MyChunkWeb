@@ -46,4 +46,5 @@ public class ApplicationConfiguration extends WebMvcConfigurationSupport{
         thymeleafViewResolver.setCharacterEncoding("UTF-8");
         return thymeleafViewResolver;
     }
+
 }

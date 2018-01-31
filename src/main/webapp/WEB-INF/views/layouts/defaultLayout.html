@@ -3,19 +3,17 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <title>My website</title>
+    <link rel="stylesheet" type="text/css"  href="/resources/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title >My website</title>
 </head>
 <body>
-<header th:replace="fragments/header :: header">
+<header>
     <h1>New dialect example</h1>
+    <button type="button" class="btn btn-success">Success</button>
 </header>
 <section layout:fragment="content">
     <p>Your page content goes here</p>
 </section>
-<footer>
-    <p>My custom footer</p>
-    <p th:replace="fragments/footer :: footer">Your custom footer here</p>
-</footer>
+<footer th:replace="fragments/footer :: footer" />
 </body>
 </html>

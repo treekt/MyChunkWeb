@@ -2,15 +2,13 @@
     --height-footer: 65px;
 }
 
-body{
+
+html{
     font-family: 'Lato', sans-serif;
 }
 
-header{
 
-}
-
-footer {
+#footer {
     bottom: 0;
     width: 100%;
     position: absolute;
