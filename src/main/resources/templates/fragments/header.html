@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+          href="../../../resources/static/css/bootstrap.css" />
 </head>
 <body>
 <header th:fragment="header">
-    <h2>HEADER</h2>
-    <button type="button" class="btn btn-success">Success</button>
+    <nav class="navbar navbar-dark bg-dark">
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Navbar</a>
+        </div>
+    </nav>
 </header>
 </body>
 </html>
