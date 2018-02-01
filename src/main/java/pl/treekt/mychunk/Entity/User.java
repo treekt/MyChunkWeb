@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "users")
@@ -69,5 +70,16 @@ public class User {
 
   public void setLastOnline(String lastOnline) {
     this.lastOnline = lastOnline;
+  }
+
+  //Custom
+
+  public double getKD(){
+
+    double kd = (double)kills/(double)(deaths+1);
+    if(deaths != 0){
+      kd = (double)kills/(double)deaths;
+    }
+    return new BigDecimal(kd).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
   }
 }

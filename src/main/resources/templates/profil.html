@@ -8,8 +8,13 @@
 <body>
 <section layout:fragment="content">
     <div class="container">
-        <img th:src="@{'https://crafatar.com/renders/body/' + ${user.nickname} + '?scale=5'}"/>
-        <a th:text="${user.nickname}"/>
+        <div class="profile-content">
+            <div class="profile-content-segment">
+
+            </div>
+        </div>
+        <!--<img th:src="@{'https://crafatar.com/renders/body/' + ${user.nickname} + '?scale=5'}"/>-->
+        <!--<a th:text="${user.nickname}"/>-->
     </div>
 </section>
 </body>

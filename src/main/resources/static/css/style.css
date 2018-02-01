@@ -8,6 +8,23 @@ html{
     font-family: 'Lato', sans-serif;
 }
 
+body{
+    background: url('../../static/img/shattered.png') repeat;
+}
+
+.profile-content{
+    height: 420px;
+    width: 100%;
+    background-color: #ececec;
+}
+
+.profile-content-segment{
+    margin: 5px;
+    float:left;
+}
+
+
+
 #footer {
     bottom: 0;
     width: 100%;
@@ -15,6 +32,7 @@ html{
     height: var(--height-footer);
     background-color: #202326;
 }
+
 
 .footer-content{
     margin: 20px 0px;
