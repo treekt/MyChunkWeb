@@ -21,8 +21,7 @@ public class UserService implements IUserService {
 
     @Override
     public User getUserById(String nickname) {
-        User user = userDao.getUserById(nickname);
-        return user;
+        return userDao.getUserById(nickname);
     }
 
     @Override

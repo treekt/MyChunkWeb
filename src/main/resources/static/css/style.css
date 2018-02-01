@@ -1,5 +1,6 @@
 :root{
     --height-footer: 65px;
+    --color-on-dark: #ebebeb;
 }
 
 
@@ -8,18 +9,68 @@ html{
     font-family: 'Lato', sans-serif;
 }
 
-body{
-    background: url('../../static/img/shattered.png') repeat;
+body {
+    background: #dbdcdc url('/img/shattered.png') repeat;
 }
 
+.cont-view{
+    background: #ebebeb;
+    height: 100%;
+    padding: 15px 15px;
+}
+
+
+.profile-head{
+    height: 70px;
+    width: 100%;
+    background: #212529;
+    padding: 10px 20px;
+    color: var(--color-on-dark);
+}
+
+h2.nickname{
+    margin: 3px 15px 6px;
+    float: left;
+}
 .profile-content{
+    background: #f8f9fa;
     height: 420px;
     width: 100%;
-    background-color: #ececec;
+    padding: 10px 15px
 }
 
 .profile-content-segment{
-    margin: 5px;
+    margin: 5px 10px;
+    float:left;
+}
+
+.profile-row{
+    border-bottom: 1px solid #dbddde;
+    background: #f4f5f5;
+    height: 60px;
+}
+
+img.stat-img{
+    float: left;
+    margin: 10px;
+    height: 40px;
+    width: 40px;
+}
+
+p.stat-name{
+    font-size: 20px;
+    width: 100px;
+    margin: 15px 5px;
+    float:left;
+}
+p.stat-value{
+    text-align: center;
+    background: #ebedef;
+    padding: 15px 0px;
+    font-size: 20px;
+    width: 75px;
+    height: 59px;
+    margin: 0px;
     float:left;
 }
 

@@ -54,4 +54,6 @@ public class UserDao implements IUserDao {
     public boolean userExists(String nickname) {
         return getUserById(nickname) != null ? true : false;
     }
+
+
 }

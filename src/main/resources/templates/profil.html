@@ -7,13 +7,46 @@
 </head>
 <body>
 <section layout:fragment="content">
-    <div class="container">
+    <div class="container cont-view">
+        <div class="profile-head">
+            <img style="float:left;" th:src="@{'https://crafatar.com/avatars/' + ${user.nickname} + '?size=50'}"/>
+            <h2 class="nickname" th:text="${user.nickname}"/>
+        </div>
         <div class="profile-content">
             <div class="profile-content-segment">
-
+                <img th:src="@{'https://crafatar.com/renders/body/' + ${user.nickname} + '?scale=8'}"/>
+            </div>
+            <div class="profile-content-segment">
+                <div class="profile-row">
+                    <img class="stat-img" th:src="@{'/img/kill.png'}" />
+                    <p class="stat-name" >Zabójstwa</p>
+                    <p class="stat-value" th:text="${user.getKills()}"></p>
+                </div>
+                <div class="profile-row">
+                    <img class="stat-img" th:src="@{'/img/death.png'}" />
+                    <p class="stat-name">Śmierci</p>
+                    <p class="stat-value" th:text="${user.getDeaths()}"></p>
+                </div>
+                <div class="profile-row">
+                    <img class="stat-img" th:src="@{'/img/assist.png'}"/>
+                    <p class="stat-name">Asysty</p>
+                    <p class="stat-value" th:text="${user.getAssists()}"></p>
+                </div>
+            </div>
+            <div class="profile-content-segment">
+                <div class="profile-row">
+                    <img class="stat-img" th:src="@{'/img/kd.png'}" />
+                    <p class="stat-name" >K/D</p>
+                    <p class="stat-value" th:text="${user.getKD()}"></p>
+                </div>
+                <div class="profile-row">
+                    <img class="stat-img" th:src="@{'/img/token.png'}" />
+                    <p class="stat-name">Tokeny</p>
+                    <p class="stat-value" th:text="${user.getTokens()}"></p>
+                </div>
             </div>
         </div>
-        <!--<img th:src="@{'https://crafatar.com/renders/body/' + ${user.nickname} + '?scale=5'}"/>-->
+
         <!--<a th:text="${user.nickname}"/>-->
     </div>
 </section>
