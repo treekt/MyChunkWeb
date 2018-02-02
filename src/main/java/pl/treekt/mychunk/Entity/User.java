@@ -25,6 +25,12 @@ public class User implements Comparable<User> {
   private Long assists;
   @Column(name = "tokens")
   private Long tokens;
+  @Column(name = "hit")
+  private Long hit;
+  @Column(name = "miss")
+  private Long miss;
+  @Column(name = "join_date")
+  private String joinDate;
   @Column(name = "last_online")
   private String lastOnline;
 
@@ -68,6 +74,30 @@ public class User implements Comparable<User> {
     this.tokens = tokens;
   }
 
+  public Long getHit() {
+    return hit;
+  }
+
+  public void setHit(Long hit) {
+    this.hit = hit;
+  }
+
+  public Long getMiss() {
+    return miss;
+  }
+
+  public void setMiss(Long miss) {
+    this.miss = miss;
+  }
+
+  public String getJoinDate() {
+    return joinDate;
+  }
+
+  public void setJoinDate(String joinDate) {
+    this.joinDate = joinDate;
+  }
+
   public String getLastOnline() {
     return lastOnline;
   }
@@ -87,11 +117,11 @@ public class User implements Comparable<User> {
     return new BigDecimal(kd).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
   }
 
-  public Date getDateTime() {
+  private Date getDateTime() {
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
     Date date = null;
     try {
-      date = dateFormat.parse(getLastOnline());
+      date = dateFormat.parse(getJoinDate());
     } catch (ParseException e) {
       e.printStackTrace();
     }
