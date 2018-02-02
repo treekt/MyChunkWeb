@@ -13,7 +13,7 @@
             <h2 class="nickname" th:text="${user.nickname}"/>
         </div>
         <div class="profile-content">
-            <div class="profile-content-segment">
+            <div class="profile-content-segment" style="height: 400px">
                 <img th:src="@{'https://crafatar.com/renders/body/' + ${user.nickname} + '?scale=8'}"/>
             </div>
             <div class="profile-content-segment">
@@ -43,6 +43,23 @@
                     <img class="stat-img" th:src="@{'/img/icons/stats/token.png'}" />
                     <p class="stat-name">Tokeny</p>
                     <p class="stat-value" th:text="${user.getTokens()}"></p>
+                </div>
+                <div class="profile-row">
+                    <img class="stat-img" th:src="@{'/img/icons/stats/aim.png'}" />
+                    <p class="stat-name">Celność</p>
+                    <p class="stat-value" th:text="${user.getAccuracy()}"></p>
+                </div>
+            </div>
+            <div class="profile-content-segment">
+                <div class="profile-row">
+                    <img class="stat-img" th:src="@{'/img/icons/stats/hit.png'}" />
+                    <p class="stat-name-extended">Trafienia</p>
+                    <p class="stat-value-extended" th:text="${user.getHit()}"></p>
+                </div>
+                <div class="profile-row">
+                    <img class="stat-img" th:src="@{'/img/icons/stats/miss.png'}" />
+                    <p class="stat-name-extended">Pudła</p>
+                    <p class="stat-value-extended" th:text="${user.getMiss()}"></p>
                 </div>
             </div>
         </div>

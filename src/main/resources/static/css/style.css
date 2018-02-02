@@ -57,13 +57,18 @@ img.stat-img{
     width: 40px;
 }
 
-p.stat-name{
+p.stat-name, p.stat-name-extended{
     font-size: 20px;
     width: 100px;
     margin: 15px 5px;
     float:left;
 }
-p.stat-value{
+
+p.stat-name-extended{
+    width: 175px;
+}
+
+p.stat-value, p.stat-value-extended{
     text-align: center;
     background: #ebedef;
     padding: 15px 0px;
@@ -72,6 +77,10 @@ p.stat-value{
     height: 59px;
     margin: 0px;
     float:left;
+}
+
+p.stat-value-extended{
+    width: 100px;
 }
 
 

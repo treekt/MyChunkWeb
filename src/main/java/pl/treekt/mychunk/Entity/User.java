@@ -117,6 +117,19 @@ public class User implements Comparable<User> {
     return new BigDecimal(kd).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
   }
 
+  public Long getSumOfShots(){
+    return hit+miss;
+  }
+
+  public double getAccuracy(){
+    long shots = hit+miss;
+    if(shots == 0){
+      return 0;
+    }
+    double accuracy = (double)hit/(double)shots;
+    return new BigDecimal(accuracy * 100).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+  }
+
   private Date getDateTime() {
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
     Date date = null;
