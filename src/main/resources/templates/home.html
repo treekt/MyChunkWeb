@@ -7,7 +7,9 @@
 </head>
 <body>
 <section layout:fragment="content">
-    <div class="container cont-view">Hello World!</div>
+    <div class="container cont-view">
+        Hello <span th:text="${user.getNickname()}"></span>
+    </div>
 </section>
 </body>
 </html>

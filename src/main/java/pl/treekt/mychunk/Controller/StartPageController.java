@@ -30,6 +30,8 @@ public class StartPageController {
 
     @GetMapping("/")
     public String homePage(ModelMap model){
+        List<User> lastOnlineUsers = userService.getAllUsers();
+        model.addAttribute("user", lastOnlineUsers.get(0));
         return "home";
     }
 

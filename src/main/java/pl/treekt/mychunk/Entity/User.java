@@ -5,10 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Comparable<User> {
 
   @Id
   @Column(name = "nickname")
@@ -81,5 +85,21 @@ public class User {
       kd = (double)kills/(double)deaths;
     }
     return new BigDecimal(kd).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+  }
+
+  public Date getDateTime() {
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+    Date date = null;
+    try {
+      date = dateFormat.parse(getLastOnline());
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+    return date;
+  }
+
+  @Override
+  public int compareTo(User o) {
+    return o.getDateTime().compareTo(getDateTime());
   }
 }

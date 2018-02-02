@@ -6,6 +6,7 @@ import pl.treekt.mychunk.Dao.Interfaces.IUserDao;
 import pl.treekt.mychunk.Entity.User;
 import pl.treekt.mychunk.Service.Interfaces.IUserService;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -16,7 +17,9 @@ public class UserService implements IUserService {
 
     @Override
     public List<User> getAllUsers() {
-        return userDao.getAllUsers();
+        List<User> users = userDao.getAllUsers();
+        Collections.sort(users);
+        return users;
     }
 
     @Override
@@ -43,4 +46,5 @@ public class UserService implements IUserService {
     public void deleteUser(String nickname) {
         userDao.deleteUser(nickname);
     }
+
 }
