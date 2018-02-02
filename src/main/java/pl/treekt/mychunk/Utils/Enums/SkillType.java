@@ -1,31 +1,45 @@
 package pl.treekt.mychunk.Utils.Enums;
 
+import pl.treekt.mychunk.Entity.Skill;
+
 public enum SkillType {
-    Standard("STANDARD"),
-    Spowolnienie("WEB"),
-    Trucizna("FERMENTED_SPIDER_EYE"),
-    Ogien("BLAZE_POWDER"),
-    Piorun("NETHER_STAR"),
-    Lasso("LEASH"),
-    Multishot("MELON_SEEDS"),
-    Oslepienie("COAL"),
-    Zamrozenie("ICE"),
-    Eksplozja("FIREBALL"),
-    Wymioty("CHORUS_FRUIT_POPPED"),
-    Knockback("GOLDEN_APPLE"),
-    Teleport("ENDER_PEARL"),
-    Wither("EYE_OF_ENDER"),
-    Jajo("EGG"),
-    Sniezka("SNOW_BALL");
+    Standard(false, false, false),
+    Spowolnienie(true, true, true),
+    Trucizna(true, true, true),
+    Ogien(true, true, false),
+    Piorun(true, false, false),
+    Lasso(true, false, true),
+    Multishot(true, false, true),
+    Oslepienie(true, true, true),
+    Zamrozenie(true, true, false),
+    Eksplozja(true, false, true),
+    Wymioty(true, true, true),
+    Knockback(true, false, true),
+    Teleport(true, false, false),
+    Wither(true, true, true),
+    Jajo(false, false, false),
+    Sniezka(false, false, false);
 
-    private String iconName;
+    private boolean cooldown;
+    private boolean duration;
+    private boolean power;
 
-    SkillType(String iconName){
-        this.iconName = iconName;
+    public boolean isCooldown() {
+        return cooldown;
     }
 
-    public String getIconName() {
-        return iconName;
+    public boolean isDuration() {
+        return duration;
+    }
+
+    public boolean isPower() {
+        return power;
+    }
+
+    SkillType(boolean cooldownExists, boolean durationExists, boolean powerExists){
+        this.cooldown = cooldownExists;
+        this.duration = durationExists;
+        this.power = powerExists;
     }
 
     public static SkillType getSkillType(String type){

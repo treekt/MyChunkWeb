@@ -1,5 +1,7 @@
 package pl.treekt.mychunk.Entity;
 
+import pl.treekt.mychunk.Utils.Enums.SkillType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -61,5 +63,10 @@ public class Skill {
 
   public void setNickname(String nickname) {
     this.nickname = nickname;
+  }
+
+  //Custom
+  public SkillType getSkillType(){
+    return SkillType.getSkillType(getType());
   }
 }

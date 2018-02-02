@@ -19,13 +19,13 @@ public class SkillDao implements ISkillDao {
 
     @Override
     public List<Skill> getAllSkills(String nickname) {
-        String query =  "FROM Skill WHERE nickname = " + nickname;
+        String query =  "FROM Skill WHERE nickname = '" + nickname + "'";
         return (List<Skill>) entityManager.createQuery(query).getResultList();
     }
 
     @Override
     public Skill getSkillByType(String nickname, SkillType type) {
-        String query = "FROM Skill WHERE nickname = " + nickname + " AND type = " + type.toString();
+        String query = "FROM Skill WHERE nickname = '" + nickname + "' AND type = '" + type.toString() + "'";
         return (Skill) entityManager.createQuery(query).getSingleResult();
     }
 

@@ -6,8 +6,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
+import pl.treekt.mychunk.Entity.Armor;
 import pl.treekt.mychunk.Entity.Skill;
 import pl.treekt.mychunk.Entity.User;
+import pl.treekt.mychunk.Service.Interfaces.IArmorService;
 import pl.treekt.mychunk.Service.Interfaces.ISkillService;
 import pl.treekt.mychunk.Service.Interfaces.IUserService;
 
@@ -21,6 +23,10 @@ public class StartPageController {
 
     @Autowired
     private ISkillService skillService;
+
+    @Autowired
+    private IArmorService armorService;
+
 
     @GetMapping("/")
     public String homePage(ModelMap model){
@@ -39,10 +45,12 @@ public class StartPageController {
     public ModelAndView profil(@PathVariable String nickname){
         User user = userService.getUserById(nickname);
         List<Skill> skills = skillService.getAllSkills(nickname);
+        List<Armor> armors = armorService.getAllArmors(nickname);
 
         ModelAndView model = new ModelAndView();
         model.setViewName("profil");
         model.addObject("user", user);
+        model.addObject("armors", armors);
         model.addObject("skills", skills);
         return model;
     }
