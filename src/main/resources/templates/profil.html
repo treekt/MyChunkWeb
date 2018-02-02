@@ -63,27 +63,15 @@
                         <td>
                             <img th:src="@{'/img/icons/skills/' + ${skill.getType()} + '.png'}" />
                         </td>
+                        <td th:if="${skill.getSkillType().isCooldown()}" th:text="${skill.getCooldownLevel()}"/>
+                        <td th:unless="${skill.getSkillType().isCooldown()}">-</td>
 
-                        <div th:if="${skill.getSkillType().isCooldown()}">
-                            <td th:text="${skill.getCooldownLevel()}"/>
-                        </div>
-                        <div th:unless="${skill.getSkillType().isCooldown()}">
-                            <td>-</td>
-                        </div>
+                        <td th:if="${skill.getSkillType().isDuration()}" th:text="${skill.getDurationLevel()}"/>
+                        <td th:unless="${skill.getSkillType().isDuration()}">-</td>
 
-                        <div th:if="${skill.getSkillType().isDuration()}">
-                            <td th:text="${skill.getDurationLevel()}"/>
-                        </div>
-                        <div th:unless="${skill.getSkillType().isDuration()}">
-                            <td>-</td>
-                        </div>
+                        <td th:if="${skill.getSkillType().isPower()}" th:text="${skill.getPowerLevel()}"/>
+                        <td th:unless="${skill.getSkillType().isPower()}">-</td>
 
-                        <div th:if="${skill.getSkillType().isPower()}">
-                            <td th:text="${skill.getPowerLevel()}"/>
-                        </div>
-                        <div th:unless="${skill.getSkillType().isPower()}">
-                            <td>-</td>
-                        </div>
                     </tr>
                     </tbody>
                 </table>
