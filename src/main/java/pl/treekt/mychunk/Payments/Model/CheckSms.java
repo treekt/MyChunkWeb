@@ -1,18 +1,26 @@
 package pl.treekt.mychunk.Payments.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CheckSms {
 
     //Homepay user ID
+    @JsonProperty("id")
     private int id;
     //API command
+    @JsonProperty("command")
     private String command;
     //Homepay user API key
+    @JsonProperty("key")
     private String key;
     //Homepay user password
+    @JsonProperty("password")
     private String password;
     //Queried account ID
+    @JsonProperty("account")
     private int account;
     //Queried code
+    @JsonProperty("code")
     private String code;
 
     public int getId() {

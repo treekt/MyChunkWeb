@@ -1,5 +1,6 @@
 package pl.treekt.mychunk.Controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -9,9 +10,12 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.treekt.mychunk.Entity.Armor;
 import pl.treekt.mychunk.Entity.Skill;
 import pl.treekt.mychunk.Entity.User;
+import pl.treekt.mychunk.Payments.Model.CheckResult;
+import pl.treekt.mychunk.Payments.SMSPaymentService;
 import pl.treekt.mychunk.Service.Interfaces.IArmorService;
 import pl.treekt.mychunk.Service.Interfaces.ISkillService;
 import pl.treekt.mychunk.Service.Interfaces.IUserService;
+
 
 import java.util.List;
 
@@ -27,14 +31,21 @@ public class StartPageController {
     @Autowired
     private IArmorService armorService;
 
+    @Autowired
+    private SMSPaymentService smsPaymentService;
 
     @GetMapping("/")
     public String homePage(ModelMap model){
         List<User> users = userService.getAllUsers();
         List<User> lastOnlineUsers = users.subList(0, 2 >= users.size() ? users.size() : 2);
+
+        CheckResult checkResult = smsPaymentService.checkSMS(0, "code");
+
         model.addAttribute("users", lastOnlineUsers);
+        model.addAttribute("api", checkResult);
         return "home";
     }
+
 
 
     @GetMapping("/ranking")

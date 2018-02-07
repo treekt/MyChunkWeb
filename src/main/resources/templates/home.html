@@ -8,9 +8,7 @@
 <body>
 <section layout:fragment="content">
     <div class="container cont-view">
-        <div th:each="user : ${users}">
-            <span th:text="${user.getNickname()}"></span>
-        </div>
+        <span th:text="${api.getReturnValue()}"></span>
         Hello
     </div>
 </section>
