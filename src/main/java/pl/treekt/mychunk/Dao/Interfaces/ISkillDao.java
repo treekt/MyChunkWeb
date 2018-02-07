@@ -1,6 +1,6 @@
 package pl.treekt.mychunk.Dao.Interfaces;
 
-import pl.treekt.mychunk.Entity.Skill;
+import pl.treekt.mychunk.Entity.Game.Skill;
 import pl.treekt.mychunk.Utils.Enums.SkillType;
 
 import java.util.List;

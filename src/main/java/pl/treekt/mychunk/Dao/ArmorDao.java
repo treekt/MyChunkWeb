@@ -2,7 +2,7 @@ package pl.treekt.mychunk.Dao;
 
 import org.springframework.stereotype.Repository;
 import pl.treekt.mychunk.Dao.Interfaces.IArmorDao;
-import pl.treekt.mychunk.Entity.Armor;
+import pl.treekt.mychunk.Entity.Game.Armor;
 import pl.treekt.mychunk.Utils.Enums.ArmorType;
 
 import javax.persistence.EntityManager;

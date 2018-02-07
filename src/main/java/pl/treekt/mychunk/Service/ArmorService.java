@@ -3,7 +3,7 @@ package pl.treekt.mychunk.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.treekt.mychunk.Dao.Interfaces.IArmorDao;
-import pl.treekt.mychunk.Entity.Armor;
+import pl.treekt.mychunk.Entity.Game.Armor;
 import pl.treekt.mychunk.Service.Interfaces.IArmorService;
 import pl.treekt.mychunk.Utils.Enums.ArmorType;
 

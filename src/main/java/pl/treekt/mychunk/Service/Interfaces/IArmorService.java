@@ -1,6 +1,6 @@
 package pl.treekt.mychunk.Service.Interfaces;
 
-import pl.treekt.mychunk.Entity.Armor;
+import pl.treekt.mychunk.Entity.Game.Armor;
 import pl.treekt.mychunk.Utils.Enums.ArmorType;
 
 import java.util.List;

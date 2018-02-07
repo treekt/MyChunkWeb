@@ -3,7 +3,7 @@ package pl.treekt.mychunk.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.treekt.mychunk.Dao.Interfaces.ISkillDao;
-import pl.treekt.mychunk.Entity.Skill;
+import pl.treekt.mychunk.Entity.Game.Skill;
 import pl.treekt.mychunk.Service.Interfaces.ISkillService;
 import pl.treekt.mychunk.Utils.Enums.SkillType;
 

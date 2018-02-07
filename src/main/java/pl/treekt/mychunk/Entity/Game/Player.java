@@ -1,4 +1,4 @@
-package pl.treekt.mychunk.Entity;
+package pl.treekt.mychunk.Entity.Game;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
-@Table(name = "users")
-public class User implements Comparable<User> {
+@Table(name = "players")
+public class Player implements Comparable<Player> {
 
   @Id
   @Column(name = "nickname")
@@ -142,7 +142,7 @@ public class User implements Comparable<User> {
   }
 
   @Override
-  public int compareTo(User o) {
+  public int compareTo(Player o) {
     return o.getDateTime().compareTo(getDateTime());
   }
 }

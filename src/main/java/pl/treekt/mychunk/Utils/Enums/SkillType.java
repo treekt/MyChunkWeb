@@ -1,7 +1,5 @@
 package pl.treekt.mychunk.Utils.Enums;
 
-import pl.treekt.mychunk.Entity.Skill;
-
 public enum SkillType {
     Standard(false, false, false),
     Spowolnienie(true, true, true),

@@ -7,14 +7,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
-import pl.treekt.mychunk.Entity.Armor;
-import pl.treekt.mychunk.Entity.Skill;
-import pl.treekt.mychunk.Entity.User;
+import pl.treekt.mychunk.Entity.Game.Armor;
+import pl.treekt.mychunk.Entity.Game.Skill;
+import pl.treekt.mychunk.Entity.Game.Player;
 import pl.treekt.mychunk.Payments.Model.CheckResult;
 import pl.treekt.mychunk.Payments.SMSPaymentService;
 import pl.treekt.mychunk.Service.Interfaces.IArmorService;
+import pl.treekt.mychunk.Service.Interfaces.IPlayerService;
 import pl.treekt.mychunk.Service.Interfaces.ISkillService;
-import pl.treekt.mychunk.Service.Interfaces.IUserService;
 
 
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
 public class StartPageController {
 
     @Autowired
-    private IUserService userService;
+    private IPlayerService playerService;
 
     @Autowired
     private ISkillService skillService;
@@ -36,12 +36,12 @@ public class StartPageController {
 
     @GetMapping("/")
     public String homePage(ModelMap model){
-        List<User> users = userService.getAllUsers();
-        List<User> lastOnlineUsers = users.subList(0, 2 >= users.size() ? users.size() : 2);
+        List<Player> players = playerService.getAllPlayers();
+        List<Player> lastOnlinePlayers = players.subList(0, 2 >= players.size() ? players.size() : 2);
 
         CheckResult checkResult = smsPaymentService.checkSMS(0, "code");
 
-        model.addAttribute("users", lastOnlineUsers);
+        model.addAttribute("players", lastOnlinePlayers);
         model.addAttribute("api", checkResult);
         return "home";
     }
@@ -50,19 +50,18 @@ public class StartPageController {
 
     @GetMapping("/ranking")
     public String ranking(ModelMap model){
-        List<User> users = userService.getAllUsers();
-        model.addAttribute("users", users);
+        List<Player> players = playerService.getAllPlayers();
+        model.addAttribute("players", players);
         return "ranking";
     }
 
     @GetMapping("/profil/{nickname}")
     public ModelAndView profil(@PathVariable String nickname){
-        User user = userService.getUserById(nickname);
+        Player user = playerService.getPlayerById(nickname);
         List<Skill> skills = skillService.getAllSkills(nickname);
         List<Armor> armors = armorService.getAllArmors(nickname);
 
-        ModelAndView model = new ModelAndView();
-        model.setViewName("profil");
+        ModelAndView model = new ModelAndView("profil");
         model.addObject("user", user);
         model.addObject("armors", armors);
         model.addObject("skills", skills);

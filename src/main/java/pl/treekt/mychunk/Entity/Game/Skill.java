@@ -1,4 +1,4 @@
-package pl.treekt.mychunk.Entity;
+package pl.treekt.mychunk.Entity.Game;
 
 import pl.treekt.mychunk.Utils.Enums.SkillType;
 

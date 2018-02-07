@@ -2,7 +2,7 @@ package pl.treekt.mychunk.Dao;
 
 import org.springframework.stereotype.Repository;
 import pl.treekt.mychunk.Dao.Interfaces.ISkillDao;
-import pl.treekt.mychunk.Entity.Skill;
+import pl.treekt.mychunk.Entity.Game.Skill;
 import pl.treekt.mychunk.Utils.Enums.SkillType;
 
 import javax.persistence.EntityManager;
