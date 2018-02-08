@@ -18,7 +18,7 @@ public class PlayerDao implements IPlayerDao {
 
     @Override
     public List<Player> getAllPlayers() {
-        String query = "FROM Player as player ORDER BY player.nickname";
+        String query = "FROM Player AS player ORDER BY player.nickname";
         return (List<Player>) entityManager.createQuery(query).getResultList();
     }
 

@@ -25,12 +25,8 @@ public class SMSPaymentService {
 
     public CheckResult checkSMS(int account, String code){
         CheckSms checkSms = new CheckSms();
-//        checkSms.setId(13822);
-//        checkSms.setCommand("CheckSMS");
-//        checkSms.setKey("key");
-//        checkSms.setPassword("password");
-//        checkSms.setAccount(account);
-//        checkSms.setCode(code);
+        checkSms.setAccount(account);
+        checkSms.setCode(code);
 
         String url = "https://homepay.pl/api";
 
