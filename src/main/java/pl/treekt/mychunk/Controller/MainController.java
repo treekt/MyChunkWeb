@@ -2,18 +2,13 @@ package pl.treekt.mychunk.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.treekt.mychunk.Entity.Game.Armor;
 import pl.treekt.mychunk.Entity.Game.Skill;
 import pl.treekt.mychunk.Entity.Game.Player;
-import pl.treekt.mychunk.Entity.Web.User;
 import pl.treekt.mychunk.Payments.Model.CheckResult;
 import pl.treekt.mychunk.Payments.SMSPaymentService;
 import pl.treekt.mychunk.Service.Interfaces.IArmorService;
@@ -22,11 +17,10 @@ import pl.treekt.mychunk.Service.Interfaces.ISkillService;
 import pl.treekt.mychunk.Service.Interfaces.IUserService;
 
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-public class StartPageController {
+public class MainController {
 
     @Autowired
     private IPlayerService playerService;
@@ -77,52 +71,6 @@ public class StartPageController {
         return model;
     }
 
-    @GetMapping("/login")
-    public ModelAndView login(){
-        ModelAndView modelAndView = new ModelAndView("login");
-        return modelAndView;
-    }
-
-
-    @GetMapping("/registration")
-    public ModelAndView registration(){
-        ModelAndView modelAndView = new ModelAndView("registration");
-        User user = new User();
-        modelAndView.addObject("user", user);
-        return modelAndView;
-    }
-
-    @PostMapping("/registration")
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
-        ModelAndView modelAndView = new ModelAndView();
-        User userExists = userService.getUserByEmail(user.getEmail());
-        if (userExists != null) {
-            bindingResult
-                    .rejectValue("email", "error.user",
-                            "Istnieje już użytkownik o takim adresie E-mail");
-        }
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("registration");
-        } else {
-            userService.addUser(user);
-            modelAndView.addObject("successMessage", "Pomyślnie zarejestrowano!");
-            modelAndView.addObject("user", new User());
-            modelAndView.setViewName("registration");
-
-        }
-        return modelAndView;
-    }
-
-    @GetMapping("/user/home")
-    public ModelAndView home(){
-        ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.getUserByEmail(auth.getName());
-        modelAndView.addObject("userName", "Welcome " + user.getUsername() + " (" + user.getEmail() + ")");
-        modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("user/home");
-        return modelAndView;
-    }
 
 
 }
