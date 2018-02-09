@@ -1,6 +1,5 @@
 package pl.treekt.mychunk.Dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pl.treekt.mychunk.Dao.Interfaces.IUserDao;
 import pl.treekt.mychunk.Entity.Web.User;
@@ -47,6 +46,7 @@ public class UserDao implements IUserDao {
         newUser.setPassword(user.getPassword());
         newUser.setEmail(user.getEmail());
         newUser.setRoles(user.getRoles());
+        newUser.setActive(user.getActive());
 
         entityManager.flush();
     }

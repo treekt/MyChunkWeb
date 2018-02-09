@@ -99,13 +99,13 @@ public class StartPageController {
         if (userExists != null) {
             bindingResult
                     .rejectValue("email", "error.user",
-                            "There is already a user registered with the email provided");
+                            "Istnieje już użytkownik o takim adresie E-mail");
         }
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
             userService.addUser(user);
-            modelAndView.addObject("successMessage", "User has been registered successfully");
+            modelAndView.addObject("successMessage", "Pomyślnie zarejestrowano!");
             modelAndView.addObject("user", new User());
             modelAndView.setViewName("registration");
 
@@ -113,14 +113,14 @@ public class StartPageController {
         return modelAndView;
     }
 
-    @GetMapping("/admin/home")
+    @GetMapping("/user/home")
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getUserByEmail(auth.getName());
         modelAndView.addObject("userName", "Welcome " + user.getUsername() + " (" + user.getEmail() + ")");
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("admin/home");
+        modelAndView.setViewName("user/home");
         return modelAndView;
     }
 
