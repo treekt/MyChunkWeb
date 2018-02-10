@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="defaultLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container cont-view" style = "text-align: center;">
+        <h1 th:text="${errorCode}"></h1>
+        <h4 th:text="${errorMsg}"></h4>
+    </div>
+</section>
+</body>
+</html>

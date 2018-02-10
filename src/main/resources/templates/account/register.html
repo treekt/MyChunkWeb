@@ -3,11 +3,11 @@
       layout:decorate="defaultLayout"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Ranking</title>
+    <title>Rejestracja</title>
 </head>
 <body>
 <div class="container cont-view" layout:fragment="content">
-    <form autocomplete="off" action="#" th:action="@{/registration}"
+    <form autocomplete="off" action="#" th:action="@{account/register}"
           th:object="${user}" method="post" class="form-horizontal"
           role="form" style="margin: 0 auto; width: 50% ">
         <h2>Rejestracja</h2>
