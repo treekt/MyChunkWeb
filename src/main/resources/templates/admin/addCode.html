@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="defaultLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dodaj kod</title>
+</head>
+<body>
+<div class="container cont-view" layout:fragment="content">
+    <form action="#" th:action="@{/admin/add-code}" th:object="${code}" method="POST"
+          style="margin: 0 auto; width: 50%">
+        <h2>Dodanie kodu SMS</h2>
+        <br/>
+        <div class="form-group">
+            <input class="form-control" type="text" th:field="*{code}" th:placeholder="Kod">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" th:field="*{number}" th:placeholder="Numer">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" th:field="*{price}" th:placeholder="Cena">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit" value="Submit">Dodaj</button>
+        </div>
+        <span th:utext="${successMessage}"></span>
+    </form>
+</div>
+</body>
+</html>

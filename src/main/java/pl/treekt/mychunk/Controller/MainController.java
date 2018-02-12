@@ -38,7 +38,7 @@ public class MainController {
     private IUserService userService;
 
     @GetMapping("/")
-    public String homePage(ModelMap model){
+    public String home(ModelMap model){
         List<Player> players = playerService.getAllPlayers();
         List<Player> lastOnlinePlayers = players.subList(0, 2 >= players.size() ? players.size() : 2);
 

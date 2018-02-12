@@ -25,7 +25,7 @@ public class AccountController {
 
 
     @GetMapping("/register")
-    public ModelAndView registration(){
+    public ModelAndView registerForm(){
         ModelAndView modelAndView = new ModelAndView("account/register");
         User user = new User();
         modelAndView.addObject("user", user);
@@ -33,13 +33,12 @@ public class AccountController {
     }
 
     @PostMapping("/register")
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+    public ModelAndView registerSubmit(@Valid User user, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView("account/register");
-        User userExists = userService.getUserByEmail(user.getEmail());
-        if (userExists != null) {
+        if (!userService.addUser(user)) {
             bindingResult
                     .rejectValue("email", "error.user",
-                            "Istnieje już użytkownik o takim adresie E-mail");
+                            "Istnieje już użytkownik o takim adresie e-mail");
         }
 
         if (!bindingResult.hasErrors()) {

@@ -1,0 +1,55 @@
+package pl.treekt.mychunk.Dao;
+
+import org.springframework.stereotype.Repository;
+import pl.treekt.mychunk.Dao.Interfaces.IPositionDao;
+import pl.treekt.mychunk.Entity.Web.Code;
+import pl.treekt.mychunk.Entity.Web.Position;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+import java.util.List;
+
+@Transactional
+@Repository
+public class PositionDao implements IPositionDao {
+    
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Override
+    public List<Position> getAllPositions() {
+        String query = "FROM Position";
+        return (List<Position>) entityManager.createQuery(query).getResultList();
+    }
+
+    @Override
+    public Position getPositionByTitle(String title) {
+        String query = "FROM Position WHERE title = '" + title + "'";
+        try{
+            return (Position) entityManager.createQuery(query).getSingleResult();
+        }catch(Exception e){
+            return null;
+        }
+    }
+
+    @Override
+    public void addPosition(Position position) {
+        entityManager.persist(position);
+    }
+
+    @Override
+    public void updatePosition(Position position) {
+        
+    }
+
+    @Override
+    public void deletePosition(Position position) {
+        entityManager.remove(position);
+    }
+
+    @Override
+    public boolean positionExists(String title) {
+        return getPositionByTitle(title) != null;
+    }
+}

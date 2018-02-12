@@ -7,8 +7,8 @@ import java.util.List;
 public interface IPlayerDao {
     List<Player> getAllPlayers();
     Player getPlayerById(String nickname);
-    void addPlayer(Player user);
-    void updatePlayer(Player user);
+    void addPlayer(Player player);
+    void updatePlayer(Player player);
     void deletePlayer(String nickname);
     boolean playerExists(String nickname);
 }

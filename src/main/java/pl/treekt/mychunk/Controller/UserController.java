@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
