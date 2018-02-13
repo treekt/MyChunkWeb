@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="defaultLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sklep</title>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+    <div class="shop-position" th:each="position : ${positions}">
+        <img class="shop-image" th:src="@{'/img/icons/shop/' + ${position.getImage()}}">
+        <div class="shop-content">
+            <div class="shop-title">
+                <p th:text="${position.getTitle()}"></p>
+            </div>
+            <div class="shop-desc">
+                <p th:text="${position.getShortDescription()}"></p>
+            </div>
+        </div>
+        <div class="shop-next">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

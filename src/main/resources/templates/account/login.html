@@ -6,8 +6,9 @@
     <title>Logowanie</title>
 </head>
 <body>
-<div class="container cont-view" layout:fragment="content">
-    <form th:action="@{/login}" method="POST" class="form-signin">
+<div class="content" layout:fragment="content">
+    <form th:action="@{/login}" method="POST" class="form-signin"
+          style="margin: 0 auto; width: 50%">
         <h3 class="form-signin-heading" th:text="Logowanie"></h3>
         <br/>
 

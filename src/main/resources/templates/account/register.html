@@ -6,10 +6,10 @@
     <title>Rejestracja</title>
 </head>
 <body>
-<div class="container cont-view" layout:fragment="content">
+<div class="content" layout:fragment="content">
     <form autocomplete="off" action="#" th:action="@{account/register}"
           th:object="${user}" method="post" class="form-horizontal"
-          role="form" style="margin: 0 auto; width: 50% ">
+          role="form" style="margin: 0 auto; width: 50%">
         <h2>Rejestracja</h2>
         <br/>
         <div class="form-group">

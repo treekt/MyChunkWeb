@@ -11,6 +11,8 @@ public class Position {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String title;
+    @Column(name = "short_description")
+    private String shortDescription;
     private String description;
     private String image;
 
@@ -35,6 +37,14 @@ public class Position {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
     public String getDescription() {

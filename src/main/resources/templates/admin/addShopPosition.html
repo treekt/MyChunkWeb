@@ -14,11 +14,14 @@
         <div class="form-group">
             <input class="form-control" type="text" th:field="*{title}" th:placeholder="Tytuł">
         </div>
+        <!--<div class="form-group">-->
+            <!--<input class="form-control" type="text" th:field="*{shortDescription}" th:placeholder="Krótki opis">-->
+        <!--</div>-->
         <div class="form-group">
             <input class="form-control" type="text" th:field="*{description}" th:placeholder="Opis">
         </div>
         <div class="form-group">
-            <select class="form-control selectpicker" th:field="*{code.id}">
+            <select class="form-control" th:field="*{code.id}">
                 <option th:each="code : ${codes}"
                         th:value="${code.getId()}"
                         th:text="${code.getCode()} + ' - ' + ${code.getPrice()} + ' zł'"></option>
@@ -34,8 +37,3 @@
 </div>
 </body>
 </html>
-<script>
-    $(document).ready(function(e) {
-        $('.selectpicker').selectpicker();
-    });
-</script>

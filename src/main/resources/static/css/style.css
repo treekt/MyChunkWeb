@@ -14,9 +14,13 @@ body {
 }
 .cont-view{
     background: #ebebeb;
-    padding: 0px 0px;
+    padding: 0px;
     height: 100vh;
     width: auto;
+}
+
+.content{
+    padding: 15px;
 }
 
 .user-content{
@@ -149,3 +153,23 @@ ul ul a {
     padding-left: 30px !important;
     background: #32373b;
 }
+
+.shop-position{
+    background: #f6f6f8;
+    height: 125px;
+    padding: 10px 20px;
+    margin: 5px 0;
+}
+
+.shop-image{
+    float: left;
+    height: 100px;
+    width: 100px;
+    margin-right: 10px;
+}
+
+
+.shop-content{
+    float: left;
+}
+
