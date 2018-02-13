@@ -20,13 +20,13 @@ public class PositionService implements IPositionService {
     }
 
     @Override
-    public Position getPositionByTitle(String title) {
-        return positionDao.getPositionByTitle(title);
+    public Position getPositionById(long id) {
+        return positionDao.getPositionById(id);
     }
 
     @Override
     public Boolean addPosition(Position position) {
-        if(positionDao.positionExists(position.getTitle())){
+        if(positionDao.positionExists(position.getId())){
             return false;
         }else{
             positionDao.addPosition(position);
@@ -40,7 +40,7 @@ public class PositionService implements IPositionService {
     }
 
     @Override
-    public void deletePosition(String title) {
-        positionDao.deletePosition(getPositionByTitle(title));
+    public void deletePosition(long id) {
+        positionDao.deletePosition(getPositionById(id));
     }
 }

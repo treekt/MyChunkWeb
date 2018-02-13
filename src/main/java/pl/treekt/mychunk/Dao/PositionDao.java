@@ -24,8 +24,8 @@ public class PositionDao implements IPositionDao {
     }
 
     @Override
-    public Position getPositionByTitle(String title) {
-        String query = "FROM Position WHERE title = '" + title + "'";
+    public Position getPositionById(long id) {
+        String query = "FROM Position WHERE id = " + id;
         try{
             return (Position) entityManager.createQuery(query).getSingleResult();
         }catch(Exception e){
@@ -49,7 +49,7 @@ public class PositionDao implements IPositionDao {
     }
 
     @Override
-    public boolean positionExists(String title) {
-        return getPositionByTitle(title) != null;
+    public boolean positionExists(long id) {
+        return getPositionById(id) != null;
     }
 }

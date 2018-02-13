@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface IPositionService {
     List<Position> getAllPositions();
-    Position getPositionByTitle(String title);
+    Position getPositionById(long id);
     Boolean addPosition(Position position);
     void updatePosition(Position position);
-    void deletePosition(String title);
+    void deletePosition(long id);
 }

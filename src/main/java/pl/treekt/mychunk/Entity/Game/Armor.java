@@ -1,5 +1,7 @@
 package pl.treekt.mychunk.Entity.Game;
 
+import pl.treekt.mychunk.Utils.Enums.ArmorType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "armors")
-public class Armor {
+public class Armor implements Comparable<Armor>{
 
   @Id
   @Column(name = "id")
@@ -81,5 +83,12 @@ public class Armor {
 
   public void setNickname(String nickname) {
     this.nickname = nickname;
+  }
+
+  @Override
+  public int compareTo(Armor o) {
+    ArmorType thisArmor = ArmorType.getArmorType(name);
+    ArmorType newArmor = ArmorType.getArmorType(o.getName());
+    return (thisArmor.getWeight() - newArmor.getWeight());
   }
 }

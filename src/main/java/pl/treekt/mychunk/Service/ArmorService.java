@@ -7,6 +7,7 @@ import pl.treekt.mychunk.Entity.Game.Armor;
 import pl.treekt.mychunk.Service.Interfaces.IArmorService;
 import pl.treekt.mychunk.Utils.Enums.ArmorType;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -17,7 +18,9 @@ public class ArmorService implements IArmorService{
 
     @Override
     public List<Armor> getAllArmors(String nickname) {
-        return armorDao.getAllArmors(nickname);
+        List<Armor> armors = armorDao.getAllArmors(nickname);
+        Collections.sort(armors);
+        return armors;
     }
 
     @Override
@@ -44,4 +47,5 @@ public class ArmorService implements IArmorService{
     public void deleteArmor(String nickname, ArmorType type) {
         armorDao.deleteArmor(nickname, type);
     }
+
 }
