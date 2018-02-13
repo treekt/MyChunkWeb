@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="defaultLayout"
+      layout:decorate="admin/adminLayout"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Stwórz usługę</title>
 </head>
 <body>
-<div class="container cont-view" layout:fragment="content">
+<div class="user-content" layout:fragment="admin-content">
     <form action="#" th:action="@{/admin/add-shop-position}" th:object="${position}" method="POST"
           style="margin: 0 auto; width: 50%">
         <h2>Dodawanie pozycji w sklepie</h2>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="defaultLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Panel administratora</title>
+</head>
+<body>
+<div class="wrapper" layout:fragment="content">
+    <nav id="sidebar">
+        <ul class="list-unstyled components">
+            <li class="active"><a href="/admin/">Home</a></li>
+            <li><a href="/admin/add-shop-position">Dodaj nowa pozycje</a></li>
+
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Kody</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li><a href="/admin/code-list">Lista kodów</a></li>
+                    <li><a href="/admin/add-code">Dodaj nowy kod</a></li>
+                </ul>
+        </ul>
+    </nav>
+    <section layout:fragment="admin-content">
+        <!--Admin content-->
+    </section>
+</div>
+</body>
+</html>

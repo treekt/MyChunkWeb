@@ -10,9 +10,11 @@
 <body>
 <header th:replace="fragments/header :: header"/>
 
-<section layout:fragment="content">
-    <p>Your page content goes here</p>
-</section>
+<div class = "container cont-view">
+    <section layout:fragment="content">
+        <p>Your page content goes here</p>
+    </section>
+</div>
 <footer th:replace="fragments/footer :: footer"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

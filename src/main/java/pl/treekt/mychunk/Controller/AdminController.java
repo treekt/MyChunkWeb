@@ -70,4 +70,12 @@ public class AdminController {
         return modelAndView;
     }
 
+    @GetMapping("/code-list")
+    public ModelAndView codeList(){
+        ModelAndView modelAndView = new ModelAndView("admin/codeList");
+        List<Code> codes = codeService.getAllCodes();
+        modelAndView.addObject("codes", codes);
+        return modelAndView;
+    }
+
 }

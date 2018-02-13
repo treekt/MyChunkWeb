@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/adminLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista kodów</title>
+</head>
+<body>
+<div class="user-content" layout:fragment="admin-content">
+    <h2>Lista kodów SMS</h2>
+    <br/>
+    <table class="table table-striped table-hover"
+           cellspacing="0"
+           width="100%">
+
+        <thead>
+        <tr align="center">
+            <th data-field="code">Kod</th>
+            <th data-field="number" data-sortable="true">Numer</th>
+            <th data-field="price" data-sortable="true">Cena</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr align="center" th:each="code : ${codes}">
+            <td th:text="${code.getCode()}"/>
+            <td th:text="${code.getNumber()}"/>
+            <td th:text="${code.getPrice()} + ' zł'"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
