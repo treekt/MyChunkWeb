@@ -41,9 +41,9 @@ public class AdminController {
     public ModelAndView addCodeSubmit(@ModelAttribute Code code){
         ModelAndView modelAndView = new ModelAndView("admin/addCode");
         if(codeService.addCode(code)){
-            modelAndView.addObject("successMessage", "Pomyślnie dodano kod!");
+            modelAndView.addObject("successMessage", "Pomyślnie dodano kod SMS!");
         }else{
-
+            //I will do something here in future
         }
         return modelAndView;
     }
@@ -61,7 +61,9 @@ public class AdminController {
     public ModelAndView addShopPositionSubmit(@ModelAttribute Position position){
         ModelAndView modelAndView = new ModelAndView("admin/addShopPosition");
         if(positionService.addPosition(position)){
-            //I will do something here in future
+            List<Code> codes = codeService.getAllCodes();
+            modelAndView.addObject("codes", codes);
+            modelAndView.addObject("successMessage", "Pomyślnie dodano pozycje w sklepie!");
         }else{
             //I will do something here in future
         }

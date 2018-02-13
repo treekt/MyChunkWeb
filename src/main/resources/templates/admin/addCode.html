@@ -23,7 +23,9 @@
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit" value="Submit">Dodaj</button>
         </div>
-        <span th:utext="${successMessage}"></span>
+        <div class="alert alert-success" th:if="${successMessage}">
+            <strong>Udało się!</strong> <span th:utext="${successMessage}"></span>
+        </div>
     </form>
 </div>
 </body>

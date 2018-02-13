@@ -1,6 +1,7 @@
 package pl.treekt.mychunk.Entity.Web;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "codes")
@@ -14,8 +15,8 @@ public class Code {
     private float price;
     private String number;
 
-    @OneToOne(mappedBy = "code")
-    private Position position;
+    @OneToMany(mappedBy = "code")
+    private List<Position> positions;
 
     public long getId() {
         return id;
@@ -49,11 +50,11 @@ public class Code {
         this.number = number;
     }
 
-    public Position getPosition() {
-        return position;
+    public List<Position> getPositions() {
+        return positions;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
+    public void setPositions(List<Position> positions) {
+        this.positions = positions;
     }
 }

@@ -14,7 +14,7 @@ public class Position {
     private String description;
     private String image;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "code_id")
     private Code code;
 
