@@ -34,6 +34,11 @@ public class ErrorController implements org.springframework.boot.autoconfigure.w
                 errorMsg = "Strona nie istnieje";
                 break;
             }
+            case 405:{
+                errorCode = "405";
+                errorMsg = "Nie znaleziono metody";
+                break;
+            }
             case 500: {
                 errorCode = "500";
                 errorMsg = "Wewnętrzny błąd serwera";

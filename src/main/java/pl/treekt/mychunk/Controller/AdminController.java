@@ -52,17 +52,18 @@ public class AdminController {
     public ModelAndView addShopPositionForm(){
         ModelAndView modelAndView = new ModelAndView("admin/addShopPosition");
         List<Code> codes = codeService.getAllCodes();
+        modelAndView.addObject("position", new Position());
         modelAndView.addObject("codes", codes);
-        modelAndView.addObject("service", new Position());
         return modelAndView;
     }
 
     @PostMapping("/add-shop-position")
-    private ModelAndView addShopPositionSubmit(@ModelAttribute Position position){
+    public ModelAndView addShopPositionSubmit(@ModelAttribute Position position){
         ModelAndView modelAndView = new ModelAndView("admin/addShopPosition");
         if(positionService.addPosition(position)){
+            //I will do something here in future
         }else{
-
+            //I will do something here in future
         }
         return modelAndView;
     }

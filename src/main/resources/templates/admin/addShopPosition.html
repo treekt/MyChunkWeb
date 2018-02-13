@@ -4,13 +4,12 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Stwórz usługę</title>
-
 </head>
 <body>
 <div class="container cont-view" layout:fragment="content">
-    <form action="#" th:action="@{/admin/create-position}" th:object="${position}" method="POST"
+    <form action="#" th:action="@{/admin/add-shop-position}" th:object="${position}" method="POST"
           style="margin: 0 auto; width: 50%">
-        <h2>Tworzenie usługi w sklepie</h2>
+        <h2>Dodawanie pozycji w sklepie</h2>
         <br/>
         <div class="form-group">
             <input class="form-control" type="text" th:field="*{title}" th:placeholder="Tytuł">
@@ -19,8 +18,10 @@
             <input class="form-control" type="text" th:field="*{description}" th:placeholder="Opis">
         </div>
         <div class="form-group">
-            <select class="form-control" th:field="*{code}">
-                <option th:each="code : ${codes}" th:value="${code}" th:text="${code.getCode()}"/>
+            <select class="form-control" name="code" th:field="*{code}">
+                <option th:each="code : ${codes}"
+                        th:value="${code}"
+                        th:text="${code.getCode()}"></option>
             </select>
         </div>
         <div class="form-group">
