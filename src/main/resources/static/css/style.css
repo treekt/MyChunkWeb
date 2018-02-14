@@ -73,7 +73,7 @@ hr {
 .cont-view{
     background: #ebebeb;
     padding: 0;
-    height: 100vh;
+    height: 100%;
     width: auto;
 }
 
@@ -83,7 +83,7 @@ hr {
 
 .user-content{
     padding: 15px;
-    width: 100% !important;
+    width: 100%;
 }
 
 .content-head{
@@ -110,11 +110,16 @@ h2.nickname{
     margin: 3px 15px 6px;
     float: left;
 }
-.profile-content{
+
+.profile-wrapper{
     background: #f8f9fa;
-    height: 420px;
+    height: 100%;
     width: 100%;
-    padding: 10px 15px
+}
+.profile-content{
+    padding: 10px 15px;
+    height: 100%;
+    width: 100%;
 }
 
 .profile-content.next-to-eo{
@@ -261,7 +266,7 @@ ul ul a {
 }
 
 .shop-text{
-    width: 100% !important;
+    width: 100%;
 }
 
 p.shop-title{
@@ -360,4 +365,12 @@ p.no-margin{
 button.back-btn{
     color: #6c7a95;
     float:right;
+}
+
+a:link.link{
+    font-weight: 700;
+}
+
+a:visited.link{
+    font-weight: 700;
 }

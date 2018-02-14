@@ -25,21 +25,21 @@
         </tr>
         </thead>
         <tbody>
-        <tr align="center" th:each="user : ${users}">
+        <tr align="center" th:each="player : ${players}">
             <td>
-                <a th:href="@{'/profil/'+ ${user.nickname}}">
-                    <img th:src="@{'https://crafatar.com/avatars/' + ${user.nickname} + '?size=35'}"/>
+                <a th:href="@{'/profil/'+ ${player.nickname}}">
+                    <img th:src="@{'https://crafatar.com/avatars/' + ${player.nickname} + '?size=35'}"/>
                 </a>
             </td>
             <td>
-                <a th:text="${user.nickname}" th:href="@{'/profil/'+ ${user.nickname}}"/>
+                <a th:text="${player.nickname}" th:href="@{'/profil/'+ ${player.nickname}}"/>
             </td>
-            <td th:text="${user.getKD()}">
+            <td th:text="${player.getKD()}">
             </td>
-            <td th:text="${user.kills}"/>
-            <td th:text="${user.deaths}"/>
-            <td th:text="${user.assists}"/>
-            <td th:text="${user.tokens}"/>
+            <td th:text="${player.kills}"/>
+            <td th:text="${player.deaths}"/>
+            <td th:text="${player.assists}"/>
+            <td th:text="${player.tokens}"/>
         </tr>
         </tbody>
     </table>

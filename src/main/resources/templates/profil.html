@@ -8,117 +8,122 @@
 <body>
 <section layout:fragment="content">
     <div class="content">
+        <div class="content-head">
+            <span>Statystyki gracza</span>
+        </div>
         <div class="profile-head">
             <img style="float:left;" th:src="@{'https://crafatar.com/avatars/' + ${user.nickname} + '?size=50'}"/>
             <h2 class="nickname" th:text="${user.nickname}"/>
         </div>
-        <div class="profile-content">
-            <div class="profile-content-segment" style="height: 400px">
-                <img th:src="@{'https://crafatar.com/renders/body/' + ${user.nickname} + '?scale=8'}"/>
-            </div>
-            <div class="profile-content-segment">
-                <div class="profile-row">
-                    <img class="stat-img" th:src="@{'/img/icons/stats/kill.png'}" />
-                    <p class="stat-name" >Zabójstwa</p>
-                    <p class="stat-value" th:text="${user.getKills()}"></p>
+        <div class="profile-wrapper">
+            <div class="profile-content">
+                <div class="profile-content-segment" style="height: 400px">
+                    <img th:src="@{'https://crafatar.com/renders/body/' + ${user.nickname} + '?scale=8'}"/>
                 </div>
-                <div class="profile-row">
-                    <img class="stat-img" th:src="@{'/img/icons/stats/death.png'}" />
-                    <p class="stat-name">Śmierci</p>
-                    <p class="stat-value" th:text="${user.getDeaths()}"></p>
+                <div class="profile-content-segment">
+                    <div class="profile-row">
+                        <img class="stat-img" th:src="@{'/img/icons/stats/kill.png'}" />
+                        <p class="stat-name" >Zabójstwa</p>
+                        <p class="stat-value" th:text="${user.getKills()}"></p>
+                    </div>
+                    <div class="profile-row">
+                        <img class="stat-img" th:src="@{'/img/icons/stats/death.png'}" />
+                        <p class="stat-name">Śmierci</p>
+                        <p class="stat-value" th:text="${user.getDeaths()}"></p>
+                    </div>
+                    <div class="profile-row">
+                        <img class="stat-img" th:src="@{'/img/icons/stats/assist.png'}"/>
+                        <p class="stat-name">Asysty</p>
+                        <p class="stat-value" th:text="${user.getAssists()}"></p>
+                    </div>
                 </div>
-                <div class="profile-row">
-                    <img class="stat-img" th:src="@{'/img/icons/stats/assist.png'}"/>
-                    <p class="stat-name">Asysty</p>
-                    <p class="stat-value" th:text="${user.getAssists()}"></p>
+                <div class="profile-content-segment">
+                    <div class="profile-row">
+                        <img class="stat-img" th:src="@{'/img/icons/stats/kd.png'}" />
+                        <p class="stat-name" >K/D</p>
+                        <p class="stat-value" th:text="${user.getKD()}"></p>
+                    </div>
+                    <div class="profile-row">
+                        <img class="stat-img" th:src="@{'/img/icons/stats/token.png'}" />
+                        <p class="stat-name">Tokeny</p>
+                        <p class="stat-value" th:text="${user.getTokens()}"></p>
+                    </div>
+                    <div class="profile-row">
+                        <img class="stat-img" th:src="@{'/img/icons/stats/aim.png'}" />
+                        <p class="stat-name">Celność</p>
+                        <p class="stat-value" th:text="${user.getAccuracy()}"></p>
+                    </div>
                 </div>
-            </div>
-            <div class="profile-content-segment">
-                <div class="profile-row">
-                    <img class="stat-img" th:src="@{'/img/icons/stats/kd.png'}" />
-                    <p class="stat-name" >K/D</p>
-                    <p class="stat-value" th:text="${user.getKD()}"></p>
+                <div class="profile-content-segment ">
+                    <div class="profile-row">
+                        <img class="stat-img" th:src="@{'/img/icons/stats/hit.png'}" />
+                        <p class="stat-name-extended">Trafienia</p>
+                        <p class="stat-value-extended" th:text="${user.getHit()}"></p>
+                    </div>
+                    <div class="profile-row">
+                        <img class="stat-img" th:src="@{'/img/icons/stats/miss.png'}" />
+                        <p class="stat-name-extended">Pudła</p>
+                        <p class="stat-value-extended" th:text="${user.getMiss()}"></p>
+                    </div>
                 </div>
-                <div class="profile-row">
-                    <img class="stat-img" th:src="@{'/img/icons/stats/token.png'}" />
-                    <p class="stat-name">Tokeny</p>
-                    <p class="stat-value" th:text="${user.getTokens()}"></p>
-                </div>
-                <div class="profile-row">
-                    <img class="stat-img" th:src="@{'/img/icons/stats/aim.png'}" />
-                    <p class="stat-name">Celność</p>
-                    <p class="stat-value" th:text="${user.getAccuracy()}"></p>
-                </div>
-            </div>
-            <div class="profile-content-segment ">
-                <div class="profile-row">
-                    <img class="stat-img" th:src="@{'/img/icons/stats/hit.png'}" />
-                    <p class="stat-name-extended">Trafienia</p>
-                    <p class="stat-value-extended" th:text="${user.getHit()}"></p>
-                </div>
-                <div class="profile-row">
-                    <img class="stat-img" th:src="@{'/img/icons/stats/miss.png'}" />
-                    <p class="stat-name-extended">Pudła</p>
-                    <p class="stat-value-extended" th:text="${user.getMiss()}"></p>
-                </div>
-            </div>
-        </div>
-
-        <div class="profile-content next-to-eo">
-            <div class="profile-content-segment">
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr align="center">
-                        <th>Umiejętność</th>
-                        <th>Czas oczekiwania</th>
-                        <th>Czas trwania</th>
-                        <th>Moc/Ilość</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr align="center" th:each="skill : ${skills}">
-                        <td>
-                            <img th:src="@{'/img/icons/skills/' + ${skill.getType()} + '.png'}" />
-                        </td>
-                        <td th:if="${skill.getSkillType().isCooldown()}" th:text="${skill.getCooldownLevel()}"/>
-                        <td th:unless="${skill.getSkillType().isCooldown()}">-</td>
-
-                        <td th:if="${skill.getSkillType().isDuration()}" th:text="${skill.getDurationLevel()}"/>
-                        <td th:unless="${skill.getSkillType().isDuration()}">-</td>
-
-                        <td th:if="${skill.getSkillType().isPower()}" th:text="${skill.getPowerLevel()}"/>
-                        <td th:unless="${skill.getSkillType().isPower()}">-</td>
-
-                    </tr>
-                    </tbody>
-                </table>
             </div>
 
-            <div class="profile-content-segment">
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr align="center">
-                        <th>Zbroja</th>
-                        <th>Protection</th>
-                        <th>Fire Protection</th>
-                        <th>Blast Protection</th>
-                        <th>Projectile Protection</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr align="center" th:each="armor : ${armors}">
-                        <td>
-                            <img th:src="@{'/img/icons/armors/' + ${armor.getName()} + '.png'}" />
-                        </td>
-                        <td th:text="${armor.getProtection()}"/>
-                        <td th:text="${armor.getFireProtection()}"/>
-                        <td th:text="${armor.getBlastProtection()}"/>
-                        <td th:text="${armor.getProjectileProtection()}"/>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+            <div class="profile-content next-to-eo">
+                <div class="profile-content-segment">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr align="center">
+                            <th>Umiejętność</th>
+                            <th>Czas oczekiwania</th>
+                            <th>Czas trwania</th>
+                            <th>Moc/Ilość</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr align="center" th:each="skill : ${skills}">
+                            <td>
+                                <img th:src="@{'/img/icons/skills/' + ${skill.getType()} + '.png'}" />
+                            </td>
+                            <td th:if="${skill.getSkillType().isCooldown()}" th:text="${skill.getCooldownLevel()}"/>
+                            <td th:unless="${skill.getSkillType().isCooldown()}">-</td>
 
+                            <td th:if="${skill.getSkillType().isDuration()}" th:text="${skill.getDurationLevel()}"/>
+                            <td th:unless="${skill.getSkillType().isDuration()}">-</td>
+
+                            <td th:if="${skill.getSkillType().isPower()}" th:text="${skill.getPowerLevel()}"/>
+                            <td th:unless="${skill.getSkillType().isPower()}">-</td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="profile-content-segment">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr align="center">
+                            <th>Zbroja</th>
+                            <th>Protection</th>
+                            <th>Fire Protection</th>
+                            <th>Blast Protection</th>
+                            <th>Projectile Protection</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr align="center" th:each="armor : ${armors}">
+                            <td>
+                                <img th:src="@{'/img/icons/armors/' + ${armor.getName()} + '.png'}" />
+                            </td>
+                            <td th:text="${armor.getProtection()}"/>
+                            <td th:text="${armor.getFireProtection()}"/>
+                            <td th:text="${armor.getBlastProtection()}"/>
+                            <td th:text="${armor.getProjectileProtection()}"/>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
         </div>
 
         <!--<a th:text="${user.nickname}"/>-->

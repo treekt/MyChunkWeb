@@ -24,7 +24,7 @@
             <select class="form-control" th:field="*{code.id}">
                 <option th:each="code : ${codes}"
                         th:value="${code.getId()}"
-                        th:text="${code.getCode()} + ' - ' + ${code.getPrice()} + ' zł'"></option>
+                        th:text="${code.getContent()} + ' - ' + ${code.getPrice()} + ' zł'"></option>
             </select>
         </div>
         <div class="form-group">

@@ -22,7 +22,7 @@
         </thead>
         <tbody>
         <tr align="center" th:each="code : ${codes}">
-            <td th:text="${code.getCode()}"/>
+            <td th:text="${code.getContent()}"/>
             <td th:text="${code.getNumber()}"/>
             <td th:text="${code.getPrice()} + ' zł'"/>
         </tr>
