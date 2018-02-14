@@ -26,7 +26,7 @@ public class CodeService implements ICodeService {
 
     @Override
     public Boolean addCode(Code code) {
-        if(codeDao.codeExists(code.getCode())){
+        if(codeDao.codeExists(code.getContent())){
             return false;
         }else{
             codeDao.addCode(code);

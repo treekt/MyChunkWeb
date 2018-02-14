@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="defaultLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulasz sms</title>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+    <div class="content-head">
+        <span>Formularz SMS </span>
+        <button class="btn btn-default back-btn" >Powrót</button>
+
+    </div>
+    <div class="content-wrapper sms-flex">
+        <div class="sms-info">
+            <p>Płatność dotyczy pozycji: <span class="sms-var" th:text="${position.getTitle()}"></span></p>
+            <p class="no-margin">Aby kupić ten zestaw wyślij SMS o treści <span class="sms-var" th:text="${position.getCode().getContent()}"></span> na numer <span class="sms-var" th:text="${position.getCode().getNumber()}"></span>.</p>
+            <p class="no-margin">Koszt wysłania pojedynczego SMS'a wynosi: <span class="sms-var" th:text="${position.getCode().getPrice()}"></span> zł.</p>
+        </div>
+        <form class="sms-form" method="post" action="#" th:action="@{sms/verify}"
+              th:object="${smsPayment}">
+            <div class="form-group">
+                <input name="code" type="text" th:field="*{code}" placeholder="Kod sms"
+                       class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input name="code" type="text" th:field="*{nickname}" placeholder="Nick"
+                       class="form-control"/>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkRules" >
+                    <label class="form-check-label" for="checkRules">Akceptuje regulamin Homepay oraz MyChunk.</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button id="realize" type="submit" class="btn btn-success btn-block">Zrealizuj</button>
+            </div>
+            <p>Płatności obsługuje <a href="http://hompey.pl">Homepay</a>. Korzystanie z usługi jest równoznaczne z
+                akceptacją regulaminu <a href="https://homepay.pl/regulamin/regulamin_uslug_premium/">Homepay</a> oraz
+                regulaminu MyChunk.</p>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        $('#realize').prop('disabled',true);
+        $('#checkRules').click(function(){
+
+            if($(this).is(':checked'))
+            {
+                $('#realize').prop('disabled',false);
+
+            }
+            else
+            {
+                $('#realize').prop('disabled',true);
+            }
+        });
+
+    });
+</script>

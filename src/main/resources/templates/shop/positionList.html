@@ -7,6 +7,9 @@
 </head>
 <body>
 <div class="content shop-wrapper" layout:fragment="content">
+    <div class="content-head">
+        <span>Sklep</span>
+    </div>
     <div class="shop-position" th:each="position : ${positions}">
         <div class="shop-content">
             <img class="shop-image" th:src="@{'/img/icons/shop/' + ${position.getImage()}}">
@@ -16,7 +19,7 @@
             </div>
         </div>
         <div class="shop-info">
-            <button type="button" class="btn btn-warning" th:onclick="'window.location.href = \'' + ${'/shop/' + position.id} + '\''">Więcej</button>
+            <button type="button" class="btn btn-warning" th:onclick="'window.location.href = \'' + ${'/shop/' + position.getId()} + '\''">Więcej</button>
 
         </div>
     </div>

@@ -6,12 +6,20 @@
 
 
 html{
-    font-family: 'Lato', sans-serif;
 }
 
 body {
     background: #dbdcdc url('/img/shattered.png') repeat;
+    font-family: 'Lato', sans-serif;
+    color: #6c7a95;
 }
+
+
+hr {
+
+    margin: 5px 0;
+}
+
 
 #banner {
     width: 100%;
@@ -64,7 +72,7 @@ body {
 
 .cont-view{
     background: #ebebeb;
-    padding: 0px;
+    padding: 0;
     height: 100vh;
     width: auto;
 }
@@ -76,6 +84,17 @@ body {
 .user-content{
     padding: 15px;
     width: 100% !important;
+}
+
+.content-head{
+    height: 50px;
+    width: 100%;
+    background: #e7e7e7;
+    border-bottom: 3px solid #dddddd;
+    padding: 5px 20px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 300;
 }
 
 
@@ -133,7 +152,7 @@ p.stat-name-extended{
 
 p.stat-value, p.stat-value-extended{
     text-align: center;
-    background: #ebedef;
+    background: #f2f2f2;
     padding: 15px 0px;
     font-size: 20px;
     width: 75px;
@@ -191,16 +210,16 @@ a, a:hover, a:focus {
     padding: 10px;
     font-size: 1.1em;
     display: block;
-    color: #ebedef;
+    color: #f2f2f2;
 }
 #sidebar ul li a:hover {
     color: #23282c;
-    background: #ebedef;
+    background: #f2f2f2;
 }
 
 #sidebar ul li.active > a {
     color: #23282c;
-    background: #ebedef;
+    background: #f2f2f2;
 }
 ul ul a {
     font-size: 0.9em !important;
@@ -215,7 +234,7 @@ ul ul a {
 
 .shop-position{
     background: -webkit-linear-gradient(45deg, rgba(134,212,234,1) 0%, rgba(102,198,225,1) 41%, rgba(54,177,211,1) 100%);
-    color: #ebedef;
+    color: #f2f2f2;
     border-radius: 3px;
     height: 160px;
     width: 45%;
@@ -259,3 +278,86 @@ p.shop-desc{
 }
 
 
+.content-wrapper{
+    background: #fff;
+    color: #67707c;
+    height: 100%;
+    padding: 5px 20px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.position-content{
+    display: flex;
+}
+
+
+.position-icon{
+    height: 100%;
+    width: 150px;
+}
+
+img.position{
+    height: 150px;
+    width: 150px;
+}
+
+.position-text{
+    height: 100%;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.position-title{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.position-header{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.position-description{
+    font-size: 12px;
+    font-weight: 300;
+    margin: 2px;
+}
+
+.position-payments{
+    text-align: right;
+    height: 50px;
+    width: 100%;
+}
+
+.sms-flex{
+    display: flex;
+}
+
+.sms-info{
+    padding: 10px;
+    margin-right: 10px;
+    height: 100%;
+    width: 50%;
+}
+
+.sms-form{
+    padding: 10px;
+    height: 100%;
+    width: 50%;
+}
+
+.sms-var{
+    font-weight: 700;
+}
+
+p.no-margin{
+    margin: 0px;
+}
+
+button.back-btn{
+    color: #6c7a95;
+    float:right;
+}

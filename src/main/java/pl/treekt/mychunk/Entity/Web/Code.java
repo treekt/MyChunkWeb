@@ -11,7 +11,7 @@ public class Code {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(unique = true)
-    private String code;
+    private String content;
     private float price;
     private String number;
 
@@ -26,12 +26,12 @@ public class Code {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getContent() {
+        return content;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public float getPrice() {

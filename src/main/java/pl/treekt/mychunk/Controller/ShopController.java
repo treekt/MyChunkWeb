@@ -9,6 +9,7 @@ import pl.treekt.mychunk.Entity.Game.Armor;
 import pl.treekt.mychunk.Entity.Game.Player;
 import pl.treekt.mychunk.Entity.Game.Skill;
 import pl.treekt.mychunk.Entity.Web.Position;
+import pl.treekt.mychunk.Model.SmsPayment;
 import pl.treekt.mychunk.Service.Interfaces.IPositionService;
 
 import java.util.List;
@@ -32,6 +33,15 @@ public class ShopController {
         ModelAndView modelAndView = new ModelAndView("shop/positionDetails");
         Position position = positionService.getPositionById(id);
         modelAndView.addObject("position", position);
+        return modelAndView;
+    }
+
+    @GetMapping("/shop/{id}/sms")
+    public ModelAndView smsPayment(@PathVariable long id){
+        ModelAndView modelAndView = new ModelAndView("shop/smsPayment");
+        Position position = positionService.getPositionById(id);
+        modelAndView.addObject("position", position);
+        modelAndView.addObject("smsPayment", new SmsPayment());
         return modelAndView;
     }
 }
