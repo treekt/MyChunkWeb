@@ -12,13 +12,13 @@
         <h2>Dodawanie pozycji w sklepie</h2>
         <br/>
         <div class="form-group">
-            <input class="form-control" type="text" th:field="*{title}" th:placeholder="Tytuł">
+            <input class="form-control" type="text" th:field="*{title}" th:placeholder="Tytuł" required>
         </div>
         <!--<div class="form-group">-->
             <!--<input class="form-control" type="text" th:field="*{shortDescription}" th:placeholder="Krótki opis">-->
         <!--</div>-->
         <div class="form-group">
-            <input class="form-control" type="text" th:field="*{description}" th:placeholder="Opis">
+            <input class="form-control" type="text" th:field="*{description}" th:placeholder="Opis" required>
         </div>
         <div class="form-group">
             <select class="form-control" th:field="*{code.id}">

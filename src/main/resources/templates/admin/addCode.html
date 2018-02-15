@@ -12,13 +12,13 @@
         <h2>Dodanie kodu SMS</h2>
         <br/>
         <div class="form-group">
-            <input class="form-control" type="text" th:field="*{content}" th:placeholder="Kod">
+            <input class="form-control" type="text" th:field="*{content}" th:placeholder="Kod" required>
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" th:field="*{number}" th:placeholder="Numer">
+            <input class="form-control" type="text" th:field="*{number}" th:placeholder="Numer" required>
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" th:field="*{price}" th:placeholder="Cena">
+            <input class="form-control" type="text" th:field="*{price}" th:placeholder="Cena" required>
         </div>
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit" value="Submit">Dodaj</button>
