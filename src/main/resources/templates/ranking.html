@@ -3,6 +3,7 @@
       layout:decorate="defaultLayout"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
     <title>Ranking</title>
 </head>
 <body>
@@ -10,7 +11,7 @@
     <div class="content-head">
         <span>Ranking</span>
     </div>
-    <table class="table table-striped table-dark table-hover"
+    <table id="rank" class="table table-striped table-dark table-hover"
            cellspacing="0"
            width="100%">
         <thead>
@@ -46,3 +47,20 @@
 </div>
 </body>
 </html>
+<script src="//cdn.datatables.net/plug-ins/1.10.16/i18n/Polish.json"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#rank').dataTable( {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Polish.json"
+            }
+        } );
+        var table = $('#rank').DataTable();
+        table
+            .order( [ 2, 'asc' ])
+            .draw();
+    } );
+
+</script>
