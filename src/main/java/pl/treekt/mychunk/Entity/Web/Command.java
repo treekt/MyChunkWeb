@@ -9,7 +9,7 @@ public class Command {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String command;
+    private String content;
 
     @ManyToOne
     @JoinColumn(name = "position_id")
@@ -23,12 +23,12 @@ public class Command {
         this.id = id;
     }
 
-    public String getCommand() {
-        return command;
+    public String getContent() {
+        return content;
     }
 
-    public void setCommand(String command) {
-        this.command = command;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Position getPosition() {

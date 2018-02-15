@@ -1,6 +1,7 @@
 package pl.treekt.mychunk.Entity.Web;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,7 +22,7 @@ public class Position {
     private Code code;
 
     @OneToMany(mappedBy = "position")
-    private Set<Command> commands;
+    private List<Command> commands;
 
     public long getId() {
         return id;
@@ -71,11 +72,11 @@ public class Position {
         this.code = code;
     }
 
-    public Set<Command> getCommands() {
+    public List<Command> getCommands() {
         return commands;
     }
 
-    public void setCommands(Set<Command> commands) {
+    public void setCommands(List<Command> commands) {
         this.commands = commands;
     }
 }
