@@ -26,7 +26,7 @@
         </div>
         <div class="position-payments">
             <button type="button" class="btn btn-primary" th:text="'SMS ' +  ${position.getCode().getPrice()} + ' zł'" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/sms\''"></button>
-            <button type="button" class="btn btn-success" th:onclick="'window.location.href = \'' + ${'/shop/' + position.id} + '\''">Przelew</button>
+            <button type="button" class="btn btn-success" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/transfer\''">Przelew</button>
         </div>
     </div>
 </div>

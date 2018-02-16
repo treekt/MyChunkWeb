@@ -15,6 +15,7 @@ public class Position {
     @Column(name = "short_description")
     private String shortDescription;
     private String description;
+    private float transferPrice;
     private String image;
 
     @ManyToOne
@@ -78,5 +79,13 @@ public class Position {
 
     public void setCommands(List<Command> commands) {
         this.commands = commands;
+    }
+
+    public float getTransferPrice() {
+        return transferPrice;
+    }
+
+    public void setTransferPrice(float transferPrice) {
+        this.transferPrice = transferPrice;
     }
 }
