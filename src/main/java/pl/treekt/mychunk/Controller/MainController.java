@@ -10,7 +10,7 @@ import pl.treekt.mychunk.Entity.Game.Armor;
 import pl.treekt.mychunk.Entity.Game.Skill;
 import pl.treekt.mychunk.Entity.Game.Player;
 import pl.treekt.mychunk.Payments.Model.CheckResult;
-import pl.treekt.mychunk.Payments.SMSPaymentService;
+import pl.treekt.mychunk.Payments.SMSPaymentManager;
 import pl.treekt.mychunk.Service.Interfaces.IArmorService;
 import pl.treekt.mychunk.Service.Interfaces.IPlayerService;
 import pl.treekt.mychunk.Service.Interfaces.ISkillService;
@@ -32,7 +32,7 @@ public class MainController {
     private IArmorService armorService;
 
     @Autowired
-    private SMSPaymentService smsPaymentService;
+    private SMSPaymentManager smsPaymentManager;
 
     @Autowired
     private IUserService userService;
@@ -42,7 +42,7 @@ public class MainController {
         List<Player> players = playerService.getAllPlayers();
         List<Player> lastOnlinePlayers = players.subList(0, 2 >= players.size() ? players.size() : 2);
 
-        CheckResult checkResult = smsPaymentService.checkSMS(0, "code");
+        boolean checkResult = smsPaymentManager.checkSMS(0, "code");
 
         model.addAttribute("players", lastOnlinePlayers);
         model.addAttribute("api", checkResult);

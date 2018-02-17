@@ -4,7 +4,7 @@ public class TransactionModel {
 
     private String nickname;
     private String code;
-    private String type;
+
 
 
     public String getNickname() {
@@ -23,11 +23,4 @@ public class TransactionModel {
         this.code = code;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 }
