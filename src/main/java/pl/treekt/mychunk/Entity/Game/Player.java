@@ -1,14 +1,14 @@
 package pl.treekt.mychunk.Entity.Game;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import pl.treekt.mychunk.Entity.Web.SmsHistory;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "players")
@@ -33,6 +33,9 @@ public class Player implements Comparable<Player> {
   private String joinDate;
   @Column(name = "last_online")
   private String lastOnline;
+
+  @OneToMany(mappedBy = "player")
+  private Set<SmsHistory> smsHistories;
 
   public String getNickname() {
     return nickname;

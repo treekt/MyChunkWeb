@@ -25,6 +25,9 @@ public class Position {
     @OneToMany(mappedBy = "position")
     private List<Command> commands;
 
+    @OneToMany(mappedBy = "position")
+    private Set<SmsHistory> smsHistories;
+
     public long getId() {
         return id;
     }
