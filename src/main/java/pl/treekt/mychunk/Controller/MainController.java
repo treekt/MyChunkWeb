@@ -42,10 +42,7 @@ public class MainController {
         List<Player> players = playerService.getAllPlayers();
         List<Player> lastOnlinePlayers = players.subList(0, 2 >= players.size() ? players.size() : 2);
 
-        boolean checkResult = smsPaymentManager.checkSMS(0, "code");
-
         model.addAttribute("players", lastOnlinePlayers);
-        model.addAttribute("api", checkResult);
         return "home";
     }
 

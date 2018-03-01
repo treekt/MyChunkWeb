@@ -100,12 +100,12 @@ public class Transfer {
         parameters.add("uid", String.valueOf(uid));
         parameters.add("public_key", publicKey);
         parameters.add("amount", String.valueOf(amount));
-        parameters.add("mode", String.valueOf(mode));
-        parameters.add("label", label);
-        parameters.add("control", control);
-        parameters.add("success_url", successUrl);
-        parameters.add("failure_url", failureUrl);
-        parameters.add("notify_url", notifyUrl);
+//        parameters.add("mode", String.valueOf(mode));
+//        parameters.add("label", label);
+//        parameters.add("control", control);
+//        parameters.add("success_url", successUrl);
+//        parameters.add("failure_url", failureUrl);
+//        parameters.add("notify_url", notifyUrl);
         parameters.add("crc", getCrc());
         return parameters;
     }

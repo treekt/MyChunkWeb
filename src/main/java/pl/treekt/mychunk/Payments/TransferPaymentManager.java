@@ -17,7 +17,7 @@ public class TransferPaymentManager {
 
     private final String url = "http://homepay.pl/przelew/";
 
-    public ResponseEntity<String> sendTransfer() {
+    public void sendTransfer() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
@@ -29,6 +29,6 @@ public class TransferPaymentManager {
 
         HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<MultiValueMap<String, String>>(parameters, headers);
 
-        return restTemplate.postForEntity(url, entity, String.class);
+        restTemplate.postForLocation(url, entity, String.class);
     }
 }

@@ -41,6 +41,12 @@
             <div class="form-group">
                 <button id="realize" type="submit" class="btn btn-success btn-block">Zrealizuj</button>
             </div>
+            <div class="alert alert-success" th:if="${success}">
+                <strong>Udało się!</strong> <span>Pomyślnie wykorzystałeś kod</span>
+            </div>
+            <div class="alert alert-danger" th:if="${error}">
+                <strong>Ups!</strong> <span>Niestety nieprawidłowy nick lub kod</span>
+            </div>
             <p>Płatności obsługuje <a class="link" href="http://homepay.pl">Homepay</a>. Korzystanie z usługi jest
                 równoznaczne z
                 akceptacją <a class="link" href="https://homepay.pl/regulamin/regulamin_uslug_premium/">regulaminu</a>

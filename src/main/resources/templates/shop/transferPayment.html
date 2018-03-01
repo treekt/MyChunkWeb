@@ -25,7 +25,7 @@
         <div class="sms-info">
             <p>Płatność dotyczy pozycji: <span class="sms-var" th:text="${position.getTitle()}"></span></p>
         </div>
-        <form class="sms-form" method="post" action="#" th:action="@{/shop/{id}/transfer (id=${position.getId()})}"
+        <form class="sms-form" method="post" action="https://homepay.pl/przelew"
               th:object="${transaction}">
             <div class="form-group">
                 <input name="code" type="text" th:field="*{nickname}" placeholder="Nick"
@@ -50,21 +50,21 @@
 </div>
 </body>
 </html>
-<script>
-    $(document).ready(function () {
-        $('#realize').prop('disabled', true);
-        $('#checkRules').click(function () {
+<!--<script>-->
+    <!--$(document).ready(function () {-->
+        <!--$('#realize').prop('disabled', true);-->
+        <!--$('#checkRules').click(function () {-->
 
-            if ($(this).is(':checked')) {
-                $('#realize').prop('disabled', false);
+            <!--if ($(this).is(':checked')) {-->
+                <!--$('#realize').prop('disabled', false);-->
 
-            }
-            else {
-                $('#realize').prop('disabled', true);
-            }
-        });
-        $('#back-btn').click(function () {
-            window.history.back();
-        });
-    });
-</script>
+            <!--}-->
+            <!--else {-->
+                <!--$('#realize').prop('disabled', true);-->
+            <!--}-->
+        <!--});-->
+        <!--$('#back-btn').click(function () {-->
+            <!--window.history.back();-->
+        <!--});-->
+    <!--});-->
+<!--</script>-->

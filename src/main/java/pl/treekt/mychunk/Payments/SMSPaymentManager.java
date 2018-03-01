@@ -19,9 +19,9 @@ public class SMSPaymentManager {
 
     private final String url = "https://homepay.pl/api";
 
-    public boolean checkSMS(int account, String code){
+    public boolean checkSMS(String code){
         CheckSms checkSms = new CheckSms();
-        checkSms.setAccount(account);
+        checkSms.setAccount(231);
         checkSms.setCode(code);
 
 
