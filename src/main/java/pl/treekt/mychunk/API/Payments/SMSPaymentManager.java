@@ -1,14 +1,13 @@
-package pl.treekt.mychunk.Payments;
+package pl.treekt.mychunk.API.Payments;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import pl.treekt.mychunk.Payments.Model.CheckResult;
-import pl.treekt.mychunk.Payments.Model.CheckSms;
+import pl.treekt.mychunk.API.Payments.Entity.SmsResponse;
+import pl.treekt.mychunk.API.Payments.Entity.SmsRequest;
 
 import java.io.IOException;
 
@@ -19,30 +18,28 @@ public class SMSPaymentManager {
 
     private final String url = "https://homepay.pl/api";
 
-    public boolean checkSMS(String code){
-        CheckSms checkSms = new CheckSms();
-        checkSms.setAccount(231);
-        checkSms.setCode(code);
+
+    public SmsResponse checkSMS(String code) {
+        SmsRequest smsRequest = new SmsRequest();
+        smsRequest.setAccount(231);
+        smsRequest.setCode(code);
 
 
-        HttpEntity<CheckSms> entity = new HttpEntity<CheckSms>(checkSms);
+        HttpEntity<SmsRequest> entity = new HttpEntity<SmsRequest>(smsRequest);
         String resultJson = restTemplate.postForObject(url, entity, String.class);
 
-        CheckResult checkResult = convertJsonToCheckResult(resultJson);
+        SmsResponse smsResponse = convertJsonToCheckResult(resultJson);
 
-        if(checkResult.getCode() == 1){
-            return true;
-        }
-
-        return false;
+        return smsResponse;
     }
 
 
+    //Private methods
 
-    private CheckResult convertJsonToCheckResult(String json){
+    private SmsResponse convertJsonToCheckResult(String json){
         ObjectMapper mapper = new ObjectMapper();
         try{
-            return mapper.readValue(json, CheckResult.class);
+            return mapper.readValue(json, SmsResponse.class);
 
         } catch (JsonGenerationException e) {
             e.printStackTrace();

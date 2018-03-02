@@ -1,8 +1,7 @@
-package pl.treekt.mychunk.Payments.Model;
+package pl.treekt.mychunk.API.Payments.Entity;
 
 import org.springframework.util.DigestUtils;
 import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 
 import java.util.ArrayList;
 

@@ -3,14 +3,15 @@ package pl.treekt.mychunk.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pl.treekt.mychunk.API.Minecraft.Service.IMinecraftService;
 import pl.treekt.mychunk.Entity.Game.Armor;
 import pl.treekt.mychunk.Entity.Game.Skill;
 import pl.treekt.mychunk.Entity.Game.Player;
-import pl.treekt.mychunk.Payments.Model.CheckResult;
-import pl.treekt.mychunk.Payments.SMSPaymentManager;
+import pl.treekt.mychunk.API.Payments.SMSPaymentManager;
 import pl.treekt.mychunk.Service.Interfaces.IArmorService;
 import pl.treekt.mychunk.Service.Interfaces.IPlayerService;
 import pl.treekt.mychunk.Service.Interfaces.ISkillService;
@@ -37,13 +38,19 @@ public class MainController {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private IMinecraftService minecraftService;
+
     @GetMapping("/")
-    public String home(ModelMap model){
+    public ModelAndView home(){
+        ModelAndView  modelAndView = new ModelAndView("home");
         List<Player> players = playerService.getAllPlayers();
         List<Player> lastOnlinePlayers = players.subList(0, 2 >= players.size() ? players.size() : 2);
 
-        model.addAttribute("players", lastOnlinePlayers);
-        return "home";
+
+        modelAndView.addObject("onlinePlayers", minecraftService.getNumberOnlinePlayers());
+        modelAndView.addObject("maxPlayers", minecraftService.getNumberMaxPlayers());
+        return modelAndView;
     }
 
 

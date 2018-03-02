@@ -1,14 +1,12 @@
-package pl.treekt.mychunk.Payments;
+package pl.treekt.mychunk.API.Payments;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-import pl.treekt.mychunk.Payments.Model.Transfer;
+import pl.treekt.mychunk.API.Payments.Entity.Transfer;
 
 @Component
 public class TransferPaymentManager {

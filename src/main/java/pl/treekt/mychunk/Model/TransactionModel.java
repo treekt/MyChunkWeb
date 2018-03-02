@@ -5,8 +5,6 @@ public class TransactionModel {
     private String nickname;
     private String code;
 
-
-
     public String getNickname() {
         return nickname;
     }

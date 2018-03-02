@@ -1,10 +1,10 @@
-package pl.treekt.mychunk.Payments.Model;
+package pl.treekt.mychunk.API.Payments.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CheckResult {
+public class SmsResponse {
 
     @JsonProperty("code")
     private int code;

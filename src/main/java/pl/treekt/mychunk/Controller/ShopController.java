@@ -1,23 +1,16 @@
 package pl.treekt.mychunk.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.treekt.mychunk.Entity.Web.Position;
 import pl.treekt.mychunk.Model.TransactionModel;
-import pl.treekt.mychunk.Payments.Model.Transfer;
-import pl.treekt.mychunk.Payments.SMSPaymentManager;
-import pl.treekt.mychunk.Payments.TransferPaymentManager;
+import pl.treekt.mychunk.API.Payments.SMSPaymentManager;
+import pl.treekt.mychunk.API.Payments.TransferPaymentManager;
 import pl.treekt.mychunk.Service.Interfaces.IPositionService;
 
-import javax.servlet.http.HttpServletRequest;
-import java.net.URI;
 import java.util.List;
-import java.util.logging.Logger;
 
 @Controller
 public class ShopController {
@@ -63,12 +56,12 @@ public class ShopController {
         modelAndView.addObject("position", position);
         modelAndView.addObject("transaction", new TransactionModel());
 
-        if(smsPaymentManager.checkSMS(transaction.getCode())){
-            
-            modelAndView.addObject("success", true);
-        }else{
-            modelAndView.addObject("error", true);
-        }
+//        if(smsPaymentManager.checkSMS(transaction.getCode())){
+//
+//            modelAndView.addObject("success", true);
+//        }else{
+//            modelAndView.addObject("error", true);
+//        }
 
         return modelAndView;
     }

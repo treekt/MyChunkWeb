@@ -1,9 +1,9 @@
-package pl.treekt.mychunk.Payments.Model;
+package pl.treekt.mychunk.API.Payments.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Value;
 
-public class CheckSms {
+public class SmsRequest {
 
     @JsonProperty("id")
     @Value("${homepay.api.id}")

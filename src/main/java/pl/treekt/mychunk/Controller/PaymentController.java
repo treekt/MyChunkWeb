@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.treekt.mychunk.Payments.Model.Transaction;
-import pl.treekt.mychunk.Payments.Model.TransactionResult;
+import pl.treekt.mychunk.API.Payments.Entity.Transaction;
+import pl.treekt.mychunk.API.Payments.Entity.TransactionResult;
 
 @RestController
 @RequestMapping(value = "/payments/api")
