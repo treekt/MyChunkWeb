@@ -2,7 +2,9 @@ package pl.treekt.mychunk.API.Minecraft.Service;
 
 public interface IMinecraftService {
 
-   int getNumberOnlinePlayers();
-   int getNumberMaxPlayers();
+   int getOnlinePlayers();
+   int getMaxPlayers();
+   String getMOTD();
+   boolean commandExecute(String command, String nickname);
 
 }

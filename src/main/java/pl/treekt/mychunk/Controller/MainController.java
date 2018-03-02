@@ -48,8 +48,9 @@ public class MainController {
         List<Player> lastOnlinePlayers = players.subList(0, 2 >= players.size() ? players.size() : 2);
 
 
-        modelAndView.addObject("onlinePlayers", minecraftService.getNumberOnlinePlayers());
-        modelAndView.addObject("maxPlayers", minecraftService.getNumberMaxPlayers());
+        modelAndView.addObject("onlinePlayers", minecraftService.getOnlinePlayers());
+        modelAndView.addObject("maxPlayers", minecraftService.getMaxPlayers());
+        modelAndView.addObject("motd", minecraftService.getMOTD());
         return modelAndView;
     }
 
