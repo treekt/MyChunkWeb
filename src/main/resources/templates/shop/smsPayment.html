@@ -25,11 +25,11 @@
         <form class="sms-form" method="post" action="#" th:action="@{/shop/{id}/sms (id=${position.getId()})}"
               th:object="${transaction}">
             <div class="form-group">
-                <input name="code" type="text" th:field="*{code}" placeholder="Kod sms"
+                <input name="code" type="text" th:field="*{nickname}" placeholder="Nick"
                        class="form-control" required>
             </div>
             <div class="form-group">
-                <input name="code" type="text" th:field="*{nickname}" placeholder="Nick"
+                <input name="code" type="text" th:field="*{code}" placeholder="Kod sms"
                        class="form-control" required>
             </div>
             <div class="form-group">
@@ -42,10 +42,10 @@
                 <button id="realize" type="submit" class="btn btn-success btn-block">Zrealizuj</button>
             </div>
             <div class="alert alert-success" th:if="${success}">
-                <strong>Udało się!</strong> <span>Pomyślnie wykorzystałeś kod</span>
+                <strong>Udało się!</strong> <span th:text="${success}"></span>
             </div>
             <div class="alert alert-danger" th:if="${error}">
-                <strong>Ups!</strong> <span>Niestety nieprawidłowy nick lub kod</span>
+                <strong>Ups!</strong> <span th:text="${error}"></span>
             </div>
             <p>Płatności obsługuje <a class="link" href="http://homepay.pl">Homepay</a>. Korzystanie z usługi jest
                 równoznaczne z

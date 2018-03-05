@@ -10,17 +10,16 @@
     <div class="content-head">
         <span>Sklep</span>
     </div>
-    <div class="shop-position" th:each="position : ${positions}">
-        <div class="shop-content">
-            <img class="shop-image" th:src="@{'/img/icons/shop/' + ${position.getImage()}}">
-            <div class="shop-text">
-                <p class="shop-title" th:text="${position.getTitle()}"></p>
-                <p class="shop-desc" th:text="${position.getShortDescription()}"></p>
+    <div class="card-group">
+        <div class="card card-custom" th:each="position : ${positions}">
+            <img class="card-img-top" src="http://via.placeholder.com/300x200">
+            <div class="card-body">
+                <h4 class="card-title" th:text="${position.getTitle()}"></h4>
+                <p class="card-text" th:text="${position.getShortDescription()}"></p>
             </div>
-        </div>
-        <div class="shop-info">
-            <button type="button" class="btn btn-warning" th:onclick="'window.location.href = \'' + ${'/shop/' + position.getId()} + '\''">Więcej</button>
-
+            <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-block" th:onclick="'window.location.href = \'' + ${'/shop/' + position.getId()} + '\''">Dowiedz się więcej</a>
+            </div>
         </div>
     </div>
 </div>

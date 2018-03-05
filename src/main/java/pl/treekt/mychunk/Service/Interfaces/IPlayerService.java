@@ -10,4 +10,5 @@ public interface IPlayerService {
     boolean addPlayer(Player player);
     void updatePlayer(Player player);
     void deletePlayer(String nickname);
+    boolean existsPlayer(String nickname);
 }

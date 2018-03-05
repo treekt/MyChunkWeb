@@ -71,6 +71,7 @@ public class MainController {
 
         ModelAndView model = new ModelAndView("profil");
         model.addObject("user", user);
+        
         model.addObject("armors", armors);
         model.addObject("skills", skills);
         return model;

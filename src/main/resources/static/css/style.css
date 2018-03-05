@@ -379,3 +379,11 @@ thead, tbody tr {
 thead {
     width: calc( 100% - 1em )
 }
+
+#shop-button{
+    white-space: normal;
+}
+
+#shop-button small {
+    display: block;
+}

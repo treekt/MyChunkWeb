@@ -47,4 +47,8 @@ public class PlayerService implements IPlayerService {
         playerDao.deletePlayer(nickname);
     }
 
+    @Override
+    public boolean existsPlayer(String nickname) {
+        return playerDao.playerExists(nickname);
+    }
 }

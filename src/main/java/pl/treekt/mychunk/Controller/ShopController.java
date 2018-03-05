@@ -4,10 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pl.treekt.mychunk.API.Payments.Entity.Transaction;
+import pl.treekt.mychunk.API.Payments.Service.ISMSPaymentService;
+import pl.treekt.mychunk.API.Payments.Service.SMSPaymentService;
 import pl.treekt.mychunk.Entity.Web.Position;
 import pl.treekt.mychunk.Model.TransactionModel;
 import pl.treekt.mychunk.API.Payments.SMSPaymentManager;
 import pl.treekt.mychunk.API.Payments.TransferPaymentManager;
+import pl.treekt.mychunk.Service.Interfaces.IPlayerService;
 import pl.treekt.mychunk.Service.Interfaces.IPositionService;
 
 import java.util.List;
@@ -16,13 +20,14 @@ import java.util.List;
 public class ShopController {
 
     @Autowired
+    private IPlayerService playerService;
+
+    @Autowired
     private IPositionService positionService;
 
     @Autowired
-    private SMSPaymentManager smsPaymentManager;
+    private ISMSPaymentService smsPaymentService;
 
-    @Autowired
-    private TransferPaymentManager transferPaymentManager;
 
     @GetMapping("/shop")
     public ModelAndView shop(){
@@ -54,14 +59,19 @@ public class ShopController {
         ModelAndView modelAndView = new ModelAndView("shop/smsPayment");
         Position position = positionService.getPositionById(id);
         modelAndView.addObject("position", position);
-        modelAndView.addObject("transaction", new TransactionModel());
+        modelAndView.addObject("transaction", transaction);
 
-//        if(smsPaymentManager.checkSMS(transaction.getCode())){
-//
-//            modelAndView.addObject("success", true);
-//        }else{
-//            modelAndView.addObject("error", true);
-//        }
+        if(!playerService.existsPlayer(transaction.getNickname())){
+            modelAndView.addObject("error", "Podany gracz nie istnieje na serwerze");
+            return modelAndView;
+        }
+        if(!smsPaymentService.checkSMS(transaction.getCode())){
+            modelAndView.addObject("error", "Podany kod sms nie istnieje");
+            return modelAndView;
+        }
+
+        modelAndView.addObject("transaction", new TransactionModel());
+        modelAndView.addObject("success", true);
 
         return modelAndView;
     }

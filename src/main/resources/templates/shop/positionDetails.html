@@ -19,13 +19,16 @@
                 <p class="position-title" th:text="${position.getTitle()}"></p>
                 <hr>
                 <p class="position-header">Krótki opis</p>
-                <p class="position-description">Opis tadam</p>
+                <p class="position-description" th:text="${position.getShortDescription()}"></p>
                 <p class="position-header">Szczegółowy opis</p>
-                <p class="position-description">Opis costam</p>
+                <p class="position-description" th:text="${position.getDescription()}"></p>
             </div>
         </div>
         <div class="position-payments">
-            <button type="button" class="btn btn-primary" th:text="'SMS ' +  ${position.getCode().getPrice()} + ' zł'" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/sms\''"></button>
+            <button type="button" class="btn btn-primary" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/sms\''">
+                <b>SMS</b>
+                <small th:text="${position.getCode().getPrice() + ' zł'}" ></small>
+            </button>
             <button type="button" class="btn btn-success" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/transfer\''">Przelew</button>
         </div>
     </div>
