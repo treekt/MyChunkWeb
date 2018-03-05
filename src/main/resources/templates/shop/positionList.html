@@ -10,8 +10,8 @@
     <div class="content-head">
         <span>Sklep</span>
     </div>
-    <div class="card-group">
-        <div class="card card-custom" th:each="position : ${positions}">
+    <div class="card-group" style="width: 100%">
+        <div class="card" style="min-width: 30%; max-width: 30%;" th:each="position : ${positions}">
             <img class="card-img-top" src="http://via.placeholder.com/300x200">
             <div class="card-body">
                 <h4 class="card-title" th:text="${position.getTitle()}"></h4>
