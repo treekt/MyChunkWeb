@@ -1,6 +1,5 @@
 package pl.treekt.mychunk.Controller;
 
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,26 +7,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import pl.treekt.mychunk.Entity.Web.Code;
+import pl.treekt.mychunk.Entity.Web.SMS;
 import pl.treekt.mychunk.Entity.Web.Command;
 import pl.treekt.mychunk.Entity.Web.Position;
-import pl.treekt.mychunk.Service.Interfaces.ICodeService;
+import pl.treekt.mychunk.Service.Interfaces.ISMSService;
 import pl.treekt.mychunk.Service.Interfaces.ICommandService;
 import pl.treekt.mychunk.Service.Interfaces.IPositionService;
 import pl.treekt.mychunk.Utils.SharedUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {
 
     @Autowired
-    private ICodeService codeService;
+    private ISMSService smseservice;
 
     @Autowired
     private IPositionService positionService;
@@ -44,14 +41,14 @@ public class AdminController {
     @GetMapping("/add-code")
     public ModelAndView addCodeForm(){
         ModelAndView modelAndView = new ModelAndView("admin/addCode");
-        modelAndView.addObject("code", new Code());
+        modelAndView.addObject("code", new SMS());
         return modelAndView;
     }
 
     @PostMapping("/add-code")
-    public ModelAndView addCodeSubmit(@ModelAttribute Code code){
+    public ModelAndView addsmsesubmit(@ModelAttribute SMS sms){
         ModelAndView modelAndView = new ModelAndView("admin/addCode");
-        if(codeService.addCode(code)){
+        if(smseservice.addSMS(sms)){
             modelAndView.addObject("successMessage", "Pomyślnie dodano kod SMS!");
         }else{
             //I will do something here in future
@@ -62,7 +59,7 @@ public class AdminController {
     @GetMapping("/add-shop-position")
     public ModelAndView addShopPositionForm(){
         ModelAndView modelAndView = new ModelAndView("admin/addShopPosition");
-        List<Code> codes = codeService.getAllCodes();
+        List<SMS> sms = smseservice.getAllSMS();
 
         Position position = new Position();
         List<Command> commands = new ArrayList<Command>();
@@ -70,7 +67,7 @@ public class AdminController {
         position.setCommands(commands);
 
         modelAndView.addObject("position", position);
-        modelAndView.addObject("codes", codes);
+        modelAndView.addObject("smses", sms);
         return modelAndView;
     }
 
@@ -82,8 +79,8 @@ public class AdminController {
                 command.setPosition(position);
                 commandService.addCommand(command);
             }
-            List<Code> codes = codeService.getAllCodes();
-            modelAndView.addObject("codes", codes);
+            List<SMS> sms = smseservice.getAllSMS();
+            modelAndView.addObject("smses", sms);
             modelAndView.addObject("successMessage", "Pomyślnie dodano pozycje w sklepie!");
         }else{
             //I will do something here in future
@@ -99,8 +96,8 @@ public class AdminController {
         command.setId(SharedUtils.randomNegativeId());
         position.getCommands().add(command);
 
-        List<Code> codes = codeService.getAllCodes();
-        modelAndView.addObject("codes", codes);
+        List<SMS> sms = smseservice.getAllSMS();
+        modelAndView.addObject("smses", sms);
         modelAndView.addObject("position", position);
         return modelAndView;
     }
@@ -119,8 +116,8 @@ public class AdminController {
         }
 
 
-        List<Code> codes = codeService.getAllCodes();
-        modelAndView.addObject("codes", codes);
+        List<SMS> sms = smseservice.getAllSMS();
+        modelAndView.addObject("smses", sms);
         modelAndView.addObject("position", position);
         return modelAndView;
     }
@@ -130,8 +127,8 @@ public class AdminController {
     @GetMapping("/code-list")
     public ModelAndView codeList(){
         ModelAndView modelAndView = new ModelAndView("admin/codeList");
-        List<Code> codes = codeService.getAllCodes();
-        modelAndView.addObject("codes", codes);
+        List<SMS> sms = smseservice.getAllSMS();
+        modelAndView.addObject("smses", sms);
         return modelAndView;
     }
 

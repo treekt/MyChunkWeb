@@ -1,6 +1,6 @@
 package pl.treekt.mychunk.Entity.Game;
 
-import pl.treekt.mychunk.Entity.Web.SmsHistory;
+import pl.treekt.mychunk.Entity.Web.SMSPayment;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -35,7 +35,7 @@ public class Player implements Comparable<Player> {
   private String lastOnline;
 
   @OneToMany(mappedBy = "player")
-  private Set<SmsHistory> smsHistories;
+  private Set<SMSPayment> smsHistories;
 
   public String getNickname() {
     return nickname;

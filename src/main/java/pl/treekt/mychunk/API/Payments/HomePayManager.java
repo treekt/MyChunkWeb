@@ -12,7 +12,7 @@ import pl.treekt.mychunk.API.Payments.Entity.SmsRequest;
 import java.io.IOException;
 
 @Component
-public class SMSPaymentManager {
+public class HomePayManager {
 
     private RestTemplate restTemplate = new RestTemplate();
 

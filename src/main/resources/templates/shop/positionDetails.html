@@ -27,7 +27,7 @@
         <div class="position-payments">
             <button type="button" class="btn btn-primary" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/sms\''">
                 <b>SMS</b>
-                <small th:text="${position.getCode().getPrice() + ' zł'}" ></small>
+                <small th:text="${position.getSms().getPrice() + ' zł'}" ></small>
             </button>
             <button type="button" class="btn btn-success" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/transfer\''">Przelew</button>
         </div>

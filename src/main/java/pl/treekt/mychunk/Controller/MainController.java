@@ -3,7 +3,6 @@ package pl.treekt.mychunk.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,7 +10,7 @@ import pl.treekt.mychunk.API.Minecraft.Service.IMinecraftService;
 import pl.treekt.mychunk.Entity.Game.Armor;
 import pl.treekt.mychunk.Entity.Game.Skill;
 import pl.treekt.mychunk.Entity.Game.Player;
-import pl.treekt.mychunk.API.Payments.SMSPaymentManager;
+import pl.treekt.mychunk.API.Payments.HomePayManager;
 import pl.treekt.mychunk.Service.Interfaces.IArmorService;
 import pl.treekt.mychunk.Service.Interfaces.IPlayerService;
 import pl.treekt.mychunk.Service.Interfaces.ISkillService;
@@ -33,7 +32,7 @@ public class MainController {
     private IArmorService armorService;
 
     @Autowired
-    private SMSPaymentManager smsPaymentManager;
+    private HomePayManager homePayManager;
 
     @Autowired
     private IUserService userService;

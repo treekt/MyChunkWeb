@@ -1,6 +1,7 @@
-package pl.treekt.mychunk.Dao.Interfaces;
+package pl.treekt.mychunk.Dao;
 
 import org.springframework.stereotype.Repository;
+import pl.treekt.mychunk.Dao.Interfaces.ICommandDao;
 import pl.treekt.mychunk.Entity.Web.Command;
 import pl.treekt.mychunk.Entity.Web.Position;
 import pl.treekt.mychunk.Entity.Web.User;

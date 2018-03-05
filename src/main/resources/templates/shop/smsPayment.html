@@ -16,20 +16,20 @@
         <div class="sms-info">
             <p>Płatność dotyczy pozycji: <span class="sms-var" th:text="${position.getTitle()}"></span></p>
             <p class="no-margin">Aby kupić ten zestaw wyślij SMS o treści <span class="sms-var"
-                                                                                th:text="${position.getCode().getContent()}"></span>
-                na numer <span class="sms-var" th:text="${position.getCode().getNumber()}"></span>.</p>
+                                                                                th:text="${position.getSms().getContent()}"></span>
+                na numer <span class="sms-var" th:text="${position.getSms().getNumber()}"></span>.</p>
             <p class="no-margin">Koszt wysłania pojedynczego SMS'a wynosi: <span class="sms-var"
-                                                                                 th:text="${position.getCode().getPrice()}"></span>
+                                                                                 th:text="${position.getSms().getPrice()}"></span>
                 zł.</p>
         </div>
         <form class="sms-form" method="post" action="#" th:action="@{/shop/{id}/sms (id=${position.getId()})}"
               th:object="${transaction}">
             <div class="form-group">
-                <input name="code" type="text" th:field="*{nickname}" placeholder="Nick"
+                <input name="sms" type="text" th:field="*{nickname}" placeholder="Nick"
                        class="form-control" required>
             </div>
             <div class="form-group">
-                <input name="code" type="text" th:field="*{code}" placeholder="Kod sms"
+                <input name="sms" type="text" th:field="*{sms}" placeholder="Kod sms"
                        class="form-control" required>
             </div>
             <div class="form-group">
@@ -42,7 +42,7 @@
                 <button id="realize" type="submit" class="btn btn-success btn-block">Zrealizuj</button>
             </div>
             <div class="alert alert-success" th:if="${success}">
-                <strong>Udało się!</strong> <span th:text="${success}"></span>
+                <strong>Udało się!</strong> <span>Udało się! Zrealizowałeś kod</span>
             </div>
             <div class="alert alert-danger" th:if="${error}">
                 <strong>Ups!</strong> <span th:text="${error}"></span>

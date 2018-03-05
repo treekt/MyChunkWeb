@@ -24,7 +24,7 @@ public class User {
     private Set<Role> roles;
 
     @OneToMany(mappedBy = "user")
-    private Set<SmsHistory> smsHistories;
+    private Set<SMSPayment> smsHistories;
 
     public Long getId() {
         return id;

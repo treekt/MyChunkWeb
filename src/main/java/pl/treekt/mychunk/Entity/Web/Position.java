@@ -19,14 +19,14 @@ public class Position {
     private String image;
 
     @ManyToOne
-    @JoinColumn(name = "code_id")
-    private Code code;
+    @JoinColumn(name = "sms_id")
+    private SMS sms;
 
     @OneToMany(mappedBy = "position")
     private List<Command> commands;
 
     @OneToMany(mappedBy = "position")
-    private Set<SmsHistory> smsHistories;
+    private Set<SMSPayment> smsHistories;
 
     public long getId() {
         return id;
@@ -68,12 +68,12 @@ public class Position {
         this.image = image;
     }
 
-    public Code getCode() {
-        return code;
+    public SMS getSms() {
+        return sms;
     }
 
-    public void setCode(Code code) {
-        this.code = code;
+    public void setSms(SMS sms) {
+        this.sms = sms;
     }
 
     public List<Command> getCommands() {

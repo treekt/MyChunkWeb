@@ -15,16 +15,16 @@
 
         <thead>
         <tr align="center">
-            <th data-field="code">Kod</th>
+            <th data-field="sms">Kod</th>
             <th data-field="number" data-sortable="true">Numer</th>
             <th data-field="price" data-sortable="true">Cena</th>
         </tr>
         </thead>
         <tbody>
-        <tr align="center" th:each="code : ${codes}">
-            <td th:text="${code.getContent()}"/>
-            <td th:text="${code.getNumber()}"/>
-            <td th:text="${code.getPrice()} + ' zł'"/>
+        <tr align="center" th:each="sms : ${sms}">
+            <td th:text="${sms.getContent()}"/>
+            <td th:text="${sms.getNumber()}"/>
+            <td th:text="${sms.getPrice()} + ' zł'"/>
         </tr>
         </tbody>
     </table>

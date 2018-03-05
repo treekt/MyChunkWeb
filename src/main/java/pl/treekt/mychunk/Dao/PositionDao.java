@@ -2,7 +2,6 @@ package pl.treekt.mychunk.Dao;
 
 import org.springframework.stereotype.Repository;
 import pl.treekt.mychunk.Dao.Interfaces.IPositionDao;
-import pl.treekt.mychunk.Entity.Web.Code;
 import pl.treekt.mychunk.Entity.Web.Position;
 
 import javax.persistence.EntityManager;
