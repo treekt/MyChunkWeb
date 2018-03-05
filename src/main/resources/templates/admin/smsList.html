@@ -21,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr align="center" th:each="sms : ${sms}">
+        <tr align="center" th:each="sms : ${smsList}">
             <td th:text="${sms.getContent()}"/>
             <td th:text="${sms.getNumber()}"/>
             <td th:text="${sms.getPrice()} + ' zł'"/>

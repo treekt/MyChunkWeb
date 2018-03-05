@@ -25,7 +25,7 @@
         </div>
         <div class="form-group">
             <select class="form-control" th:field="*{sms.id}">
-                <option th:each="sms : ${sms}"
+                <option th:each="sms : ${smsList}"
                         th:value="${sms.getId()}"
                         th:text="${sms.getContent()} + ' - ' + ${sms.getPrice()} + ' zł'"></option>
             </select>
@@ -55,34 +55,6 @@
                 </div>
             </div>
         </div>
-        <!--<table class="table">-->
-        <!--<thead>-->
-        <!--<tr>-->
-        <!--<th style="width: 90%">Komendy</th>-->
-        <!--<th style="width: 10%">-->
-        <!--<button type="submit" class="btn btn-success"-->
-        <!--name="removeContactPhone">-->
-        <!--<i class="fas fa-minus"></i>-->
-        <!--</button>-->
-        <!--</th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--<tr th:each="command, rowStat : *{commands}">-->
-        <!--<td style="width: 85%">-->
-        <!--<input class="form-control" type="text" th:field="*{commands[__${rowStat.index}__].content}"-->
-        <!--th:placeholder="Komenda">-->
-        <!--</td>-->
-        <!--<td style="width: 15%">-->
-        <!--<button type="submit" class="btn btn-danger"-->
-        <!--th:value="*{commands[__${rowStat.index}__].id}"-->
-        <!--name="removeContactPhone">-->
-        <!--<i class="fas fa-minus"></i>-->
-        <!--</button>-->
-        <!--</td>-->
-        <!--</tr>-->
-        <!--</tbody>-->
-        <!--</table>-->
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit" value="Submit">Stwórz</button>
         </div>

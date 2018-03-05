@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "codes")
+@Table(name = "sms")
 public class SMS {
 
     @Id
@@ -15,7 +15,7 @@ public class SMS {
     private float price;
     private String number;
 
-    @OneToMany(mappedBy = "code")
+    @OneToMany(mappedBy = "sms")
     private List<Position> positions;
 
     public long getId() {

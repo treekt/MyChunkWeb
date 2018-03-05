@@ -24,7 +24,7 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    private ISMSService smseservice;
+    private ISMSService smsService;
 
     @Autowired
     private IPositionService positionService;
@@ -38,17 +38,17 @@ public class AdminController {
         return modelAndView;
     }
 
-    @GetMapping("/add-code")
-    public ModelAndView addCodeForm(){
-        ModelAndView modelAndView = new ModelAndView("admin/addCode");
-        modelAndView.addObject("code", new SMS());
+    @GetMapping("/add-sms")
+    public ModelAndView addSMSForm(){
+        ModelAndView modelAndView = new ModelAndView("admin/addSMS");
+        modelAndView.addObject("sms", new SMS());
         return modelAndView;
     }
 
-    @PostMapping("/add-code")
-    public ModelAndView addsmsesubmit(@ModelAttribute SMS sms){
-        ModelAndView modelAndView = new ModelAndView("admin/addCode");
-        if(smseservice.addSMS(sms)){
+    @PostMapping("/add-sms")
+    public ModelAndView addSMSSubmit(@ModelAttribute SMS sms){
+        ModelAndView modelAndView = new ModelAndView("admin/addSMS");
+        if(smsService.addSMS(sms)){
             modelAndView.addObject("successMessage", "Pomyślnie dodano kod SMS!");
         }else{
             //I will do something here in future
@@ -59,7 +59,7 @@ public class AdminController {
     @GetMapping("/add-shop-position")
     public ModelAndView addShopPositionForm(){
         ModelAndView modelAndView = new ModelAndView("admin/addShopPosition");
-        List<SMS> sms = smseservice.getAllSMS();
+        List<SMS> smsList = smsService.getAllSMS();
 
         Position position = new Position();
         List<Command> commands = new ArrayList<Command>();
@@ -67,7 +67,7 @@ public class AdminController {
         position.setCommands(commands);
 
         modelAndView.addObject("position", position);
-        modelAndView.addObject("smses", sms);
+        modelAndView.addObject("smsList", smsList);
         return modelAndView;
     }
 
@@ -79,8 +79,8 @@ public class AdminController {
                 command.setPosition(position);
                 commandService.addCommand(command);
             }
-            List<SMS> sms = smseservice.getAllSMS();
-            modelAndView.addObject("smses", sms);
+            List<SMS> smsList = smsService.getAllSMS();
+            modelAndView.addObject("smsList", smsList);
             modelAndView.addObject("successMessage", "Pomyślnie dodano pozycje w sklepie!");
         }else{
             //I will do something here in future
@@ -96,8 +96,8 @@ public class AdminController {
         command.setId(SharedUtils.randomNegativeId());
         position.getCommands().add(command);
 
-        List<SMS> sms = smseservice.getAllSMS();
-        modelAndView.addObject("smses", sms);
+        List<SMS> smsList = smsService.getAllSMS();
+        modelAndView.addObject("smsList", smsList);
         modelAndView.addObject("position", position);
         return modelAndView;
     }
@@ -116,19 +116,19 @@ public class AdminController {
         }
 
 
-        List<SMS> sms = smseservice.getAllSMS();
-        modelAndView.addObject("smses", sms);
+        List<SMS> smsList = smsService.getAllSMS();
+        modelAndView.addObject("smsList", smsList);
         modelAndView.addObject("position", position);
         return modelAndView;
     }
 
 
 
-    @GetMapping("/code-list")
-    public ModelAndView codeList(){
-        ModelAndView modelAndView = new ModelAndView("admin/codeList");
-        List<SMS> sms = smseservice.getAllSMS();
-        modelAndView.addObject("smses", sms);
+    @GetMapping("/sms-list")
+    public ModelAndView smsList(){
+        ModelAndView modelAndView = new ModelAndView("admin/smsList");
+        List<SMS> smsList = smsService.getAllSMS();
+        modelAndView.addObject("smsList", smsList);
         return modelAndView;
     }
 
