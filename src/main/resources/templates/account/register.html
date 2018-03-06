@@ -38,7 +38,12 @@
             <button type="submit" class="btn btn-primary btn-block">Zarejestruj się</button>
         </div>
 
-        <span th:utext="${successMessage}"></span>
+        <div class="alert alert-success" th:if="${success}">
+            <strong>Udało się!</strong> <span> Zarejestrowałeś sie</span>
+        </div>
+        <div class="alert alert-danger" th:if="${error}">
+            <strong>Ups!</strong> <span th:text="${error}"></span>
+        </div>
     </form>
 </div>
 </body>

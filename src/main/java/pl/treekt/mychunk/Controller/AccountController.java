@@ -33,20 +33,15 @@ public class AccountController {
     }
 
     @PostMapping("/register")
-    public ModelAndView registerSubmit(@Valid User user, BindingResult bindingResult) {
+    public ModelAndView registerSubmit(User user, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView("account/register");
-        if (!userService.addUser(user)) {
-            bindingResult
-                    .rejectValue("email", "error.user",
-                            "Istnieje już użytkownik o takim adresie e-mail");
+        if(!userService.addUser(user)){
+            modelAndView.addObject("error", "Taki użytkownik już istnieje!");
+            return modelAndView;
         }
 
-        if (!bindingResult.hasErrors()) {
-            userService.addUser(user);
-            modelAndView.addObject("successMessage", "Pomyślnie zarejestrowano!");
-            modelAndView.addObject("user", new User());
-            modelAndView.setViewName("register");
-        }
+        modelAndView.addObject("user", user);
+        modelAndView.addObject("success", true);
         return modelAndView;
     }
 }

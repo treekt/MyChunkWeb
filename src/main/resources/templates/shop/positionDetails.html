@@ -11,10 +11,10 @@
         <span>Informacje szczegółowe o ofercie</span>
     </div>
     <div class="content-wrapper">
+        <div id="position-image-wrapper">
+            <div class="position-image"></div>
+        </div>
         <div class="position-content">
-            <div class="position-icon">
-                <img class="position" th:src="@{'/img/icons/shop/' + ${position.getImage()}}">
-            </div>
             <div class="position-text">
                 <p class="position-title" th:text="${position.getTitle()}"></p>
                 <hr>
@@ -23,14 +23,18 @@
                 <p class="position-header">Szczegółowy opis</p>
                 <p class="position-description" th:text="${position.getDescription()}"></p>
             </div>
-        </div>
-        <div class="position-payments">
-            <button type="button" class="btn btn-primary" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/sms\''">
+            <button type="button" class="btn btn-primary position-button" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/sms\''">
                 <b>SMS</b>
                 <small th:text="${position.getSms().getPrice() + ' zł'}" ></small>
             </button>
-            <button type="button" class="btn btn-success" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/transfer\''">Przelew</button>
         </div>
+        <!--<div class="position-payments">-->
+            <!--<button type="button" class="btn btn-primary" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/sms\''">-->
+                <!--<b>SMS</b>-->
+                <!--<small th:text="${position.getSms().getPrice() + ' zł'}" ></small>-->
+            <!--</button>-->
+            <!--&lt;!&ndash;<button type="button" class="btn btn-success" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/transfer\''">Przelew</button>&ndash;&gt;-->
+        <!--</div>-->
     </div>
 </div>
 </body>

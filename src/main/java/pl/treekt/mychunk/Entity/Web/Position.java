@@ -28,6 +28,8 @@ public class Position {
     @OneToMany(mappedBy = "position")
     private Set<SMSPayment> smsHistories;
 
+
+
     public long getId() {
         return id;
     }

@@ -48,11 +48,15 @@ public class AdminController {
     @PostMapping("/add-sms")
     public ModelAndView addSMSSubmit(@ModelAttribute SMS sms){
         ModelAndView modelAndView = new ModelAndView("admin/addSMS");
-        if(smsService.addSMS(sms)){
-            modelAndView.addObject("successMessage", "Pomyślnie dodano kod SMS!");
-        }else{
-            //I will do something here in future
+        modelAndView.addObject("sms", sms);
+
+        if(!smsService.addSMS(sms)){
+            modelAndView.addObject("error", "Podany sms już istnieje!");
+            return modelAndView;
         }
+
+        modelAndView.addObject("sms", new SMS());
+        modelAndView.addObject("success", true);
         return modelAndView;
     }
 
@@ -81,7 +85,7 @@ public class AdminController {
             }
             List<SMS> smsList = smsService.getAllSMS();
             modelAndView.addObject("smsList", smsList);
-            modelAndView.addObject("successMessage", "Pomyślnie dodano pozycje w sklepie!");
+            modelAndView.addObject("success", true);
         }else{
             //I will do something here in future
         }

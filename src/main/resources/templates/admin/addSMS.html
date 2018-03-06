@@ -9,7 +9,7 @@
 <div class="user-content" layout:fragment="admin-content">
     <form action="# " th:action="@{/admin/add-sms}" th:object="${sms}" method="POST"
           style="margin: 0 auto; width: 50%">
-        <h2>Dodanie kodu SMS</h2>
+        <h2>Dodawanie SMS</h2>
         <br/>
         <div class="form-group">
             <input class="form-control" type="text" th:field="*{content}" th:placeholder="Treść" required>
@@ -23,8 +23,11 @@
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit" value="Submit">Dodaj</button>
         </div>
-        <div class="alert alert-success" th:if="${successMessage}">
-            <strong>Udało się!</strong> <span th:utext="${successMessage}"></span>
+        <div class="alert alert-success" th:if="${success}">
+            <strong>Udało się!</strong> <span> Dodałeś sms do listy</span>
+        </div>
+        <div class="alert alert-danger" th:if="${error}">
+            <strong>Ups!</strong> <span th:text="${error}"></span>
         </div>
     </form>
 </div>

@@ -277,30 +277,45 @@ p.shop-desc {
 .content-wrapper {
     background: #fff;
     color: #67707c;
-    height: 100%;
-    padding: 5px 20px;
     margin: 5px 0;
     border-radius: 5px;
-}
-
-.position-content {
     display: flex;
+    overflow: hidden;
 }
 
-.position-icon {
-    height: 100%;
-    width: 150px;
+
+
+#position-image-wrapper {
+    width: 400px;
+    height: 230px;
+    margin: 0 0 0 -20px;
+    -webkit-transform: skew(10deg);
+    -moz-transform: skew(10deg);
+    -o-transform: skew(10deg);
+    overflow: hidden;
 }
 
-img.position {
-    height: 150px;
-    width: 150px;
+
+.position-image {
+    background: url(http://via.placeholder.com/300x200);
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    right: -30px;
+    bottom: -30px;
+    -webkit-transform: skew(-10deg);
+    -moz-transform: skew(-10deg);
+    -o-transform: skew(-10deg);
+}
+
+
+.position-content{
+    width: 100%;
+    padding: 10px 20px;
 }
 
 .position-text {
-    height: 100%;
     width: 100%;
-    padding: 10px 20px;
 }
 
 .position-title {
@@ -312,7 +327,7 @@ img.position {
 .position-header {
     font-size: 15px;
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .position-description {
@@ -321,10 +336,8 @@ img.position {
     margin: 2px;
 }
 
-.position-payments {
-    text-align: right;
-    height: 50px;
-    width: 100%;
+.position-button {
+    float: right;
 }
 
 .sms-flex {
