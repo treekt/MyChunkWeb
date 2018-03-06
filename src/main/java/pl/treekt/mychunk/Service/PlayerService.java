@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.treekt.mychunk.Dao.Interfaces.IPlayerDao;
 import pl.treekt.mychunk.Entity.Game.Player;
+import pl.treekt.mychunk.Entity.Web.Voucher;
 import pl.treekt.mychunk.Service.Interfaces.IPlayerService;
 
 import java.util.Collections;
@@ -51,4 +52,16 @@ public class PlayerService implements IPlayerService {
     public boolean existsPlayer(String nickname) {
         return playerDao.playerExists(nickname);
     }
+
+    @Override
+    public boolean isVoucherUsed(String nickname, String code) {
+        for(Voucher voucher : getPlayerById(nickname).getVouchers()){
+            if(voucher.getCode().equals(code)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

@@ -3,11 +3,11 @@
       layout:decorate="admin/adminLayout"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Lista kodów</title>
+    <title>Lista voucherów</title>
 </head>
 <body>
 <div class="user-content" layout:fragment="admin-content">
-    <h2>Lista SMSów</h2>
+    <h2>Lista voucherów</h2>
     <br/>
     <table class="table table-striped table-hover"
            cellspacing="0"
@@ -15,16 +15,18 @@
 
         <thead>
         <tr align="center">
-            <th data-field="sms">Kod</th>
-            <th data-field="number" data-sortable="true">Numer</th>
-            <th data-field="price" data-sortable="true">Cena</th>
+            <th>Voucher</th>
+            <th>Pozycja</th>
+            <th>Użyć</th>
+            <th>Maksymalnie użyć</th>
         </tr>
         </thead>
         <tbody>
-        <tr align="center" th:each="sms : ${smsList}">
-            <td th:text="${sms.getContent()}"/>
-            <td th:text="${sms.getNumber()}"/>
-            <td th:text="${sms.getPrice()} + ' zł'"/>
+        <tr align="center" th:each="voucher : ${voucherList}">
+            <td th:text="${voucher.getCode()}"></td>
+            <td th:text="${voucher.getPosition().getTitle()}"></td>
+            <td th:text="${voucher.getUsed()}"></td>
+            <td th:text="${voucher.getMax()}"></td>
         </tr>
         </tbody>
     </table>

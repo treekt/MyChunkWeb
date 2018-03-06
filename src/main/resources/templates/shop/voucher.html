@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="defaultLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Voucher</title>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+    <div class="content-head">
+        <span>Realizacja vouchera</span>
+    </div>
+    <form th:action="@{/voucher}"
+          th:object="${voucher}" method="post" class="form-horizontal"
+          role="form" style="margin: 0 auto; width: 50%">
+        <div class="form-group">
+            <input name="nickname" type="text" th:field="*{nickname}" placeholder="Nick gracza"
+                   class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <input name="code" type="text" th:field="*{code}" placeholder="Voucher"
+                   class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Zrealizuj</button>
+        </div>
+
+        <div class="alert alert-success" th:if="${success}">
+            <strong>Udało się!</strong> <span> Zrealizowałeś voucher</span>
+        </div>
+        <div class="alert alert-danger" th:if="${error}">
+            <strong>Ups!</strong> <span th:text="${error}"></span>
+        </div>
+    </form>
+    <div class="content-wrapper">
+    </div>
+</div>
+</body>
+</html>

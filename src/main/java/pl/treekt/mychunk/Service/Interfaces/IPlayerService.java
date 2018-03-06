@@ -11,4 +11,5 @@ public interface IPlayerService {
     void updatePlayer(Player player);
     void deletePlayer(String nickname);
     boolean existsPlayer(String nickname);
+    boolean isVoucherUsed(String nickname, String code);
 }

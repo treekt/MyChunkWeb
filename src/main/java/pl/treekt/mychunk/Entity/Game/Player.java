@@ -17,19 +17,12 @@ import java.util.Set;
 public class Player implements Comparable<Player> {
 
   @Id
-  @Column(name = "nickname")
   private String nickname;
-  @Column(name = "kills")
   private Long kills;
-  @Column(name = "deaths")
   private Long deaths;
-  @Column(name = "assists")
   private Long assists;
-  @Column(name = "tokens")
   private Long tokens;
-  @Column(name = "hit")
   private Long hit;
-  @Column(name = "miss")
   private Long miss;
   @Column(name = "join_date")
   private String joinDate;

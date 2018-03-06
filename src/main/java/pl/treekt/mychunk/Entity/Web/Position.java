@@ -28,7 +28,8 @@ public class Position {
     @OneToMany(mappedBy = "position")
     private Set<SMSPayment> smsHistories;
 
-
+    @OneToMany(mappedBy = "position")
+    private Set<Voucher> vouchers;
 
     public long getId() {
         return id;
@@ -92,5 +93,21 @@ public class Position {
 
     public void setTransferPrice(float transferPrice) {
         this.transferPrice = transferPrice;
+    }
+
+    public Set<SMSPayment> getSmsHistories() {
+        return smsHistories;
+    }
+
+    public void setSmsHistories(Set<SMSPayment> smsHistories) {
+        this.smsHistories = smsHistories;
+    }
+
+    public Set<Voucher> getVouchers() {
+        return vouchers;
+    }
+
+    public void setVouchers(Set<Voucher> vouchers) {
+        this.vouchers = vouchers;
     }
 }

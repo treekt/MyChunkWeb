@@ -7,20 +7,43 @@
 </head>
 <body>
 <div class="wrapper" layout:fragment="content">
-    <nav id="sidebar">
-        <ul class="list-unstyled components">
-            <li class="active"><a href="/admin/">Home</a></li>
-            <li><a href="/admin/add-shop-position">Dodaj nowa pozycje</a></li>
-
-            <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true">Kody</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li><a href="/admin/sms-list">Lista kodów</a></li>
-                    <li><a href="/admin/add-sms">Dodaj nowy kod</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+    <div class="profile-sidebar">
+        <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+                Panel administratora
+            </div>
+            <div class="profile-usertitle-job">
+                Nazwa użytkownika
+            </div>
+        </div>
+        </hr>
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+            <ul class="nav">
+                <li class="active">
+                    <a href="/admin/">Główna</a>
+                </li>
+                <li>
+                    <a href="/admin/add-shop-position">Stwórz pozycje w sklepie</a>
+                </li>
+                <li>
+                    <a href="#smsMenu" data-toggle="collapse" aria-expanded="true">SMSy</a>
+                    <ul class="collapse show" id="smsMenu">
+                        <li><a href="/admin/sms-list">Lista smsów</a></li>
+                        <li><a href="/admin/add-sms">Dodaj nowy sms</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#voucherMenu" data-toggle="collapse" aria-expanded="true">Vouchery</a>
+                    <ul class="collapse show" id="voucherMenu">
+                        <li><a href="/admin/voucher-list">Lista voucherów</a></li>
+                        <li><a href="/admin/add-voucher">Dodaj nowy voucher</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- END MENU -->
+    </div>
     <section layout:fragment="admin-content">
         <!--Admin content-->
     </section>

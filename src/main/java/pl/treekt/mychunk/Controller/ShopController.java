@@ -2,16 +2,16 @@ package pl.treekt.mychunk.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.treekt.mychunk.API.Payments.Service.IHomePayService;
+import pl.treekt.mychunk.Entity.Game.Player;
 import pl.treekt.mychunk.Entity.Web.Position;
 import pl.treekt.mychunk.Entity.Web.SMSPayment;
+import pl.treekt.mychunk.Entity.Web.Voucher;
 import pl.treekt.mychunk.Model.TransactionModel;
-import pl.treekt.mychunk.Service.Interfaces.IPlayerService;
-import pl.treekt.mychunk.Service.Interfaces.IPositionService;
-import pl.treekt.mychunk.Service.Interfaces.ISMSPaymentService;
-import pl.treekt.mychunk.Service.Interfaces.IUserService;
+import pl.treekt.mychunk.Service.Interfaces.*;
 
 import java.util.List;
 
@@ -32,6 +32,9 @@ public class ShopController {
 
     @Autowired
     private ISMSPaymentService smsPaymentService;
+
+    @Autowired
+    private IVoucherService voucherService;
 
 
     @GetMapping("/shop")
@@ -104,8 +107,51 @@ public class ShopController {
         return modelAndView;
     }
 
-//    @PostMapping("/shop/{id}/transfer")
-//    public String transferPaymentSubmit(@PathVariable long id, @ModelAttribute TransactionModel transaction, HttpServletRequest request){
-//
-//    }
+
+    @GetMapping("/voucher")
+    public ModelAndView voucherForm(){
+        ModelAndView modelAndView = new ModelAndView("shop/voucher");
+        modelAndView.addObject("voucher", new TransactionModel());
+        return modelAndView;
+    }
+
+    @PostMapping("/voucher")
+    public ModelAndView voucherSubmit(@ModelAttribute TransactionModel transaction){
+        ModelAndView modelAndView = new ModelAndView("shop/voucher");
+        modelAndView.addObject("voucher", transaction);
+
+         if(!playerService.existsPlayer(transaction.getNickname())){
+             modelAndView.addObject("error", "Podany gracz nie istnieje na serwerze");
+             return modelAndView;
+         }
+         if(!voucherService.voucherExists(transaction.getCode())){
+             modelAndView.addObject("error", "Podany voucher nie istnieje");
+             return modelAndView;
+         }
+
+         if(playerService.isVoucherUsed(transaction.getNickname(), transaction.getCode())){
+             modelAndView.addObject("error", "Podany voucher został juz wykorzystany dla tego gracza");
+             return modelAndView;
+         }else{
+             if(voucherService.canRealizeVoucher(transaction.getCode())){
+                 Player player = playerService.getPlayerById(transaction.getNickname());
+                 Voucher voucher = voucherService.getVoucherByCode(transaction.getCode());
+
+                 //Increment using counter of voucher
+                 voucher.setUsed(voucher.getUsed() + 1);
+                 voucherService.updateVoucher(voucher);
+
+                 //Adding voucher to player used voucher list
+                 player.getVouchers().add(voucher);
+                 playerService.updatePlayer(player);
+             }else{
+                 modelAndView.addObject("error", "Podany voucher został juz wykorzystany maksymalną ilość razy");
+                 return modelAndView;
+             }
+         }
+
+        modelAndView.addObject("voucher", new TransactionModel());
+        modelAndView.addObject("success", true);
+        return modelAndView;
+    }
 }

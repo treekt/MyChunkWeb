@@ -181,6 +181,7 @@ p.stat-value-extended {
 
 .wrapper {
     display: flex;
+    height: 100vh;
 }
 
 a, a:hover, a:focus {
@@ -189,40 +190,6 @@ a, a:hover, a:focus {
     transition: all 0.3s;
 }
 
-#sidebar {
-    background: #23282c;
-    min-width: 250px;
-    max-width: 250px;
-    height: 100vh;
-}
-
-#sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #23282c;
-}
-
-#sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
-    color: #f2f2f2;
-}
-
-#sidebar ul li a:hover {
-    color: #23282c;
-    background: #f2f2f2;
-}
-
-#sidebar ul li.active > a {
-    color: #23282c;
-    background: #f2f2f2;
-}
-
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #32373b;
-}
 
 .shop-wrapper {
     display: flex;
@@ -400,3 +367,86 @@ thead {
 #shop-button small {
     display: block;
 }
+
+
+
+
+
+
+
+
+
+
+/* Profile container */
+.profile {
+    margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: #fff;
+}
+
+
+.profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+
+.profile-usermenu {
+    margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+    /*border-bottom: 1px solid #f0f4f7;*/
+    width: 100%;
+}
+
+.profile-usermenu ul li:last-child {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+    color: #93a3b5;
+    font-size: 14px;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+.profile-usermenu ul li a i {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+    background-color: #fafcfd;
+    color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+    color: #5b9bd1;
+    border-left: 2px solid #5b9bd1;
+    padding-left: 10px;
+}
+

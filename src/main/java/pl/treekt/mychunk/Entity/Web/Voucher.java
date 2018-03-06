@@ -11,10 +11,10 @@ public class Voucher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String value;
+    private Long id;
+    private String code;
     private int used;
-    private int limit;
+    private int max;
 
     @ManyToOne
     @JoinColumn(name = "position_id")
@@ -26,21 +26,20 @@ public class Voucher {
             inverseJoinColumns = @JoinColumn(name = "player_id"))
     private Set<Player> players;
 
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getValue() {
-        return value;
+    public String getCode() {
+        return code;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public int getUsed() {
@@ -51,12 +50,12 @@ public class Voucher {
         this.used = used;
     }
 
-    public int getLimit() {
-        return limit;
+    public int getMax() {
+        return max;
     }
 
-    public void setLimit(int limit) {
-        this.limit = limit;
+    public void setMax(int max) {
+        this.max = max;
     }
 
     public Position getPosition() {
