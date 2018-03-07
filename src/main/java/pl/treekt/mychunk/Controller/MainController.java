@@ -3,6 +3,7 @@ package pl.treekt.mychunk.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +21,7 @@ import pl.treekt.mychunk.Service.Interfaces.IUserService;
 import java.util.List;
 
 @Controller
+@ControllerAdvice
 public class MainController {
 
     @Autowired
@@ -40,20 +42,23 @@ public class MainController {
     @Autowired
     private IMinecraftService minecraftService;
 
-    @GetMapping("/")
+
+    @ModelAttribute
+    public void defaultAttributes(Model model){
+        model.addAttribute("onlinePlayers", minecraftService.getOnlinePlayers());
+        model.addAttribute("maxPlayers", minecraftService.getMaxPlayers());
+        model.addAttribute("playersCounter", playerService.countPlayers());
+        model.addAttribute("shotsCounter", playerService.countShots());
+    }
+
+    @GetMapping("")
     public ModelAndView home(){
         ModelAndView  modelAndView = new ModelAndView("home");
         List<Player> players = playerService.getAllPlayers();
         List<Player> lastOnlinePlayers = players.subList(0, 2 >= players.size() ? players.size() : 2);
 
-
-        modelAndView.addObject("onlinePlayers", minecraftService.getOnlinePlayers());
-        modelAndView.addObject("maxPlayers", minecraftService.getMaxPlayers());
-        modelAndView.addObject("motd", minecraftService.getMOTD());
         return modelAndView;
     }
-
-
 
     @GetMapping("/ranking")
     public String ranking(ModelMap model){

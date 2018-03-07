@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.treekt.mychunk.Entity.Web.User;
@@ -21,12 +23,16 @@ public class UserController {
     @Autowired
     private ISMSPaymentService smsPaymentService;
 
+    @ModelAttribute
+    public void userAttribute(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getUserByEmail(auth.getName());
+        model.addAttribute("user", user);
+    }
+
     @GetMapping("")
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView("user/home");
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.getUserByEmail(auth.getName());
-        modelAndView.addObject("email", user.getEmail());
         return modelAndView;
     }
 

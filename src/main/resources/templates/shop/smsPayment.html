@@ -9,8 +9,7 @@
 <div class="content" layout:fragment="content">
     <div class="content-head">
         <span>Formularz SMS </span>
-        <button id="back-btn" class="btn btn-default back-btn">Powrót</button>
-
+        <button class="btn btn-danger right-btn" onclick="location.href='/shop/complaint'">Reklamacja zakupu</button>
     </div>
     <div class="content-wrapper sms-flex">
         <div class="sms-info">
@@ -69,9 +68,6 @@
             else {
                 $('#realize').prop('disabled', true);
             }
-        });
-        $('#back-btn').click(function () {
-            window.history.back();
         });
     });
 </script>

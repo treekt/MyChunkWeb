@@ -5,7 +5,7 @@
 <body>
 <header th:fragment="header">
     <nav class="navbar navbar-expand-lg nav-custom">
-        <a class="navbar-brand" href="/">MyChunk</a>
+        <a class="navbar-brand" href="/">myCHUNK</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -13,9 +13,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link " href="/"><i class="fas fa-home"></i> Główna</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/ranking"><i class="fas fa-trophy"></i> Ranking</a>
                 </li>
@@ -28,16 +25,36 @@
             </ul>
         </div>
     </nav>
-    <div id="banner">
-        <!--<div class="info-box red">-->
+    <div class="container-fluid">
+        <div id="banner">
+            <div class="info-box">
+                <div class="info-image">
 
-        <!--</div>-->
-        <!--<div class="info-box default">-->
+                </div>
+                <div class="info-content">
+                    <p class="info-data" th:text="${playersCounter}"></p>
+                    <p>Odwiedziło nas</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <div class="info-image">
 
-        <!--</div>-->
-        <!--<div class="info-box green">-->
+                </div>
+                <div class="info-content">
+                    <p class="info-data" th:text="${onlinePlayers} + '/' + ${maxPlayers}"></p>
+                    <p>Aktualnie online</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <div class="info-image">
 
-        <!--</div>-->
+                </div>
+                <div class="info-content">
+                    <p class="info-data" th:text="${shotsCounter}"></p>
+                    <p>Oddanych strzałów</p>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
 </body>

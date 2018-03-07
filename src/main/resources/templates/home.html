@@ -9,11 +9,6 @@
 <body>
 <section layout:fragment="content">
     <div class="content">
-        <span th:text="${onlinePlayers}"></span> / <span th:text="${maxPlayers}"></span>
-        <p th:text="${motd}"></p>
-        <div sec:authorize="isAuthenticated()">Jestes zalogowany</div>
-        <span sec:authentication="name"></span> |
-        Roles: <span sec:authentication="principal.authorities"></span>
     </div>
 </section>
 </body>

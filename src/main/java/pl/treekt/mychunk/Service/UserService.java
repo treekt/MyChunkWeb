@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.treekt.mychunk.Dao.Interfaces.IRoleDao;
 import pl.treekt.mychunk.Dao.Interfaces.IUserDao;
+import pl.treekt.mychunk.Entity.Game.Player;
 import pl.treekt.mychunk.Entity.Web.Role;
 import pl.treekt.mychunk.Entity.Web.User;
 import pl.treekt.mychunk.Service.Interfaces.IUserService;

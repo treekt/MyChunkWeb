@@ -63,5 +63,17 @@ public class PlayerService implements IPlayerService {
         return false;
     }
 
+    @Override
+    public int countPlayers() {
+        return getAllPlayers().size();
+    }
 
+    @Override
+    public long countShots() {
+        long shots = 0;
+        for(Player player : getAllPlayers()){
+            shots += player.getSumOfShots();
+        }
+        return shots;
+    }
 }
