@@ -10,6 +10,7 @@ import pl.treekt.mychunk.Entity.Game.Player;
 import pl.treekt.mychunk.Entity.Web.Position;
 import pl.treekt.mychunk.Entity.Web.SMSPayment;
 import pl.treekt.mychunk.Entity.Web.Voucher;
+import pl.treekt.mychunk.Model.ComplaintModel;
 import pl.treekt.mychunk.Model.TransactionModel;
 import pl.treekt.mychunk.Service.Interfaces.*;
 
@@ -69,14 +70,14 @@ public class ShopController {
         modelAndView.addObject("position", position);
         modelAndView.addObject("transaction", transaction);
 
-        if (!playerService.existsPlayer(transaction.getNickname())) {
-            modelAndView.addObject("error", "Podany gracz nie istnieje na serwerze");
-            return modelAndView;
-        }
-        if (!smsService.checkSMS(transaction.getCode())) {
-            modelAndView.addObject("error", "Podany kod sms nie istnieje");
-            return modelAndView;
-        }
+//        if (!playerService.existsPlayer(transaction.getNickname())) {
+//            modelAndView.addObject("error", "Podany gracz nie istnieje na serwerze");
+//            return modelAndView;
+//        }
+//        if (!smsService.checkSMS(transaction.getCode())) {
+//            modelAndView.addObject("error", "Podany kod sms nie istnieje");
+//            return modelAndView;
+//        }
 
 
         SMSPayment smsPayment = new SMSPayment(
@@ -152,6 +153,29 @@ public class ShopController {
 
         modelAndView.addObject("voucher", new TransactionModel());
         modelAndView.addObject("success", true);
+        return modelAndView;
+    }
+
+    @GetMapping("/shop/complaint")
+    public ModelAndView complaintForm(){
+        ModelAndView modelAndView = new ModelAndView("shop/complaint");
+        modelAndView.addObject("positions", positionService.getAllPositions());
+        modelAndView.addObject("complaint", new ComplaintModel());
+        return modelAndView;
+    }
+
+    @PostMapping("/shop/complaint")
+    public ModelAndView complaintSubmit(){
+        ModelAndView modelAndView = new ModelAndView("shop/complaint");
+        modelAndView.addObject("positions", positionService.getAllPositions());
+
+        if(1 == 2){
+            modelAndView.addObject("error", "Nie udało się wysłać reklamacji");
+        }
+
+        //TODO: Wyslij wiadomosc e-mail
+        modelAndView.addObject("success", true);
+        modelAndView.addObject("complaint", new ComplaintModel());
         return modelAndView;
     }
 }

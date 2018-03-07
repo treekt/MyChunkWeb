@@ -7,10 +7,10 @@
 </head>
 <body>
 <div class="user-content" layout:fragment="admin-content">
+    <h2>Dodawanie Vouchera</h2>
+    <br/>
     <form action="# " th:action="@{/admin/add-voucher}" th:object="${voucher}" method="POST"
           style="margin: 0 auto; width: 50%">
-        <h2>Dodawanie Vouchera</h2>
-        <br/>
         <div class="form-group">
             <input class="form-control" type="text" th:field="*{code}" th:placeholder="Voucher" required>
         </div>

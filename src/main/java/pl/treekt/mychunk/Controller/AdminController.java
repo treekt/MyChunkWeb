@@ -12,10 +12,8 @@ import pl.treekt.mychunk.Entity.Web.SMS;
 import pl.treekt.mychunk.Entity.Web.Command;
 import pl.treekt.mychunk.Entity.Web.Position;
 import pl.treekt.mychunk.Entity.Web.Voucher;
-import pl.treekt.mychunk.Service.Interfaces.ISMSService;
-import pl.treekt.mychunk.Service.Interfaces.ICommandService;
-import pl.treekt.mychunk.Service.Interfaces.IPositionService;
-import pl.treekt.mychunk.Service.Interfaces.IVoucherService;
+import pl.treekt.mychunk.Service.Interfaces.*;
+import pl.treekt.mychunk.Service.SMSPaymentService;
 import pl.treekt.mychunk.Utils.SharedUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value= "/admin")
 public class AdminController {
 
     @Autowired
@@ -38,7 +36,10 @@ public class AdminController {
     @Autowired
     private IVoucherService voucherService;
 
-    @GetMapping("/")
+    @Autowired
+    private ISMSPaymentService smsPaymentService;
+
+    @GetMapping("")
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("admin/home");
         return modelAndView;
@@ -175,5 +176,11 @@ public class AdminController {
         return modelAndView;
     }
 
+    @GetMapping("/shop-history")
+    public ModelAndView getShopHistory(){
+        ModelAndView modelAndView = new ModelAndView("admin/shopHistory");
+        modelAndView.addObject("paymentList", smsPaymentService.getAllPayments());
+        return modelAndView;
+    }
 
 }

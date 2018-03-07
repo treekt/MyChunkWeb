@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.treekt.mychunk.Entity.Web.User;
+import pl.treekt.mychunk.Service.Interfaces.ISMSPaymentService;
 import pl.treekt.mychunk.Service.Interfaces.IUserService;
 
 @Controller
@@ -17,13 +18,25 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    @GetMapping("/")
+    @Autowired
+    private ISMSPaymentService smsPaymentService;
+
+    @GetMapping("")
     public ModelAndView home(){
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView("user/home");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getUserByEmail(auth.getName());
-        modelAndView.addObject("userName", "Welcome " + user.getUsername() + " (" + user.getEmail() + ")");
-        modelAndView.setViewName("user/home");
+        modelAndView.addObject("email", user.getEmail());
+        return modelAndView;
+    }
+
+    @GetMapping("/shop-history")
+    public ModelAndView getShopHistory(){
+        ModelAndView modelAndView = new ModelAndView("user/shopHistory");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getUserByEmail(auth.getName());
+        modelAndView.addObject("email", user.getEmail());
+        modelAndView.addObject("paymentList", smsPaymentService.getPaymentsByEmail(user.getEmail()));
         return modelAndView;
     }
 }

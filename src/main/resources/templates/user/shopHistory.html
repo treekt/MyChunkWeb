@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="user/userLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Historia zakupów</title>
+</head>
+<body>
+<div class="user-content" layout:fragment="user-content">
+    <h2>Historia zakupów</h2>
+    <br/>
+    <table class="table table-striped table-hover"
+           cellspacing="0"
+           width="100%">
+
+        <thead>
+        <tr align="center">
+            <th>Kod</th>
+            <th>Data użycia</th>
+            <th>Pozycja</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr align="center" th:each="payment : ${paymentList}">
+            <td th:text="${payment.code}"></td>
+            <td th:text="${payment.date}"></td>
+            <td th:text="${payment.position.getTitle()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

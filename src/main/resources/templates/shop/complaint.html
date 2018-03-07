@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="defaultLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reklamacja zakupu</title>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+    <div class="content-head">
+        <span>Reklamacja zakupu</span>
+    </div>
+    <form th:action="@{/shop/complaint}"
+          th:object="${complaint}" method="post" class="form-horizontal"
+          role="form" style="margin: 0 auto; width: 50%">
+        <div class="form-group">
+            <input name="nickname" type="text" th:field="*{nickname}" placeholder="Nick"
+                   class="form-control" required>
+        </div>
+        <div class="form-group">
+            <input name="nickname" type="date" th:field="*{purchaseDate}" placeholder="Data"
+                   class="form-control" required>
+        </div>
+        <div class="form-group">
+            <textarea name="description" type="text" th:field="*{description}" placeholder="Opis"
+                      class="form-control" required></textarea>
+        </div>
+        <div class="form-group">
+            <select class="form-control" th:field="*{position.id}">
+                <option th:each="position : ${positions}"
+                        th:value="${position.id}"
+                        th:text="${position.getTitle()}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Wyślij</button>
+        </div>
+
+        <div class="alert alert-success" th:if="${success}">
+            <strong>Udało się!</strong> <span> Wysłałeś reklamacje</span>
+        </div>
+        <div class="alert alert-danger" th:if="${error}">
+            <strong>Ups!</strong> <span th:text="${error}"></span>
+        </div>
+    </form>
+</div>
+</body>
+</html>

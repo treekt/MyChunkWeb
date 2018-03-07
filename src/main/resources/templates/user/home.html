@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="defaultLayout"
-      xmlns:th="http://www.thymeleaf.org">
+      layout:decorate="user/userLayout">
 <head>
-    <title>Ranking</title>
+    <title>Panel użytkownika</title>
 </head>
 <body>
-<div class="container cont-view" layout:fragment="content">
-    <span>Treść widoczna tylko dla zalogowanych użytkowników!</span>
+<div class="user-content" layout:fragment="user-content">
+    <span>Treść widoczna tylko dla zalogowanych użytkowników!</span></span>
 </div>
 </body>
 </html>

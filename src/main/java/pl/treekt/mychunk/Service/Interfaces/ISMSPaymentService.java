@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface ISMSPaymentService {
 
-    List<SMSPayment> getHistory(String email);
+    List<SMSPayment> getAllPayments();
+    List<SMSPayment> getPaymentsByEmail(String email);
     boolean addPayment(SMSPayment smsPayment);
     void deletePayment(SMSPayment smsPayment);
 }

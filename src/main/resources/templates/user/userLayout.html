@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="defaultLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Panel użytkownika</title>
+</head>
+<body>
+<div class="wrapper" layout:fragment="content">
+    <div class="profile-sidebar">
+        <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+                Panel użytkownika
+            </div>
+            <div class="profile-usertitle-job">
+                <span th:text="${email}"></span>
+            </div>
+        </div>
+        </hr>
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+            <ul class="nav">
+                <li class="active">
+                    <a href="/user">Główna</a>
+                </li>
+                <li>
+                    <a href="/user/shop-history">Historia zakupów</a>
+                </li>
+            </ul>
+        </div>
+        <!-- END MENU -->
+    </div>
+    <section layout:fragment="user-content">
+        <!--User content-->
+    </section>
+</div>
+</body>
+</html>

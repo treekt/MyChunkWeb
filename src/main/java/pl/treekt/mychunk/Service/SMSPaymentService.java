@@ -16,7 +16,12 @@ public class SMSPaymentService implements ISMSPaymentService{
     private ISMSPaymentDao smsPaymentDao;
 
     @Override
-    public List<SMSPayment> getHistory(String email) {
+    public List<SMSPayment> getAllPayments() {
+        return smsPaymentDao.getAllPayments();
+    }
+
+    @Override
+    public List<SMSPayment> getPaymentsByEmail(String email) {
         List<SMSPayment> allPayments = smsPaymentDao.getAllPayments();
         List<SMSPayment> history = new ArrayList<SMSPayment>();
 
