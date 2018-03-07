@@ -23,13 +23,6 @@ public class UserController {
     @Autowired
     private ISMSPaymentService smsPaymentService;
 
-    @ModelAttribute
-    public void userAttribute(Model model){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.getUserByEmail(auth.getName());
-        model.addAttribute("user", user);
-    }
-
     @GetMapping("")
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView("user/home");

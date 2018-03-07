@@ -2,6 +2,8 @@ package pl.treekt.mychunk.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -12,6 +14,7 @@ import pl.treekt.mychunk.Entity.Game.Armor;
 import pl.treekt.mychunk.Entity.Game.Skill;
 import pl.treekt.mychunk.Entity.Game.Player;
 import pl.treekt.mychunk.API.Payments.HomePayManager;
+import pl.treekt.mychunk.Entity.Web.User;
 import pl.treekt.mychunk.Service.Interfaces.IArmorService;
 import pl.treekt.mychunk.Service.Interfaces.IPlayerService;
 import pl.treekt.mychunk.Service.Interfaces.ISkillService;
@@ -49,6 +52,15 @@ public class MainController {
         model.addAttribute("maxPlayers", minecraftService.getMaxPlayers());
         model.addAttribute("playersCounter", playerService.countPlayers());
         model.addAttribute("shotsCounter", playerService.countShots());
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user;
+        try{
+            user = userService.getUserByEmail(auth.getName());
+        }catch(Exception e){
+            user = null;
+        }
+        model.addAttribute("user", user);
     }
 
     @GetMapping("")
