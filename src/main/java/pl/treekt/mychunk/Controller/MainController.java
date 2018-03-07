@@ -81,12 +81,12 @@ public class MainController {
 
     @GetMapping("/profil/{nickname}")
     public ModelAndView profil(@PathVariable String nickname){
-        Player user = playerService.getPlayerById(nickname);
+        Player player = playerService.getPlayerById(nickname);
         List<Skill> skills = skillService.getAllSkills(nickname);
         List<Armor> armors = armorService.getAllArmors(nickname);
 
         ModelAndView model = new ModelAndView("profil");
-        model.addObject("user", user);
+        model.addObject("player", player);
         
         model.addObject("armors", armors);
         model.addObject("skills", skills);

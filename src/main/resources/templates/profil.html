@@ -12,58 +12,58 @@
             <span>Statystyki gracza</span>
         </div>
         <div class="profile-head">
-            <img style="float:left;" th:src="@{'https://crafatar.com/avatars/' + ${user.nickname} + '?size=50'}"/>
-            <h2 class="nickname" th:text="${user.nickname}"/>
+            <img style="float:left;" th:src="@{'https://crafatar.com/avatars/' + ${player.nickname} + '?size=50'}"/>
+            <h2 class="nickname" th:text="${player.nickname}"/>
         </div>
         <div class="profile-wrapper">
             <div class="profile-content">
                 <div class="profile-content-segment" style="height: 400px">
-                    <img th:src="@{'https://crafatar.com/renders/body/' + ${user.nickname} + '?scale=8'}"/>
+                    <img th:src="@{'https://crafatar.com/renders/body/' + ${player.nickname} + '?scale=8'}"/>
                 </div>
                 <div class="profile-content-segment">
                     <div class="profile-row">
                         <img class="stat-img" th:src="@{'/img/icons/stats/kill.png'}" />
                         <p class="stat-name" >Zabójstwa</p>
-                        <p class="stat-value" th:text="${user.getKills()}"></p>
+                        <p class="stat-value" th:text="${player.getKills()}"></p>
                     </div>
                     <div class="profile-row">
                         <img class="stat-img" th:src="@{'/img/icons/stats/death.png'}" />
                         <p class="stat-name">Śmierci</p>
-                        <p class="stat-value" th:text="${user.getDeaths()}"></p>
+                        <p class="stat-value" th:text="${player.getDeaths()}"></p>
                     </div>
                     <div class="profile-row">
                         <img class="stat-img" th:src="@{'/img/icons/stats/assist.png'}"/>
                         <p class="stat-name">Asysty</p>
-                        <p class="stat-value" th:text="${user.getAssists()}"></p>
+                        <p class="stat-value" th:text="${player.getAssists()}"></p>
                     </div>
                 </div>
                 <div class="profile-content-segment">
                     <div class="profile-row">
                         <img class="stat-img" th:src="@{'/img/icons/stats/kd.png'}" />
                         <p class="stat-name" >K/D</p>
-                        <p class="stat-value" th:text="${user.getKD()}"></p>
+                        <p class="stat-value" th:text="${player.getKD()}"></p>
                     </div>
                     <div class="profile-row">
                         <img class="stat-img" th:src="@{'/img/icons/stats/token.png'}" />
                         <p class="stat-name">Tokeny</p>
-                        <p class="stat-value" th:text="${user.getTokens()}"></p>
+                        <p class="stat-value" th:text="${player.getTokens()}"></p>
                     </div>
                     <div class="profile-row">
                         <img class="stat-img" th:src="@{'/img/icons/stats/aim.png'}" />
                         <p class="stat-name">Celność</p>
-                        <p class="stat-value" th:text="${user.getAccuracy()}"></p>
+                        <p class="stat-value" th:text="${player.getAccuracy()}"></p>
                     </div>
                 </div>
                 <div class="profile-content-segment ">
                     <div class="profile-row">
                         <img class="stat-img" th:src="@{'/img/icons/stats/hit.png'}" />
                         <p class="stat-name-extended">Trafienia</p>
-                        <p class="stat-value-extended" th:text="${user.getHit()}"></p>
+                        <p class="stat-value-extended" th:text="${player.getHit()}"></p>
                     </div>
                     <div class="profile-row">
                         <img class="stat-img" th:src="@{'/img/icons/stats/miss.png'}" />
                         <p class="stat-name-extended">Pudła</p>
-                        <p class="stat-value-extended" th:text="${user.getMiss()}"></p>
+                        <p class="stat-value-extended" th:text="${player.getMiss()}"></p>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
             </div>
         </div>
 
-        <!--<a th:text="${user.nickname}"/>-->
+        <!--<a th:text="${player.nickname}"/>-->
     </div>
 </section>
 </body>
