@@ -70,14 +70,14 @@ public class ShopController {
         modelAndView.addObject("position", position);
         modelAndView.addObject("transaction", transaction);
 
-//        if (!playerService.existsPlayer(transaction.getNickname())) {
-//            modelAndView.addObject("error", "Podany gracz nie istnieje na serwerze");
-//            return modelAndView;
-//        }
-//        if (!smsService.checkSMS(transaction.getCode())) {
-//            modelAndView.addObject("error", "Podany kod sms nie istnieje");
-//            return modelAndView;
-//        }
+        if (!playerService.existsPlayer(transaction.getNickname())) {
+            modelAndView.addObject("error", "Podany gracz nie istnieje na serwerze");
+            return modelAndView;
+        }
+        if (!smsService.checkSMS(transaction.getCode())) {
+            modelAndView.addObject("error", "Podany kod sms nie istnieje");
+            return modelAndView;
+        }
 
 
         SMSPayment smsPayment = new SMSPayment(
