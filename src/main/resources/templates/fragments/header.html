@@ -25,11 +25,23 @@
                 </li>
             </ul>
         </div>
-        <div th:if="${user != null}">
-            <a href="/user"><i class="fas fa-user"></i> <span th:text="${user.email}"></span></a>
-        </div>
-        <div th:if="${user == null}">
-            <a href="/login"><i class="fas fa-sign-in-alt"></i> Zaloguj</a>
+        <div>
+            <div th:if="${user != null}">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="accountDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                        <span th:text="${user.email}"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="accountDropdownMenu">
+                        <a th:if="${user.roles[0].role == 'USER'}" class="dropdown-item" href="/user">Panel użytkownika</a>
+                        <a th:if="${user.roles[0].role == 'ADMIN'}" class="dropdown-item" href="/user">Panel administratora</a>
+                        <a class="dropdown-item" href="/logout">Wyloguj</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-account" th:if="${user == null}">
+                <a href="/login">Zaloguj się</a>
+            </div>
         </div>
     </nav>
     <div class="container-fluid">

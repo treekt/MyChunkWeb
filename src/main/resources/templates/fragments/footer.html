@@ -3,13 +3,25 @@
 <head>
 </head>
 <body>
-<footer th:fragment="footer">
-    <div class="footer">
-        <div class="container footer-content">
-            MyChunk.net | Strzelecki serwer Minecraft!
-            <!--TODO: Dodać socialmedia-->
-            <!--TODO: Dodać przycisk wylogowania jeśli zalogowany, w przeciwnym wypadku przycisk zaloguj-->
-            <!--TODO: Przycisk regulaminu, widok regulaminu-->
+<footer class="footer" th:fragment="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="row">
+                <div class="col-sm" style="text-align: left;">
+                    <a href="/regulamin">Zapoznaj się z regulaminem serwera.</a>
+                </div>
+                <div class="col-sm" style="text-align:right">
+                        Masz pytania? Napisz do nas.
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm copyright" style="text-align: left;">
+                    <span><b >© 2018 - MyChunk.net</b> | Strzelecki serwer Minecraft!</span>
+                </div>
+                <div class="col-sm" style="text-align:right">
+                    <b style="font-size: 20px;"> bok@mychunk.net</b>
+                </div>
+            </div>
         </div>
     </div>
 </footer>
