@@ -30,6 +30,14 @@
         </div>
         <!--TODO: Dodać liste osób które kupiły ostatnio tę pozycje-->
     </div>
+    <div>
+        <div>
+            <span>Ostatnio zakupili</span>
+            <div th:each="purchaser : ${lastPurchasers}">
+                <span th:text="${purchaser.getNickname()} "></span>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

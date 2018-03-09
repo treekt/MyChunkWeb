@@ -9,7 +9,7 @@
 <div class="user-content" layout:fragment="admin-content">
     <h2>Lista voucherów</h2>
     <br/>
-    <table class="table table-striped table-hover"
+    <table id="voucher-list" class="table table-striped table-hover"
            cellspacing="0"
            width="100%">
 
@@ -33,3 +33,14 @@
 </div>
 </body>
 </html>
+<script>
+    $(document).ready(function() {
+        $('#voucher-list').dataTable( {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Polish.json"
+            }
+        } );
+        var table = $('#voucher-list').DataTable();
+        table.draw();
+    } );
+</script>

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.treekt.mychunk.Entity.Web.User;
@@ -27,20 +28,19 @@ public class AccountController {
     @GetMapping("/register")
     public ModelAndView registerForm(){
         ModelAndView modelAndView = new ModelAndView("account/register");
-        User user = new User();
-        modelAndView.addObject("user", user);
+        modelAndView.addObject("userModel", new User());
         return modelAndView;
     }
 
     @PostMapping("/register")
-    public ModelAndView registerSubmit(User user, BindingResult bindingResult) {
+    public ModelAndView registerSubmit(@ModelAttribute User userModel) {
         ModelAndView modelAndView = new ModelAndView("account/register");
-        if(!userService.addUser(user)){
+        if(!userService.addUser(userModel)){
             modelAndView.addObject("error", "Taki użytkownik już istnieje!");
             return modelAndView;
         }
 
-        modelAndView.addObject("user", user);
+        modelAndView.addObject("userModel", userModel);
         modelAndView.addObject("success", true);
         return modelAndView;
     }

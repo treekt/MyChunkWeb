@@ -51,6 +51,9 @@ public class ShopController {
         ModelAndView modelAndView = new ModelAndView("shop/positionDetails");
         Position position = positionService.getPositionById(id);
         modelAndView.addObject("position", position);
+        List<Player> purchasers = positionService.getLastPurchasers(id);
+        List<Player> lastPurchasers = purchasers.subList(0, 2 >= purchasers.size() ? purchasers.size() : 2);
+        modelAndView.addObject("lastPurchasers", lastPurchasers);
         return modelAndView;
     }
 

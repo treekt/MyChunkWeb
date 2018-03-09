@@ -9,7 +9,7 @@
 <div class="user-content" layout:fragment="user-content">
     <h2>Historia zakupów</h2>
     <br/>
-    <table class="table table-striped table-hover"
+    <table id="shop-history" class="table table-striped table-hover"
            cellspacing="0"
            width="100%">
 
@@ -31,3 +31,14 @@
 </div>
 </body>
 </html>
+<script>
+    $(document).ready(function() {
+        $('#shop-history').dataTable( {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Polish.json"
+            }
+        } );
+        var table = $('#shop-history').DataTable();
+        table.draw();
+    } );
+</script>

@@ -7,7 +7,7 @@ import java.util.List;
 public interface IUserService {
     List<User> getAllUsers();
     User getUserByEmail(String email);
-    Boolean addUser(User user);
+    boolean addUser(User user);
     void updateUser(User user);
     void deleteUser(String email);
 }

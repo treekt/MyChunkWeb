@@ -41,7 +41,7 @@ public class UserService implements IUserService, UserDetailsService {
     }
 
     @Override
-    public Boolean addUser(User user) {
+    public boolean addUser(User user) {
         if(userDao.userExists(user.getEmail())){
             return false;
         }else{

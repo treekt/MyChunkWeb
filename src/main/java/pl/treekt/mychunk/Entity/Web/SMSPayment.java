@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "sms_payment")
-public class SMSPayment {
+public class SMSPayment implements Comparable<SMSPayment>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -94,5 +94,10 @@ public class SMSPayment {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    @Override
+    public int compareTo(SMSPayment smsPayment) {
+        return smsPayment.getDate().compareTo(getDate());
     }
 }

@@ -18,9 +18,9 @@ public class PlayerService implements IPlayerService {
 
     @Override
     public List<Player> getAllPlayers() {
-        List<Player> users = playerDao.getAllPlayers();
-        Collections.sort(users);
-        return users;
+        List<Player> players = playerDao.getAllPlayers();
+        Collections.sort(players);
+        return players;
     }
 
     @Override
