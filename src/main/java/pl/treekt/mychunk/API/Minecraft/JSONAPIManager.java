@@ -27,7 +27,6 @@ public class JSONAPIManager {
     private String url = "http://" + host + ":" + port + "/api/2/call";
 
 
-
     public MinecraftResponse call(String method, String[] args) {
 
 
@@ -38,13 +37,18 @@ public class JSONAPIManager {
                 method);
 
         HttpEntity<MinecraftRequest> entity = new HttpEntity<MinecraftRequest>(minecraftRequest);
-        String resultJson = restTemplate.postForObject(url, entity, String.class);
+        MinecraftResponse minecraftResponse;
 
-        MinecraftResponse minecraftResponse = convertJsonToMinecraftResponse(cutTheBrackets(resultJson));
+        try {
+            String resultJson = restTemplate.postForObject(url, entity, String.class);
+            minecraftResponse = convertJsonToMinecraftResponse(cutTheBrackets(resultJson));
+        } catch (Exception exception) {
+            minecraftResponse = new MinecraftResponse("error", false, method, "1", "Connection refused!");
+        }
+
 
         return minecraftResponse;
     }
-
 
 
     private String makeKey(String method, String username, String password, String salt) {
@@ -54,9 +58,9 @@ public class JSONAPIManager {
         return key;
     }
 
-    private MinecraftResponse convertJsonToMinecraftResponse(String json){
+    private MinecraftResponse convertJsonToMinecraftResponse(String json) {
         ObjectMapper mapper = new ObjectMapper();
-        try{
+        try {
             return mapper.readValue(json, MinecraftResponse.class);
 
         } catch (JsonGenerationException e) {
@@ -70,8 +74,8 @@ public class JSONAPIManager {
         return null;
     }
 
-    private String cutTheBrackets(String json){
-        return json.substring(1, json.length()-1);
+    private String cutTheBrackets(String json) {
+        return json.substring(1, json.length() - 1);
     }
 
 }

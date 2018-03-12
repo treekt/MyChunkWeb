@@ -14,6 +14,15 @@ public class MinecraftResponse {
     @JsonProperty("success")
     private Object successData;
 
+
+    public MinecraftResponse(String result, boolean success, String source, String tag, Object successData){
+        this.result = result;
+        this.success = success;
+        this.source = source;
+        this.tag = tag;
+        this.successData = successData;
+    }
+
     public String getResult() {
         return result;
     }
