@@ -15,6 +15,7 @@ public class MinecraftResponse {
     private Object successData;
 
 
+    public MinecraftResponse(){}
     public MinecraftResponse(String result, boolean success, String source, String tag, Object successData){
         this.result = result;
         this.success = success;
