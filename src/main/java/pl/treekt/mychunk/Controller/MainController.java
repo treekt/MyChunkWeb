@@ -60,7 +60,7 @@ public class MainController {
         }catch(Exception e){
             user = null;
         }
-        model.addAttribute("user", user);
+        model.addAttribute("loggedUser", user);
     }
 
     @GetMapping("")
@@ -94,5 +94,9 @@ public class MainController {
     }
 
 
-
+    @GetMapping("/rules")
+    public ModelAndView rules(){
+        ModelAndView modelAndView = new ModelAndView("rules");
+        return modelAndView;
+    }
 }

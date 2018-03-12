@@ -28,19 +28,19 @@ public class AccountController {
     @GetMapping("/register")
     public ModelAndView registerForm(){
         ModelAndView modelAndView = new ModelAndView("account/register");
-        modelAndView.addObject("userModel", new User());
+        modelAndView.addObject("userObject", new User());
         return modelAndView;
     }
 
     @PostMapping("/register")
-    public ModelAndView registerSubmit(@ModelAttribute User userModel) {
+    public ModelAndView registerSubmit(@ModelAttribute("userObject") User user) {
         ModelAndView modelAndView = new ModelAndView("account/register");
-        if(!userService.addUser(userModel)){
+        if(!userService.addUser(user)){
             modelAndView.addObject("error", "Taki użytkownik już istnieje!");
             return modelAndView;
         }
 
-        modelAndView.addObject("userModel", userModel);
+        modelAndView.addObject("userObject", user);
         modelAndView.addObject("success", true);
         return modelAndView;
     }

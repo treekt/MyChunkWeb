@@ -38,7 +38,20 @@ hr {
     font-size: 15px;
 }
 
+.rules{
+    margin-left: 5px;
+}
 
+.rules-title{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.rules-text{
+    text-align: justify;
+    margin: 0 20px 10px;
+}
 
 
 #banner {
@@ -74,6 +87,10 @@ p.info-data{
     margin-bottom: 0px;
 }
 
+td p{
+    margin-bottom: 0;
+}
+
 
 
 .navbar-brand{
@@ -95,6 +112,7 @@ p.info-data{
 
 .nav-account{
     cursor: pointer;
+    padding-right: 20px;
 }
 
 

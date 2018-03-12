@@ -69,7 +69,10 @@ public class UserService implements IUserService, UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userDao.getUserByEmail(userName);
-        List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        if(user != null){
+            getUserAuthority(user.getRoles());
+        }
         return buildUserForAuthentication(user, authorities);
     }
 

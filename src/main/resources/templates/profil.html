@@ -22,12 +22,12 @@
                 </div>
                 <div class="profile-content-segment">
                     <div class="profile-row">
-                        <img class="stat-img" th:src="@{'/img/icons/stats/kill.png'}" />
-                        <p class="stat-name" >Zabójstwa</p>
+                        <img class="stat-img" th:src="@{'/img/icons/stats/kill.png'}"/>
+                        <p class="stat-name">Zabójstwa</p>
                         <p class="stat-value" th:text="${player.getKills()}"></p>
                     </div>
                     <div class="profile-row">
-                        <img class="stat-img" th:src="@{'/img/icons/stats/death.png'}" />
+                        <img class="stat-img" th:src="@{'/img/icons/stats/death.png'}"/>
                         <p class="stat-name">Śmierci</p>
                         <p class="stat-value" th:text="${player.getDeaths()}"></p>
                     </div>
@@ -39,29 +39,29 @@
                 </div>
                 <div class="profile-content-segment">
                     <div class="profile-row">
-                        <img class="stat-img" th:src="@{'/img/icons/stats/kd.png'}" />
-                        <p class="stat-name" >K/D</p>
+                        <img class="stat-img" th:src="@{'/img/icons/stats/kd.png'}"/>
+                        <p class="stat-name">K/D</p>
                         <p class="stat-value" th:text="${player.getKD()}"></p>
                     </div>
                     <div class="profile-row">
-                        <img class="stat-img" th:src="@{'/img/icons/stats/token.png'}" />
+                        <img class="stat-img" th:src="@{'/img/icons/stats/token.png'}"/>
                         <p class="stat-name">Tokeny</p>
                         <p class="stat-value" th:text="${player.getTokens()}"></p>
                     </div>
                     <div class="profile-row">
-                        <img class="stat-img" th:src="@{'/img/icons/stats/aim.png'}" />
+                        <img class="stat-img" th:src="@{'/img/icons/stats/aim.png'}"/>
                         <p class="stat-name">Celność</p>
                         <p class="stat-value" th:text="${player.getAccuracy()}"></p>
                     </div>
                 </div>
                 <div class="profile-content-segment ">
                     <div class="profile-row">
-                        <img class="stat-img" th:src="@{'/img/icons/stats/hit.png'}" />
+                        <img class="stat-img" th:src="@{'/img/icons/stats/hit.png'}"/>
                         <p class="stat-name-extended">Trafienia</p>
                         <p class="stat-value-extended" th:text="${player.getHit()}"></p>
                     </div>
                     <div class="profile-row">
-                        <img class="stat-img" th:src="@{'/img/icons/stats/miss.png'}" />
+                        <img class="stat-img" th:src="@{'/img/icons/stats/miss.png'}"/>
                         <p class="stat-name-extended">Pudła</p>
                         <p class="stat-value-extended" th:text="${player.getMiss()}"></p>
                     </div>
@@ -82,7 +82,7 @@
                         <tbody>
                         <tr align="center" th:each="skill : ${skills}">
                             <td>
-                                <img th:src="@{'/img/icons/skills/' + ${skill.getType()} + '.png'}" />
+                                <img th:src="@{'/img/icons/skills/' + ${skill.getType()} + '.png'}" th:title="${skill.getType()}"/>
                             </td>
                             <td th:if="${skill.getSkillType().isCooldown()}" th:text="${skill.getCooldownLevel()}"/>
                             <td th:unless="${skill.getSkillType().isCooldown()}">-</td>
@@ -104,15 +104,15 @@
                         <tr align="center">
                             <th>Zbroja</th>
                             <th>Ochrona</th>
-                            <th>Ochrona przed ogniem</th>
-                            <th>Ochrona od wybuchów</th>
-                            <th>Ochrona przed pociskami</th>
+                            <th>Fire protection</th>
+                            <th>Blast protection</th>
+                            <th>Projectile protection</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr align="center" th:each="armor : ${armors}">
                             <td>
-                                <img th:src="@{'/img/icons/armors/' + ${armor.getName()} + '.png'}" />
+                                <img th:src="@{'/img/icons/armors/' + ${armor.getName()} + '.png'}" th:title="${armor.getName()}"/>
                             </td>
                             <td th:text="${armor.getProtection()}"/>
                             <td th:text="${armor.getFireProtection()}"/>
@@ -131,3 +131,11 @@
 </section>
 </body>
 </html>
+<!--<script>-->
+    <!--$(document).ready(function () {-->
+        <!--$('#cos').popover({-->
+            <!--html: true,-->
+            <!--trigger: "hover"-->
+        <!--});-->
+    <!--})-->
+<!--</script>-->
