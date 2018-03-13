@@ -14,6 +14,13 @@
           th:object="${complaint}" method="post" class="form-horizontal"
           role="form" style="margin: 0 auto; width: 50%">
         <div class="form-group">
+            <span>
+                Wypełniając formularz reklamacji podaj nick gracza, dokładną date wykonania zakupu oraz wybierz której pozycji w sklepie dotyczy reklamacja.
+                <p>Na sam koniec dokładnie opisz zaistniałą sytuacje.</p>
+            </span>
+
+        </div>
+        <div class="form-group">
             <input name="nickname" type="text" th:field="*{nickname}" placeholder="Nick"
                    class="form-control" required>
         </div>
