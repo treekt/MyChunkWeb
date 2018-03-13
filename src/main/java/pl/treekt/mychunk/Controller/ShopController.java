@@ -1,6 +1,8 @@
 package pl.treekt.mychunk.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +11,7 @@ import pl.treekt.mychunk.API.Payments.Service.IHomePayService;
 import pl.treekt.mychunk.Entity.Game.Player;
 import pl.treekt.mychunk.Entity.Web.Position;
 import pl.treekt.mychunk.Entity.Web.SMSPayment;
+import pl.treekt.mychunk.Entity.Web.User;
 import pl.treekt.mychunk.Entity.Web.Voucher;
 import pl.treekt.mychunk.Model.ComplaintModel;
 import pl.treekt.mychunk.Model.TransactionModel;
@@ -73,6 +76,11 @@ public class ShopController {
         modelAndView.addObject("position", position);
         modelAndView.addObject("transaction", transaction);
 
+        if (getLoggedUser() == null) {
+            modelAndView.addObject("error", "Musisz być zalogowany, aby zakupić pozycje!");
+            return modelAndView;
+        }
+
         if (!playerService.existsPlayer(transaction.getNickname())) {
             modelAndView.addObject("error", "Podany gracz nie istnieje na serwerze");
             return modelAndView;
@@ -86,13 +94,15 @@ public class ShopController {
         SMSPayment smsPayment = new SMSPayment(
                 transaction.getCode(),
                 position,
-                userService.getUserByEmail("treekt@gmail.com"), //TODO: Automatyczne pobieranie użytkownika
+                getLoggedUser(),
                 playerService.getPlayerById(transaction.getNickname())
         );
-        if(!smsPaymentService.addPayment(smsPayment)){
+
+        if (!smsPaymentService.addPayment(smsPayment)) {
             modelAndView.addObject("error", "Podany kod został już zrealizowany...");
             return modelAndView;
         }
+
 
 
         modelAndView.addObject("transaction", new TransactionModel());
@@ -113,46 +123,46 @@ public class ShopController {
 
 
     @GetMapping("/voucher")
-    public ModelAndView voucherForm(){
+    public ModelAndView voucherForm() {
         ModelAndView modelAndView = new ModelAndView("shop/voucher");
         modelAndView.addObject("voucher", new TransactionModel());
         return modelAndView;
     }
 
     @PostMapping("/voucher")
-    public ModelAndView voucherSubmit(@ModelAttribute TransactionModel transaction){
+    public ModelAndView voucherSubmit(@ModelAttribute TransactionModel transaction) {
         ModelAndView modelAndView = new ModelAndView("shop/voucher");
         modelAndView.addObject("voucher", transaction);
 
-         if(!playerService.existsPlayer(transaction.getNickname())){
-             modelAndView.addObject("error", "Podany gracz nie istnieje na serwerze");
-             return modelAndView;
-         }
-         if(!voucherService.voucherExists(transaction.getCode())){
-             modelAndView.addObject("error", "Podany voucher nie istnieje");
-             return modelAndView;
-         }
+        if (!playerService.existsPlayer(transaction.getNickname())) {
+            modelAndView.addObject("error", "Podany gracz nie istnieje na serwerze");
+            return modelAndView;
+        }
+        if (!voucherService.voucherExists(transaction.getCode())) {
+            modelAndView.addObject("error", "Podany voucher nie istnieje");
+            return modelAndView;
+        }
 
-         if(playerService.isVoucherUsed(transaction.getNickname(), transaction.getCode())){
-             modelAndView.addObject("error", "Podany voucher został juz wykorzystany dla tego gracza");
-             return modelAndView;
-         }else{
-             if(voucherService.canRealizeVoucher(transaction.getCode())){
-                 Player player = playerService.getPlayerById(transaction.getNickname());
-                 Voucher voucher = voucherService.getVoucherByCode(transaction.getCode());
+        if (playerService.isVoucherUsed(transaction.getNickname(), transaction.getCode())) {
+            modelAndView.addObject("error", "Podany voucher został juz wykorzystany dla tego gracza");
+            return modelAndView;
+        } else {
+            if (voucherService.canRealizeVoucher(transaction.getCode())) {
+                Player player = playerService.getPlayerById(transaction.getNickname());
+                Voucher voucher = voucherService.getVoucherByCode(transaction.getCode());
 
-                 //Increment using counter of voucher
-                 voucher.setUsed(voucher.getUsed() + 1);
-                 voucherService.updateVoucher(voucher);
+                //Increment using counter of voucher
+                voucher.setUsed(voucher.getUsed() + 1);
+                voucherService.updateVoucher(voucher);
 
-                 //Adding voucher to player used voucher list
-                 player.getVouchers().add(voucher);
-                 playerService.updatePlayer(player);
-             }else{
-                 modelAndView.addObject("error", "Podany voucher został juz wykorzystany maksymalną ilość razy");
-                 return modelAndView;
-             }
-         }
+                //Adding voucher to player used voucher list
+                player.getVouchers().add(voucher);
+                playerService.updatePlayer(player);
+            } else {
+                modelAndView.addObject("error", "Podany voucher został juz wykorzystany maksymalną ilość razy");
+                return modelAndView;
+            }
+        }
 
         modelAndView.addObject("voucher", new TransactionModel());
         modelAndView.addObject("success", true);
@@ -160,7 +170,7 @@ public class ShopController {
     }
 
     @GetMapping("/shop/complaint")
-    public ModelAndView complaintForm(){
+    public ModelAndView complaintForm() {
         ModelAndView modelAndView = new ModelAndView("shop/complaint");
         modelAndView.addObject("positions", positionService.getAllPositions());
         modelAndView.addObject("complaint", new ComplaintModel());
@@ -168,11 +178,11 @@ public class ShopController {
     }
 
     @PostMapping("/shop/complaint")
-    public ModelAndView complaintSubmit(){
+    public ModelAndView complaintSubmit() {
         ModelAndView modelAndView = new ModelAndView("shop/complaint");
         modelAndView.addObject("positions", positionService.getAllPositions());
 
-        if(1 == 2){
+        if (false) {
             modelAndView.addObject("error", "Nie udało się wysłać reklamacji");
         }
 
@@ -181,4 +191,20 @@ public class ShopController {
         modelAndView.addObject("complaint", new ComplaintModel());
         return modelAndView;
     }
+
+
+    //private methods
+
+    private User getLoggedUser(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user;
+        try {
+            user = userService.getUserByEmail(auth.getName());
+        } catch (Exception e) {
+            user = null;
+        }
+
+        return user;
+    }
 }
+

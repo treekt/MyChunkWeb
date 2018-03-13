@@ -20,8 +20,7 @@ public class AccountController {
 
     @GetMapping("/login")
     public ModelAndView login(){
-        ModelAndView modelAndView = new ModelAndView("account/login");
-        return modelAndView;
+        return new ModelAndView("account/login");
     }
 
 
