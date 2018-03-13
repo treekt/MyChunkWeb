@@ -24,10 +24,18 @@
                     <a href="/admin">Główna</a>
                 </li>
                 <li>
-                    <a href="/admin/shop-history">Historia zakupów</a>
+                    <a href="#usersMenu" data-toggle="collapse" aria-expanded="false">Użytkownicy</a>
+                    <ul class="collapse" id="usersMenu">
+                        <li><a href="/admin/users-list">Lista użytkowników</a></li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="/admin/add-shop-position">Stwórz pozycje w sklepie</a>
+                    <a href="#shopMenu" data-toggle="collapse" aria-expanded="false">Sklep</a>
+                    <ul class="collapse" id="shopMenu">
+                        <li><a href="/admin/position-list">Lista pozycji</a></li>
+                        <li><a href="/admin/add-shop-position">Stwórz pozycje w sklepie</a></li>
+                        <li><a href="/admin/shop-history">Historia zakupów</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="#smsMenu" data-toggle="collapse" aria-expanded="false">SMSy</a>
