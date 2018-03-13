@@ -25,8 +25,7 @@ public class UserController {
 
     @GetMapping("")
     public ModelAndView home(){
-        ModelAndView modelAndView = new ModelAndView("user/home");
-        return modelAndView;
+        return new ModelAndView("user/home");
     }
 
     @GetMapping("/shop-history")

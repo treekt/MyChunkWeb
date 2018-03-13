@@ -10,7 +10,7 @@
     <div class="content-head">
         <span>Informacje szczegółowe o ofercie</span>
     </div>
-    <div class="content-wrapper">
+    <div class="pos-content-wrapper">
         <div id="pos-img-wrap">
             <div class="skew-image pos-detail-image"></div>
         </div>
@@ -18,23 +18,22 @@
             <div class="position-text">
                 <p class="position-title" th:text="${position.getTitle()}"></p>
                 <hr>
-                <p class="position-header">Krótki opis</p>
-                <p class="position-description" th:text="${position.getShortDescription()}"></p>
                 <p class="position-header">Szczegółowy opis</p>
-                <p class="position-description" th:text="${position.getDescription()}"></p>
+                <p class="position-description" th:utext="${position.getDescription()}"></p>
             </div>
-            <button type="button" class="btn btn-primary position-button" th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/sms\''">
+            <button type="button" class="btn btn-primary position-button"
+                    th:onclick="'window.location.href = \'/shop/' + ${position.getId()} + '/sms\''">
                 <b>SMS</b>
-                <small th:text="${position.getSms().getPrice() + ' zł'}" ></small>
+                <small th:text="${position.getSms().getPrice() + ' zł'}"></small>
             </button>
         </div>
-        <!--TODO: Dodać liste osób które kupiły ostatnio tę pozycje-->
     </div>
     <div>
-        <div>
-            <span>Ostatnio zakupili</span>
+        <b>Ostatnio zakupili</b>
+        <div class="pos-purch-wrapper">
             <div th:each="purchaser : ${lastPurchasers}">
-                <span th:text="${purchaser.getNickname()} "></span>
+                <img class="pos-purch-face" th:title="${purchaser.getNickname()}"
+                     th:src="@{'https://minotar.net/avatar/' + ${purchaser.getNickname()} + '/60'}"/>
             </div>
         </div>
     </div>

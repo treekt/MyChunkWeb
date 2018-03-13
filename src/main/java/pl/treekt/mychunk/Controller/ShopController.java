@@ -52,7 +52,7 @@ public class ShopController {
         Position position = positionService.getPositionById(id);
         modelAndView.addObject("position", position);
         List<Player> purchasers = positionService.getLastPurchasers(id);
-        List<Player> lastPurchasers = purchasers.subList(0, 2 >= purchasers.size() ? purchasers.size() : 2);
+        List<Player> lastPurchasers = purchasers.subList(0, 10 >= purchasers.size() ? purchasers.size() : 10);
         modelAndView.addObject("lastPurchasers", lastPurchasers);
         return modelAndView;
     }

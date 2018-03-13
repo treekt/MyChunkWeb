@@ -69,11 +69,13 @@ public class UserService implements IUserService, UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userDao.getUserByEmail(userName);
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        List<GrantedAuthority> authorities;
         if(user != null){
-            getUserAuthority(user.getRoles());
+            authorities = getUserAuthority(user.getRoles());
+            return buildUserForAuthentication(user, authorities);
+        }else{
+            throw new UsernameNotFoundException(userName);
         }
-        return buildUserForAuthentication(user, authorities);
     }
 
     private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
@@ -86,6 +88,8 @@ public class UserService implements IUserService, UserDetailsService {
     }
 
     private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), true, true, true, true, authorities);
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
+                true, true,
+                true, true, authorities);
     }
 }

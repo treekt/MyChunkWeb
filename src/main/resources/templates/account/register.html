@@ -7,11 +7,11 @@
 </head>
 <body>
 <div class="content" layout:fragment="content">
-    <form autocomplete="off" action="/register" th:action="@{/register}"
-          th:object="${userObject}" method="post" class="form-horizontal"
+    <form action="/register" th:action="@{/register}"
+          th:object="${userObject}" method="POST"
           role="form" style="margin: 0 auto; width: 50%">
         <h2>Rejestracja</h2>
-        <br/>maly
+        <br/>
         <div class="form-group">
             <input name="username" type="text" th:field="*{username}" placeholder="Nazwa użytkownika"
                    class="form-control" required>

@@ -70,9 +70,14 @@ hr {
     /*box-shadow: 1px 0px 10px -1px rgba(0, 0, 0, 0.5);*/
 }
 
-.info-image{
-    background: url(http://via.placeholder.com/100x100);
+.info-box img{
     width: 100px;
+}
+
+.info-box:hover img{
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .info-content{
@@ -279,21 +284,22 @@ p.shop-desc {
     float: right;
 }
 
-.content-wrapper {
+.pos-content-wrapper {
     background: #fff;
     color: #67707c;
     margin: 5px 0;
     border-radius: 5px;
     display: flex;
     overflow: hidden;
+    height: 300px;
 }
 
 
 
 #pos-img-wrap {
     width: 400px;
-    height: 230px;
-    margin: 0 0 0 -20px;
+    height: 300px;
+    margin: 0 0 0 -30px;
     -webkit-transform: skew(10deg);
     -moz-transform: skew(10deg);
     -o-transform: skew(10deg);
@@ -313,7 +319,7 @@ p.shop-desc {
 }
 
 .pos-detail-image{
-    background: url(http://via.placeholder.com/400x230);
+    background: url(http://via.placeholder.com/400x300);
 }
 
 
@@ -338,19 +344,33 @@ p.shop-desc {
     margin-bottom: 5px;
 }
 
-.position-description {
+p.position-description {
     font-size: 12px;
     font-weight: 300;
-    margin: 2px;
+    margin: 5px;
+    height: 160px;
+    overflow-y: scroll;
 }
 
 .position-button {
     float: right;
 }
 
-.position-purchasers-wrapper{
-
+.pos-purch-wrapper{
+    border-radius: 5px;
+    background: #ffc766;
+    height: 80px;
+    padding: 10px;
+    display: flex;
 }
+
+img.pos-purch-face{
+    margin: 0 10px;
+    -webkit-box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.75);
+}
+
 
 .sms-flex {
     display: flex;
