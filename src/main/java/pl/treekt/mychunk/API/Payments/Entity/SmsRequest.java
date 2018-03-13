@@ -2,22 +2,24 @@ package pl.treekt.mychunk.API.Payments.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 
+@PropertySource("classpath:application.properties")
 public class SmsRequest {
 
     @JsonProperty("id")
-    @Value("${homepay.api.id}")
+    @Value("${homepay.id}")
     private int id;
 
     @JsonProperty("command")
     private String command = "CheckSMS";
 
     @JsonProperty("key")
-    @Value("${homepay.api.key}")
+    @Value("${homepay.key}")
     private String key;
 
     @JsonProperty("password")
-    @Value("${homepay.api.password}")
+    @Value("${homepay.password}")
     private String password;
 
     @JsonProperty("account")

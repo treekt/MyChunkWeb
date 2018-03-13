@@ -2,18 +2,14 @@ package pl.treekt.mychunk.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.treekt.mychunk.Entity.Web.SMS;
 import pl.treekt.mychunk.Entity.Web.Command;
 import pl.treekt.mychunk.Entity.Web.Position;
 import pl.treekt.mychunk.Entity.Web.Voucher;
+import pl.treekt.mychunk.Model.TransactionModel;
 import pl.treekt.mychunk.Service.Interfaces.*;
-import pl.treekt.mychunk.Service.SMSPaymentService;
 import pl.treekt.mychunk.Utils.SharedUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,11 +35,21 @@ public class AdminController {
     @Autowired
     private ISMSPaymentService smsPaymentService;
 
+    @Autowired
+    private IUserService userService;
+
     @GetMapping("")
     public ModelAndView home() {
-        ModelAndView modelAndView = new ModelAndView("admin/home");
+        return new ModelAndView("admin/home");
+    }
+
+    @GetMapping("user-list")
+    public ModelAndView userList(){
+        ModelAndView modelAndView = new ModelAndView("admin/userList");
+        modelAndView.addObject("userList", userService.getAllUsers());
         return modelAndView;
     }
+
 
     @GetMapping("/add-sms")
     public ModelAndView addSMSForm() {
@@ -67,9 +73,17 @@ public class AdminController {
         return modelAndView;
     }
 
+
+    @GetMapping("/position-list")
+    public ModelAndView positionList(){
+        ModelAndView modelAndView = new ModelAndView("admin/positionList");
+        modelAndView.addObject("positionList", positionService.getAllPositions());
+        return modelAndView;
+    }
+
     @GetMapping("/add-shop-position")
     public ModelAndView addShopPositionForm() {
-        ModelAndView modelAndView = new ModelAndView("admin/addShopPosition");
+        ModelAndView modelAndView = new ModelAndView("admin/addPosition");
         List<SMS> smsList = smsService.getAllSMS();
 
         Position position = new Position();
@@ -84,7 +98,7 @@ public class AdminController {
 
     @PostMapping("/add-shop-position")
     public ModelAndView addShopPositionSubmit(@ModelAttribute Position position) {
-        ModelAndView modelAndView = new ModelAndView("admin/addShopPosition");
+        ModelAndView modelAndView = new ModelAndView("admin/addPosition");
         if (positionService.addPosition(position)) {
             for (Command command : position.getCommands()) {
                 command.setPosition(position);
@@ -101,7 +115,7 @@ public class AdminController {
 
     @PostMapping(value = "/add-shop-position", params = {"addCommand"})
     public ModelAndView addRow(@ModelAttribute Position position) {
-        ModelAndView modelAndView = new ModelAndView("admin/addShopPosition");
+        ModelAndView modelAndView = new ModelAndView("admin/addPosition");
 
         Command command = new Command();
         command.setId(SharedUtils.randomNegativeId());
@@ -115,7 +129,7 @@ public class AdminController {
 
     @PostMapping(value = "/add-shop-position", params = {"removeCommand"})
     public ModelAndView removeRow(@ModelAttribute Position position, HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("admin/addShopPosition");
+        ModelAndView modelAndView = new ModelAndView("admin/addPosition");
 
         Long commandId = Long.valueOf(request.getParameter("removeCommand"));
 
@@ -132,6 +146,7 @@ public class AdminController {
         modelAndView.addObject("position", position);
         return modelAndView;
     }
+
 
     @GetMapping("/sms-list")
     public ModelAndView smsList() {

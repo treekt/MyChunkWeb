@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
 import com.google.common.hash.Hashing;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -14,15 +16,21 @@ import pl.treekt.mychunk.API.Minecraft.Entity.MinecraftResponse;
 import java.io.IOException;
 
 @Component
+@PropertySource("classpath:application.properties")
 public class JSONAPIManager {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    private String host = "localhost";
-    private int port = 20059;
-    private String username = "admin";
-    private String password = "changeme";
-    private String salt = "saltgoeshere";
+    @Value("${jsonapi.host}")
+    private String host;
+    @Value("${jsonapi.port}")
+    private int port;
+    @Value("${jsonapi.username}")
+    private String username;
+    @Value("${jsonapi.password}")
+    private String password;
+    @Value("${jsonapi.salt}")
+    private String salt;
 
     private String url = "http://" + host + ":" + port + "/api/2/call";
 
@@ -78,4 +86,12 @@ public class JSONAPIManager {
         return json.substring(1, json.length() - 1);
     }
 
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

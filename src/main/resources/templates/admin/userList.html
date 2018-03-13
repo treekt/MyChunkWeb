@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/adminLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista użytkowników</title>
+</head>
+<body>
+<div class="user-content" layout:fragment="admin-content">
+    <h2>Lista użytkowników</h2>
+    <br/>
+    <table id="user-list" class="table table-striped table-hover"
+           cellspacing="0"
+           width="100%">
+
+        <thead>
+        <tr align="center">
+            <th data-field="username">Nazwa użytkownika</th>
+            <th data-field="email" data-sortable="true">Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr align="center" th:each="user : ${userList}">
+            <td th:text="${user.getUsername()}"></td>
+            <td th:text="${user.getEmail()}">"</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+<script>
+    $(document).ready(function() {
+        $('#user-list').dataTable( {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Polish.json"
+            }
+        } ).draw();
+    } );
+</script>

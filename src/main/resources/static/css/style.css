@@ -518,3 +518,18 @@ thead {
     padding-left: 10px;
 }
 
+.edit-column{
+    width: 50px;
+}
+
+
+.button {
+    background: none;
+    border: none;
+    color: #3f6dbe;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}

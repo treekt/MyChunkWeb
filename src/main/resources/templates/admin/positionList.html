@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/adminLayout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista pozycji w sklepie</title>
+</head>
+<body>
+<div class="user-content" layout:fragment="admin-content">
+    <h2>Lista pozycji w sklepie</h2>
+    <br/>
+    <table id="position-list" class="table table-striped table-hover"
+           cellspacing="0"
+           width="100%">
+
+        <thead>
+        <tr align="center">
+            <th data-field="positionTitle">Tytuł</th>
+            <th>Cena SMS</th>
+            <!--<td class="edit-column" data-sortable="false"></td>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr align="center" th:each="position : ${positionList}">
+            <td th:text="${position.getTitle()}"></td>
+            <td th:text="${position.getSms().getPrice() + ' zł'}"></td>
+            <td class="edit-column">
+                <!--<a class="button" th:href="'/admin/edit-position/' + ${position.getId()}"><i class="far fa-edit"></i></a>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+<script>
+    $(document).ready(function() {
+        $('#position-list').dataTable( {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Polish.json"
+            }
+        } ).draw();
+    } );
+</script>

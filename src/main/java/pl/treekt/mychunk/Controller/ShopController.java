@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.treekt.mychunk.API.Payments.Service.IHomePayService;
@@ -186,7 +185,6 @@ public class ShopController {
             modelAndView.addObject("error", "Nie udało się wysłać reklamacji");
         }
 
-        //TODO: Wyslij wiadomosc e-mail
         modelAndView.addObject("success", true);
         modelAndView.addObject("complaint", new ComplaintModel());
         return modelAndView;

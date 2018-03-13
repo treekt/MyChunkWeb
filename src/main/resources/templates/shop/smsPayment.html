@@ -17,7 +17,7 @@
             <p class="no-margin">Aby kupić ten zestaw wyślij SMS o treści <span class="sms-var"
                                                                                 th:text="${position.getSms().getContent()}"></span>
                 na numer <span class="sms-var" th:text="${position.getSms().getNumber()}"></span>.</p>
-            <p class="no-margin">Koszt wysłania pojedynczego SMS'a wynosi: <span class="sms-var"
+            <p class="no-margin">Koszt wysłania pojedynczego SMS'a wynosi brutto <span class="sms-var"
                                                                                  th:text="${position.getSms().getPrice()}"></span>
                 zł.</p>
         </div>
@@ -34,7 +34,8 @@
             <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="checkRules" required>
-                    <label class="form-check-label" for="checkRules">Akceptuje regulamin Homepay oraz regulamin MyChunk.</label>
+                    <label class="form-check-label" for="checkRules">Akceptuje <a class="link" href="https://homepay.pl/regulamin/regulamin_uslug_premium/">regulamin Homepay</a>
+                        oraz <a class="link" href="/rules">regulamin MyChunk.</a></label>
                 </div>
             </div>
             <div class="form-group">
@@ -46,10 +47,10 @@
             <div class="alert alert-danger" th:if="${error}">
                 <strong>Ups!</strong> <span th:text="${error}"></span>
             </div>
-            <p>Płatności obsługuje <a class="link" href="http://homepay.pl">Homepay</a>. Korzystanie z usługi jest
-                równoznaczne z
-                akceptacją <a class="link" href="https://homepay.pl/regulamin/regulamin_uslug_premium/">regulaminu Homepay</a> oraz
-                <a class="link" href="/rules">regulaminu MyChunk.</a></p>
+            <p>Płatności obsługuje firma <a class="link" href="http://homepay.pl">HOMEPAY Sp. z o.o.</a><br>
+                Infolinia dotycząca płatności: (22) 266 85 25<br>
+                Reklamacje płatności: <a class="link" href="https://homepay.pl/reklamacje">Kliknij tutaj!</a>
+            </p>
         </form>
     </div>
 </div>
