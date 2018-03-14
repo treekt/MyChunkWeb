@@ -6,12 +6,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pl.treekt.mychunk.API.Minecraft.Service.IMinecraftService;
 import pl.treekt.mychunk.API.Payments.Service.IHomePayService;
 import pl.treekt.mychunk.Entity.Game.Player;
-import pl.treekt.mychunk.Entity.Web.Position;
-import pl.treekt.mychunk.Entity.Web.SMSPayment;
-import pl.treekt.mychunk.Entity.Web.User;
-import pl.treekt.mychunk.Entity.Web.Voucher;
+import pl.treekt.mychunk.Entity.Web.*;
 import pl.treekt.mychunk.Model.ComplaintModel;
 import pl.treekt.mychunk.Model.TransactionModel;
 import pl.treekt.mychunk.Service.Interfaces.*;
@@ -38,6 +36,9 @@ public class ShopController {
 
     @Autowired
     private IVoucherService voucherService;
+
+    @Autowired
+    private IMinecraftService minecraftService;
 
 
     @GetMapping("/shop")
@@ -153,6 +154,10 @@ public class ShopController {
                 //Increment using counter of voucher
                 voucher.getPlayers().add(player);
                 voucherService.updateVoucher(voucher);
+
+                for(Command command : voucher.getPosition().getCommands()){
+                    minecraftService.commandExecute(command.getContent(), player.getNickname());
+                }
             } else {
                 modelAndView.addObject("error", "Podany voucher został juz wykorzystany maksymalną ilość razy");
                 return modelAndView;

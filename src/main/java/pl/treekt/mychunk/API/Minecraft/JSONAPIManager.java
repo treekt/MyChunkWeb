@@ -21,10 +21,8 @@ public class JSONAPIManager {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    @Value("${jsonapi.host}")
-    private String host;
-    @Value("${jsonapi.port}")
-    private int port;
+    @Value("${jsonapi.url}")
+    private String url;
     @Value("${jsonapi.username}")
     private String username;
     @Value("${jsonapi.password}")
@@ -32,7 +30,6 @@ public class JSONAPIManager {
     @Value("${jsonapi.salt}")
     private String salt;
 
-    private String url = "http://" + host + ":" + port + "/api/2/call";
 
 
     public MinecraftResponse call(String method, String[] args) {
@@ -86,6 +83,13 @@ public class JSONAPIManager {
         return json.substring(1, json.length() - 1);
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public String getUsername() {
         return username;
@@ -93,5 +97,21 @@ public class JSONAPIManager {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }

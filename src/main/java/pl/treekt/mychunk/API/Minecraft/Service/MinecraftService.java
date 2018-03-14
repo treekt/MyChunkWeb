@@ -33,7 +33,7 @@ public class MinecraftService implements IMinecraftService {
 
     @Override
     public boolean commandExecute(String command, String nickname) {
-        String[] arguments = {command.replace("$player%", nickname)};
+        String[] arguments = {command.replace("$player$", nickname)};
         MinecraftResponse minecraftResponse = jsonapiManager.call("server.run_command", arguments);
         if(minecraftResponse.isSuccess()){
             return true;
