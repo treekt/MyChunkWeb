@@ -34,6 +34,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="accountDropdownMenu">
                         <a th:if="${loggedUser.roles[0].role == 'USER'}" class="dropdown-item" href="/user">Panel użytkownika</a>
+                        <a th:if="${loggedUser.roles[0].role == 'ADMIN'}" class="dropdown-item" href="/user">Panel użytkownika</a>
                         <a th:if="${loggedUser.roles[0].role == 'ADMIN'}" class="dropdown-item" href="/admin">Panel administratora</a>
                         <a class="dropdown-item" href="/logout">Wyloguj</a>
                     </div>

@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/profil/**").permitAll()
                 .antMatchers("/voucher").permitAll()
                 .antMatchers("/shop/**").permitAll()
-                .antMatchers("/user/**").hasAuthority("USER")
+                .antMatchers("/user/**").hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
