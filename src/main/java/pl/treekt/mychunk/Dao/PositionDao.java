@@ -39,7 +39,7 @@ public class PositionDao implements IPositionDao {
 
     @Override
     public void updatePosition(Position position) {
-        
+        entityManager.flush();
     }
 
     @Override

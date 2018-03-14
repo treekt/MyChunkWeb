@@ -30,6 +30,8 @@ public class Voucher {
         this.id = voucher.id;
         this.code = voucher.code;
         this.max = voucher.max;
+        this.players = voucher.players;
+        this.position = voucher.position;
     }
 
     public Long getId() {

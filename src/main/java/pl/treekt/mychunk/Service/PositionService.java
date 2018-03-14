@@ -41,7 +41,7 @@ public class PositionService implements IPositionService {
 
     @Override
     public void updatePosition(Position position) {
-
+        positionDao.updatePosition(position);
     }
 
     @Override

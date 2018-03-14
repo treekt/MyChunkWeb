@@ -41,13 +41,6 @@ public class UserDao implements IUserDao {
 
     @Override
     public void updateUser(User user) {
-        User newUser = new User();
-        newUser.setUsername(user.getUsername());
-        newUser.setPassword(user.getPassword());
-        newUser.setEmail(user.getEmail());
-        newUser.setRoles(user.getRoles());
-        newUser.setActive(user.getActive());
-
         entityManager.flush();
     }
 

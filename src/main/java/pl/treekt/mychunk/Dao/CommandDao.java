@@ -43,10 +43,6 @@ public class CommandDao implements ICommandDao {
 
     @Override
     public void updateCommand(Command command) {
-        Command newCommand = new Command();
-        newCommand.setId(command.getId());
-        newCommand.setContent(command.getContent());
-        newCommand.setPosition(command.getPosition());
         entityManager.flush();
     }
 

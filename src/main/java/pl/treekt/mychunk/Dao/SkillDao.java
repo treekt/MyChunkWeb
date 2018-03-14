@@ -36,13 +36,6 @@ public class SkillDao implements ISkillDao {
 
     @Override
     public void updateSkill(Skill skill) {
-        Skill newSkill = new Skill();
-        newSkill.setType(skill.getType());
-        newSkill.setCooldownLevel(skill.getCooldownLevel());
-        newSkill.setDurationLevel(skill.getDurationLevel());
-        newSkill.setPowerLevel(skill.getPowerLevel());
-        newSkill.setNickname(skill.getNickname());
-
         entityManager.flush();
     }
 

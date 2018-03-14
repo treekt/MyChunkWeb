@@ -42,7 +42,6 @@ public class VoucherDao implements IVoucherDao{
 
     @Override
     public void updateVoucher(Voucher voucher) {
-        Voucher newVoucher = new Voucher(voucher);
         entityManager.flush();
     }
 

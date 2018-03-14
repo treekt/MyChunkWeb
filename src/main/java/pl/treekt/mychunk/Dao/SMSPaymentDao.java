@@ -43,7 +43,7 @@ public class SMSPaymentDao implements ISMSPaymentDao {
 
     @Override
     public void updatePayment(SMSPayment smsPayment) {
-
+        entityManager.flush();
     }
 
     @Override

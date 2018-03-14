@@ -36,15 +36,6 @@ public class ArmorDao implements IArmorDao {
 
     @Override
     public void updateArmor(Armor armor) {
-        Armor newArmor = new Armor();
-        newArmor.setName(armor.getName());
-        newArmor.setActive(newArmor.getActive());
-        newArmor.setProtection(newArmor.getProtection());
-        newArmor.setFireProtection(armor.getFireProtection());
-        newArmor.setBlastProtection(armor.getBlastProtection());
-        newArmor.setProjectileProtection(armor.getProjectileProtection());
-        newArmor.setNickname(armor.getNickname());
-
         entityManager.flush();
     }
 

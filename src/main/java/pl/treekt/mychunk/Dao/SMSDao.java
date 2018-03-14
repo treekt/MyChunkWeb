@@ -39,7 +39,7 @@ public class SMSDao implements ISMSDao {
 
     @Override
     public void updateSMS(SMS sms) {
-//        ...
+        entityManager.flush();
     }
 
     @Override

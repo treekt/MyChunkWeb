@@ -12,35 +12,35 @@ import java.util.List;
 public class SMSService implements ISMSService {
 
     @Autowired
-    private ISMSDao codeDao;
+    private ISMSDao smsDao;
 
     @Override
     public List<SMS> getAllSMS() {
-        return codeDao.getAllSMS();
+        return smsDao.getAllSMS();
     }
 
     @Override
     public SMS getByContent(String content) {
-        return codeDao.getByContent(content);
+        return smsDao.getByContent(content);
     }
 
     @Override
     public Boolean addSMS(SMS sms) {
-        if(codeDao.smsExists(sms.getContent())){
+        if(smsDao.smsExists(sms.getContent())){
             return false;
         }else{
-            codeDao.addSMS(sms);
+            smsDao.addSMS(sms);
             return true;
         }
     }
 
     @Override
     public void updateSMS(SMS sms) {
-        codeDao.updateSMS(sms);
+        smsDao.updateSMS(sms);
     }
 
     @Override
     public void deleteSMS(String content) {
-        codeDao.deleteSMS(getByContent(content));
+        smsDao.deleteSMS(getByContent(content));
     }
 }
