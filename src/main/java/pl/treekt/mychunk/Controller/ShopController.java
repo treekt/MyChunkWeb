@@ -151,12 +151,8 @@ public class ShopController {
                 Voucher voucher = voucherService.getVoucherByCode(transaction.getCode());
 
                 //Increment using counter of voucher
-                voucher.setUsed(voucher.getUsed() + 1);
+                voucher.getPlayers().add(player);
                 voucherService.updateVoucher(voucher);
-
-                //Adding voucher to player used voucher list
-                player.getVouchers().add(voucher);
-                playerService.updatePlayer(player);
             } else {
                 modelAndView.addObject("error", "Podany voucher został juz wykorzystany maksymalną ilość razy");
                 return modelAndView;

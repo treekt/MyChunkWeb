@@ -65,11 +65,19 @@ public class User {
         this.roles = roles;
     }
 
-    public Boolean getActive() {
+    public boolean isActive() {
         return active;
     }
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public Set<SMSPayment> getSmsHistories() {
+        return smsHistories;
+    }
+
+    public void setSmsHistories(Set<SMSPayment> smsHistories) {
+        this.smsHistories = smsHistories;
     }
 }

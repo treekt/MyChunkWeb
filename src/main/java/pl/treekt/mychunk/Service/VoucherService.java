@@ -36,6 +36,7 @@ public class VoucherService implements IVoucherService {
 
     @Override
     public void updateVoucher(Voucher voucher) {
+        voucherDao.updateVoucher(voucher);
     }
 
     @Override
@@ -51,7 +52,7 @@ public class VoucherService implements IVoucherService {
     @Override
     public boolean canRealizeVoucher(String code) {
         Voucher voucher = getVoucherByCode(code);
-        if(voucher.getUsed() < voucher.getMax()){
+        if(voucher.getPlayers().size() < voucher.getMax()){
             return true;
         }
         return false;

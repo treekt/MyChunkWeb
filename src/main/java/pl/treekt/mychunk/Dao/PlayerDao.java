@@ -35,13 +35,14 @@ public class PlayerDao implements IPlayerDao {
 
     @Override
     public void updatePlayer(Player player) {
-        Player newUser =  getPlayerById(player.getNickname());
+        Player newUser = getPlayerById(player.getNickname());
         newUser.setKills(player.getKills());
         newUser.setDeaths(player.getDeaths());
         newUser.setAssists(player.getAssists());
         newUser.setTokens(player.getTokens());
         newUser.setLastOnline(player.getLastOnline());
-
+        newUser.setVouchers(player.getVouchers());
+        newUser.setSmsHistories(player.getSmsHistories());
         entityManager.flush();
     }
 
