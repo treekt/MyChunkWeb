@@ -10,6 +10,7 @@ import pl.treekt.mychunk.Entity.Web.Position;
 import pl.treekt.mychunk.Entity.Web.Voucher;
 import pl.treekt.mychunk.Model.TransactionModel;
 import pl.treekt.mychunk.Service.Interfaces.*;
+import pl.treekt.mychunk.Utils.Enums.ServerType;
 import pl.treekt.mychunk.Utils.SharedUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -92,6 +93,7 @@ public class AdminController {
         position.setCommands(commands);
 
         modelAndView.addObject("position", position);
+        modelAndView.addObject("serverTypeList", ServerType.values());
         modelAndView.addObject("smsList", smsList);
         return modelAndView;
     }
@@ -106,6 +108,7 @@ public class AdminController {
             }
             List<SMS> smsList = smsService.getAllSMS();
             modelAndView.addObject("smsList", smsList);
+            modelAndView.addObject("serverTypeList", ServerType.values());
             modelAndView.addObject("success", true);
         } else {
             //I will do something here in future
@@ -123,6 +126,7 @@ public class AdminController {
 
         List<SMS> smsList = smsService.getAllSMS();
         modelAndView.addObject("smsList", smsList);
+        modelAndView.addObject("serverTypeList", ServerType.values());
         modelAndView.addObject("position", position);
         return modelAndView;
     }
@@ -143,6 +147,7 @@ public class AdminController {
 
         List<SMS> smsList = smsService.getAllSMS();
         modelAndView.addObject("smsList", smsList);
+        modelAndView.addObject("serverTypeList", ServerType.values());
         modelAndView.addObject("position", position);
         return modelAndView;
     }

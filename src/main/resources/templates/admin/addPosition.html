@@ -43,10 +43,15 @@
                 </div>
             </div>
             <div class="form-row" th:each="command, rowStat : *{commands}">
-                <div class="form-group col-md-10">
+                <div class="form-group col-md-8">
                     <input class="form-control" type="text" th:field="*{commands[__${rowStat.index}__].content}"
                            th:placeholder="Komenda">
                 </div>
+                <select class="form-control col-md-2" th:field="*{commands[__${rowStat.index}__].serverType}">
+                    <option th:each="serverType : ${serverTypeList}"
+                    th:value="${serverType}"
+                    th:text="${serverType}"></option>
+                </select>
                 <div align="center" class="form-group col-md-2">
                     <button type="submit" class="btn btn-danger"
                             th:value="*{commands[__${rowStat.index}__].id}" name="removeCommand"><i

@@ -1,5 +1,7 @@
 package pl.treekt.mychunk.Entity.Web;
 
+import pl.treekt.mychunk.Utils.Enums.ServerType;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,7 @@ public class Command {
     private long id;
 
     private String content;
+    private ServerType serverType;
 
     @ManyToOne
     @JoinColumn(name = "position_id")
@@ -30,6 +33,14 @@ public class Command {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public ServerType getServerType() {
+        return serverType;
+    }
+
+    public void setServerType(ServerType serverType) {
+        this.serverType = serverType;
     }
 
     public Position getPosition() {

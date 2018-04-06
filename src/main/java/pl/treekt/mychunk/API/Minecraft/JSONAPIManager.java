@@ -10,6 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import pl.treekt.mychunk.API.Minecraft.Entity.JSONDataObject;
 import pl.treekt.mychunk.API.Minecraft.Entity.MinecraftRequest;
 import pl.treekt.mychunk.API.Minecraft.Entity.MinecraftResponse;
 
@@ -21,23 +22,14 @@ public class JSONAPIManager {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    @Value("${jsonapi.url}")
-    private String url;
-    @Value("${jsonapi.username}")
-    private String username;
-    @Value("${jsonapi.password}")
-    private String password;
-    @Value("${jsonapi.salt}")
-    private String salt;
 
 
-
-    public MinecraftResponse call(String method, String[] args) {
+    public MinecraftResponse call(JSONDataObject dataObject, String method, String[] args) {
 
 
         MinecraftRequest minecraftRequest = new MinecraftRequest(method,
-                makeKey(method, username, password, salt),
-                username,
+                makeKey(method, dataObject.getUsername(), dataObject.getPassword(), dataObject.getSalt()),
+                dataObject.getUsername(),
                 args,
                 method);
 
@@ -45,7 +37,7 @@ public class JSONAPIManager {
         MinecraftResponse minecraftResponse;
 
         try {
-            String resultJson = restTemplate.postForObject(url, entity, String.class);
+            String resultJson = restTemplate.postForObject(dataObject.getUrl(), entity, String.class);
             minecraftResponse = convertJsonToMinecraftResponse(cutTheBrackets(resultJson));
         } catch (Exception exception) {
             minecraftResponse = new MinecraftResponse("error", false, method, "1", "Connection refused!");
@@ -82,36 +74,5 @@ public class JSONAPIManager {
     private String cutTheBrackets(String json) {
         return json.substring(1, json.length() - 1);
     }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
+//
 }

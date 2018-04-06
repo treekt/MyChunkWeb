@@ -114,5 +114,9 @@
     <orderEntry type="library" name="Maven: nz.net.ultraq.thymeleaf:thymeleaf-expression-processor:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.40" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:20.0" level="project" />
+    <orderEntry type="library" name="Maven: org.to2mbn:jmccc-mojang-api:2.5-beta-1" level="project" />
+    <orderEntry type="library" name="Maven: org.to2mbn:jmccc-yggdrasil-authenticator:2.5-beta-1" level="project" />
+    <orderEntry type="library" name="Maven: org.to2mbn:jmccc:2.5-beta-1" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1" level="project" />
   </component>
 </module>

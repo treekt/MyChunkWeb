@@ -11,13 +11,13 @@
         <span>Statystyki gracza</span>
     </div>
     <div class="profile-head">
-        <img style="float:left;" th:src="@{'https://crafatar.com/avatars/' + ${player.nickname} + '?size=50'}"/>
+        <img style="float:left;" th:src="@{'https://crafatar.com/avatars/' + ${player.uuid} + '?size=50'}"/>
         <h2 class="nickname" th:text="${player.nickname}"/>
     </div>
     <div class="profile-wrapper">
         <div class="profile-content">
             <div class="profile-content-segment" style="height: 400px">
-                <img th:src="@{'https://crafatar.com/renders/body/' + ${player.nickname} + '?scale=8'}"/>
+                <img th:src="@{'https://crafatar.com/renders/body/' + ${player.uuid} + '?scale=8'}"/>
             </div>
             <div class="profile-content-segment">
                 <div class="profile-row">

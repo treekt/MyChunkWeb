@@ -103,7 +103,9 @@ public class ShopController {
             return modelAndView;
         }
 
-
+        for(Command command : position.getCommands()){
+            minecraftService.commandExecute(command.getContent(), transaction.getNickname(), command.getServerType());
+        }
 
         modelAndView.addObject("transaction", new TransactionModel());
         modelAndView.addObject("success", true);
@@ -112,14 +114,14 @@ public class ShopController {
     }
 
 
-    @GetMapping("/shop/{id}/transfer")
-    public ModelAndView transferPaymentForm(@PathVariable long id) {
-        ModelAndView modelAndView = new ModelAndView("shop/transferPayment");
-        Position position = positionService.getPositionById(id);
-        modelAndView.addObject("position", position);
-        modelAndView.addObject("transaction", new TransactionModel());
-        return modelAndView;
-    }
+//    @GetMapping("/shop/{id}/transfer")
+//    public ModelAndView transferPaymentForm(@PathVariable long id) {
+//        ModelAndView modelAndView = new ModelAndView("shop/transferPayment");
+//        Position position = positionService.getPositionById(id);
+//        modelAndView.addObject("position", position);
+//        modelAndView.addObject("transaction", new TransactionModel());
+//        return modelAndView;
+//    }
 
 
     @GetMapping("/voucher")
@@ -156,7 +158,7 @@ public class ShopController {
                 voucherService.updateVoucher(voucher);
 
                 for(Command command : voucher.getPosition().getCommands()){
-                    minecraftService.commandExecute(command.getContent(), player.getNickname());
+                    minecraftService.commandExecute(command.getContent(), player.getNickname(), command.getServerType());
                 }
             } else {
                 modelAndView.addObject("error", "Podany voucher został juz wykorzystany maksymalną ilość razy");

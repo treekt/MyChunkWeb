@@ -17,17 +17,26 @@ public class Armor implements Comparable<Armor>{
   @Column(name = "name")
   private String name;
   @Column(name = "active")
-  private Long active;
+  private int active;
   @Column(name = "protection")
-  private String protection;
+  private int protection;
   @Column(name = "fire_protection")
-  private String fireProtection;
+  private int fireProtection;
   @Column(name = "blast_protection")
-  private String blastProtection;
+  private int blastProtection;
   @Column(name = "projectile_protection")
-  private String projectileProtection;
+  private int projectileProtection;
   @Column(name = "nickname")
   private String nickname;
+
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
   public String getName() {
     return name;
@@ -37,43 +46,43 @@ public class Armor implements Comparable<Armor>{
     this.name = name;
   }
 
-  public Long getActive() {
+  public int getActive() {
     return active;
   }
 
-  public void setActive(Long active) {
+  public void setActive(int active) {
     this.active = active;
   }
 
-  public String getProtection() {
+  public int getProtection() {
     return protection;
   }
 
-  public void setProtection(String protection) {
+  public void setProtection(int protection) {
     this.protection = protection;
   }
 
-  public String getFireProtection() {
+  public int getFireProtection() {
     return fireProtection;
   }
 
-  public void setFireProtection(String fire_protection) {
-    this.fireProtection = fire_protection;
+  public void setFireProtection(int fireProtection) {
+    this.fireProtection = fireProtection;
   }
 
-  public String getBlastProtection() {
+  public int getBlastProtection() {
     return blastProtection;
   }
 
-  public void setBlastProtection(String blast_protection) {
-    this.blastProtection = blast_protection;
+  public void setBlastProtection(int blastProtection) {
+    this.blastProtection = blastProtection;
   }
 
-  public String getProjectileProtection() {
+  public int getProjectileProtection() {
     return projectileProtection;
   }
 
-  public void setProjectileProtection(String projectileProtection) {
+  public void setProjectileProtection(int projectileProtection) {
     this.projectileProtection = projectileProtection;
   }
 

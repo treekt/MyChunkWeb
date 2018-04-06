@@ -79,6 +79,10 @@
           <element id="library" level="project" name="Maven: nz.net.ultraq.thymeleaf:thymeleaf-expression-processor:1.1.1" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.40" />
           <element id="library" level="project" name="Maven: com.google.guava:guava:20.0" />
+          <element id="library" level="project" name="Maven: org.to2mbn:jmccc-mojang-api:2.5-beta-1" />
+          <element id="library" level="project" name="Maven: org.to2mbn:jmccc-yggdrasil-authenticator:2.5-beta-1" />
+          <element id="library" level="project" name="Maven: org.to2mbn:jmccc:2.5-beta-1" />
+          <element id="library" level="project" name="Maven: com.googlecode.json-simple:json-simple:1.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">

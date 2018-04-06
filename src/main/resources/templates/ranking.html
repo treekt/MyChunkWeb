@@ -28,7 +28,7 @@
         <tr align="center" th:each="player : ${players}">
             <td>
                 <a th:href="@{'/profil/'+ ${player.nickname}}">
-                    <img th:src="@{'https://minotar.net/avatar/' + ${player.nickname} + '/35'}"/>
+                    <img th:src="@{'https://crafatar.com/avatars/' + ${player.uuid} + '?size=35'}"/>
                 </a>
             </td>
             <td>
