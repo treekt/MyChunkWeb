@@ -18,7 +18,6 @@ public class Player implements Comparable<Player> {
 
   @Id
   private String nickname;
-  private String uuid;
   private Long kills;
   private Long deaths;
   private Long assists;
@@ -42,14 +41,6 @@ public class Player implements Comparable<Player> {
 
   public void setNickname(String nickname) {
     this.nickname = nickname;
-  }
-
-  public String getUuid() {
-    return uuid;
-  }
-
-  public void setUuid(String uuid) {
-    this.uuid = uuid;
   }
 
   public Long getKills() {
