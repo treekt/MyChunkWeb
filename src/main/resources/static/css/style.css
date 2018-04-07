@@ -163,63 +163,61 @@ h2.nickname {
 
 .profile-wrapper {
     background: #f8f9fa;
-    height: 100%;
-    width: 100%;
 }
 
 .profile-content {
     padding: 10px 15px;
-    height: 100%;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .profile-content.next-to-eo {
-    display: flex;
+    flex-wrap: nowrap;
 }
 
 .profile-content-segment {
-    margin: 5px 10px;
-    float: left;
+    margin: 5px auto;
 }
+
+.profile-content-segment.next-to-eo {
+    margin: 5px 10px;
+}
+
+
+
 
 .profile-row {
     border-bottom: 1px solid #dbddde;
     background: #f4f5f5;
     height: 60px;
+    display: flex;
 }
 
 img.stat-img {
     float: left;
     margin: 10px;
-    height: 40px;
-    width: 40px;
+    max-height: 40px;
+    max-width: 40px;
 }
 
-p.stat-name, p.stat-name-extended {
+p.stat-name {
     font-size: 20px;
-    width: 100px;
     margin: 15px 5px;
+    width: 80%;
     float: left;
 }
 
-p.stat-name-extended {
-    width: 175px;
-}
 
-p.stat-value, p.stat-value-extended {
+p.stat-value {
     text-align: center;
     background: #f2f2f2;
-    padding: 15px 0px;
+    padding: 15px 0;
     font-size: 20px;
-    width: 75px;
+    width: 100px;
     height: 59px;
-    margin: 0px;
-    float: left;
+    float: right;
 }
 
-p.stat-value-extended {
-    width: 100px;
-}
 
 
 .wrapper {

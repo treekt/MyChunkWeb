@@ -11,13 +11,13 @@
         <span>Statystyki gracza</span>
     </div>
     <div class="profile-head">
-        <img style="float:left;" th:src="@{'https://crafatar.com/avatars/' + ${player.uuid} + '?size=50'}"/>
+        <img style="float:left; margin: -15px" th:src="@{'https://visage.surgeplay.com/head/80/' + ${player.nickname}}"/>
         <h2 class="nickname" th:text="${player.nickname}"/>
     </div>
     <div class="profile-wrapper">
         <div class="profile-content">
-            <div class="profile-content-segment" style="height: 400px">
-                <img th:src="@{'https://crafatar.com/renders/body/' + ${player.uuid} + '?scale=8'}"/>
+            <div class="profile-content-segment">
+                <img th:src="@{'https://visage.surgeplay.com/full/370/' + ${player.nickname}}"/>
             </div>
             <div class="profile-content-segment">
                 <div class="profile-row">
@@ -53,22 +53,22 @@
                     <p class="stat-value" th:text="${player.getAccuracy()}"></p>
                 </div>
             </div>
-            <div class="profile-content-segment ">
+            <div class="profile-content-segment">
                 <div class="profile-row">
                     <img class="stat-img" th:src="@{'/img/icons/stats/hit.png'}"/>
-                    <p class="stat-name-extended">Trafienia</p>
-                    <p class="stat-value-extended" th:text="${player.getHit()}"></p>
+                    <p class="stat-name">Trafienia</p>
+                    <p class="stat-value" th:text="${player.getHit()}"></p>
                 </div>
                 <div class="profile-row">
                     <img class="stat-img" th:src="@{'/img/icons/stats/miss.png'}"/>
-                    <p class="stat-name-extended">Pudła</p>
-                    <p class="stat-value-extended" th:text="${player.getMiss()}"></p>
+                    <p class="stat-name">Pudła</p>
+                    <p class="stat-value" th:text="${player.getMiss()}"></p>
                 </div>
             </div>
         </div>
 
         <div class="profile-content next-to-eo">
-            <div class="profile-content-segment">
+            <div class="profile-content-segment next-to-eo">
                 <table class="table table-striped table-hover scroll-table">
                     <thead>
                     <tr align="center">
