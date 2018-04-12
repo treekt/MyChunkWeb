@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import pl.treekt.mychunk.API.Minecraft.Service.IMinecraftService;
+import pl.treekt.mychunk.API.Bungee.Service.IBungeeService;
 import pl.treekt.mychunk.Entity.Game.Armor;
 import pl.treekt.mychunk.Entity.Game.Skill;
 import pl.treekt.mychunk.Entity.Game.Player;
@@ -19,6 +19,7 @@ import pl.treekt.mychunk.Service.Interfaces.IArmorService;
 import pl.treekt.mychunk.Service.Interfaces.IPlayerService;
 import pl.treekt.mychunk.Service.Interfaces.ISkillService;
 import pl.treekt.mychunk.Service.Interfaces.IUserService;
+import pl.treekt.mychunk.Utils.Enums.ServerType;
 
 
 import java.util.List;
@@ -37,19 +38,16 @@ public class MainController {
     private IArmorService armorService;
 
     @Autowired
-    private HomePayManager homePayManager;
-
-    @Autowired
     private IUserService userService;
 
     @Autowired
-    private IMinecraftService minecraftService;
+    private IBungeeService bungeeService;
 
 
     @ModelAttribute
     public void defaultAttributes(Model model){
-        model.addAttribute("onlinePlayers", minecraftService.getOnlinePlayers());
-        model.addAttribute("maxPlayers", minecraftService.getMaxPlayers());
+        model.addAttribute("onlinePlayers", bungeeService.getOnlineCount());
+        model.addAttribute("maxPlayers", bungeeService.getPlayerLimit());
         model.addAttribute("playersCounter", playerService.countPlayers());
         model.addAttribute("shotsCounter", playerService.countShots());
 
@@ -69,6 +67,7 @@ public class MainController {
         List<Player> players = playerService.getAllPlayers();
         List<Player> lastOnlinePlayers = players.subList(0, 2 >= players.size() ? players.size() : 2);
 
+        bungeeService.executeCommandOnServer("treekt", "say hello", ServerType.Main);
         return modelAndView;
     }
 

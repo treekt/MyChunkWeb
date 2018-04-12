@@ -6,7 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import pl.treekt.mychunk.API.Minecraft.Service.IMinecraftService;
+import pl.treekt.mychunk.API.Bungee.Service.IBungeeService;
 import pl.treekt.mychunk.API.Payments.Service.IHomePayService;
 import pl.treekt.mychunk.Entity.Game.Player;
 import pl.treekt.mychunk.Entity.Web.*;
@@ -38,7 +38,7 @@ public class ShopController {
     private IVoucherService voucherService;
 
     @Autowired
-    private IMinecraftService minecraftService;
+    private IBungeeService bungeeService;
 
 
     @GetMapping("/shop")
@@ -104,7 +104,7 @@ public class ShopController {
         }
 
         for(Command command : position.getCommands()){
-            minecraftService.commandExecute(command.getContent(), transaction.getNickname(), command.getServerType());
+            bungeeService.executeCommandOnServer(transaction.getNickname(), command.getContent(), command.getServerType());
         }
 
         modelAndView.addObject("transaction", new TransactionModel());
@@ -112,16 +112,6 @@ public class ShopController {
 
         return modelAndView;
     }
-
-
-//    @GetMapping("/shop/{id}/transfer")
-//    public ModelAndView transferPaymentForm(@PathVariable long id) {
-//        ModelAndView modelAndView = new ModelAndView("shop/transferPayment");
-//        Position position = positionService.getPositionById(id);
-//        modelAndView.addObject("position", position);
-//        modelAndView.addObject("transaction", new TransactionModel());
-//        return modelAndView;
-//    }
 
 
     @GetMapping("/voucher")
@@ -158,7 +148,7 @@ public class ShopController {
                 voucherService.updateVoucher(voucher);
 
                 for(Command command : voucher.getPosition().getCommands()){
-                    minecraftService.commandExecute(command.getContent(), player.getNickname(), command.getServerType());
+                    bungeeService.executeCommandOnServer(player.getNickname(), command.getContent(), command.getServerType());
                 }
             } else {
                 modelAndView.addObject("error", "Podany voucher został juz wykorzystany maksymalną ilość razy");

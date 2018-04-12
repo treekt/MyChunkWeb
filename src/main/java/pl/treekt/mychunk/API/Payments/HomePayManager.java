@@ -3,6 +3,7 @@ package pl.treekt.mychunk.API.Payments;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -16,7 +17,8 @@ public class HomePayManager {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    private final String url = "https://homepay.pl/api";
+    @Value("${homepay.url}")
+    private String url;
 
 
     public SmsResponse checkSMS(String code) {
