@@ -52,7 +52,8 @@ public class BungeeService implements IBungeeService {
         command = command.replace("$player$", player);
         if(isPlayerLogged(player)){
             for(String serverName : getServerList()){
-                if(serverName.toLowerCase().contains(serverType.toString().toLowerCase())){
+                if(serverName.toLowerCase().contains(serverType.toString().toLowerCase())
+                        || serverType.equals(ServerType.Every)){
                     HashMap<String, String> params = prepareParamsIfAuthRequired(true);
                     params.put("command", command);
                     params.put("server", serverName);
